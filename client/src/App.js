@@ -1,11 +1,15 @@
 import Button from "react-bootstrap/Button";
 import "./App.css";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <Button variant="primary">Primary</Button>
+      <Router>
+        <Routes>
+          <Route path="/" element={<div>Hi</div>} />
+        </Routes>
+      </Router>
     </div>
   );
 }
