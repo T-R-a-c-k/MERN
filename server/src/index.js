@@ -16,5 +16,5 @@ app.get("/hello", (req, res, next) => {
 
 mongoose.connect(mongoDB).then(() => {
   console.log(`connected to the DB`);
-  app.listen(8080);
+  app.listen(process.env.PORT);
 });
