@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Container, Row, Col } from "react-bootstrap";
+import Header from "../components/header";
 
 const Home = () => {
   const [patients, setPatients] = useState([]);
