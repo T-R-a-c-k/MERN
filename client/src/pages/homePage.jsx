@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Container, Row, Col } from "react-bootstrap";
 
 const Home = () => {
   const [patients, setPatients] = useState([]);
@@ -14,12 +15,17 @@ const Home = () => {
     fetchPatients();
   }, []);
   return (
-    <>
+    <Container>
+      <div>Home</div>
       <div>{patients.length}</div>
-      {patients.map((patient) => {
-        return <div>{patient}</div>;
-      })}
-    </>
+      <Row>
+        <Col>
+          {patients.map((patient) => {
+            return <div key={patient._id}>{patient}</div>;
+          })}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
