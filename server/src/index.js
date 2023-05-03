@@ -13,10 +13,6 @@ app.use(cors());
 
 app.use("/sign_up", loginRouter);
 
-app.get("/hello", (req, res, next) => {
-  res.send("poggers");
-});
-
 mongoose.connect(mongoDB).then(() => {
   console.log(`connected to the DB`);
   app.listen(process.env.PORT);
