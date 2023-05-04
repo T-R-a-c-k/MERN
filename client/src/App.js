@@ -11,8 +11,14 @@ function App() {
       <Header />
       <Router>
         <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/foundation" element={<Home />} />
+          <Route path="/careers" element={<Home />} />
+          <Route path="/volunteer" element={<Home />} />
+          <Route path="/research" element={<Home />} />
+          <Route path="/learning" element={<Home />} />
+          <Route path="/patient_connect" element={<Home />} />
           <Route path="/sign_up" element={<SignUp />} />
-          <Route path="/Home" element={<Home />} />
         </Routes>
       </Router>
     </div>
