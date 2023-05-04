@@ -3,7 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 
-function Learning() {
+function PatientPortal() {
   return (
     <Navbar expand="lg" style={{ background: "green" }}>
       <Container>
@@ -11,7 +11,7 @@ function Learning() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="home">Home</Nav.Link>
+            <Nav.Link href="">Home</Nav.Link>
             <Nav.Link href="foundation">Foundation</Nav.Link>
             <Nav.Link href="careers">Careers</Nav.Link>
             <Nav.Link href="volunteer">Volunteer</Nav.Link>
@@ -35,4 +35,4 @@ function Learning() {
     </Navbar>
   );
 }
-export default Learning;
+export default PatientPortal;

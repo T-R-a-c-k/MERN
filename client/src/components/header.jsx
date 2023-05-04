@@ -11,13 +11,13 @@ function Header() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="home">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="foundation">Foundation</Nav.Link>
             <Nav.Link href="careers">Careers</Nav.Link>
             <Nav.Link href="volunteer">Volunteer</Nav.Link>
             <Nav.Link href="research">Research</Nav.Link>
             <Nav.Link href="learning">Learning</Nav.Link>
-            <Nav.Link href="patientConnect">Patient Connect Portal</Nav.Link>
+            <Nav.Link href="patient_portal">Patient Portal</Nav.Link>
             <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">

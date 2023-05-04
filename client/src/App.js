@@ -1,9 +1,16 @@
 import "./App.css";
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Header from "./components/header";
 import SignUp from "./pages/signUpPage";
 import Home from "./pages/homePage";
-import Header from "./components/header";
+import Foundation from "./pages/foundation";
+import Careers from "./pages/careers";
+import Volunteer from "./pages/volunteer";
+import Research from "./pages/research";
+import Learning from "./pages/learning";
+import PatientPortal from "./pages/patientPortal";
+import Footer from "./components/footer";
 
 function App() {
   return (
@@ -12,15 +19,16 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/foundation" element={<Home />} />
-          <Route path="/careers" element={<Home />} />
-          <Route path="/volunteer" element={<Home />} />
-          <Route path="/research" element={<Home />} />
-          <Route path="/learning" element={<Home />} />
-          <Route path="/patient_connect" element={<Home />} />
+          <Route path="/foundation" element={<Foundation />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/volunteer" element={<Volunteer />} />
+          <Route path="/research" element={<Research />} />
+          <Route path="/learning" element={<Learning />} />
+          <Route path="/patient_portal" element={<PatientPortal />} />
           <Route path="/sign_up" element={<SignUp />} />
         </Routes>
       </Router>
+      <Footer />
     </div>
   );
 }
