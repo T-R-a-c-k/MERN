@@ -5,7 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 function Header() {
   return (
-    <Navbar expand="lg" style={{ background: "green" }}>
+    <Navbar expand="lg" style={{ background: "#445f5a" }}>
       <Container>
         <Navbar.Brand style={{ width: "30%" }}>とある Hospital</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
