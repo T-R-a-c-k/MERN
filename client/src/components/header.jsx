@@ -1,12 +1,13 @@
 import Container from "react-bootstrap/Container";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Form, Button } from "react-bootstrap";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { MDBIcon } from "mdb-react-ui-kit";
 import "../css/header.module.css";
 
-const imageHeight = "8vh";
+const imageHeight = "15vh";
 const noPadding = "0px";
+const navBarMargin = "5%";
 
 function Header() {
   return (
@@ -33,35 +34,61 @@ function Header() {
             </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="foundation">Foundation</Nav.Link>
-              <Nav.Link href="careers">Careers</Nav.Link>
-              <Nav.Link href="volunteer">Volunteer</Nav.Link>
-              <Nav.Link href="research">Research</Nav.Link>
-              <Nav.Link href="learning">Learning</Nav.Link>
-              <Nav.Link href="patient_portal">Patient Portal</Nav.Link>
+          <Navbar.Collapse
+            id="basic-navbar-nav"
+            style={{ justifyContent: "center" }}
+          >
+            <Nav>
+              <Nav.Link href="/" style={{ marginLeft: navBarMargin }}>
+                Home
+              </Nav.Link>
+              <Nav.Link href="foundation" style={{ marginLeft: navBarMargin }}>
+                Foundation
+              </Nav.Link>
+              <Nav.Link href="careers" style={{ marginLeft: navBarMargin }}>
+                Careers
+              </Nav.Link>
+              <Nav.Link href="volunteer" style={{ marginLeft: navBarMargin }}>
+                Volunteer
+              </Nav.Link>
+              <Nav.Link href="research" style={{ marginLeft: navBarMargin }}>
+                Research
+              </Nav.Link>
+              <Nav.Link href="learning" style={{ marginLeft: navBarMargin }}>
+                Learning
+              </Nav.Link>
+              <Nav.Link
+                href="patient_portal"
+                style={{ marginLeft: navBarMargin }}
+              >
+                Patient Portal
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
       <Container>
         <Row>
-          <Col>
+          <Col xs={6}>
             <a href="/" alt="Home Button">
               <img
                 src="https://www.nicepng.com/png/detail/87-874647_red-cross-hospital-logo-hospital-logo-red-cross.png"
                 style={{
                   height: imageHeight,
-                  width: "12%",
+                  width: "50%",
                   margin: "1%",
                 }}
                 alt="Hospital Logo"
               ></img>
             </a>
           </Col>
-          <Col>
+          <Col
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "end",
+            }}
+          >
             <Row>
               <ul>
                 <li>Contact</li>
