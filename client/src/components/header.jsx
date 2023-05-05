@@ -39,27 +39,45 @@ function Header() {
             style={{ justifyContent: "center" }}
           >
             <Nav>
-              <Nav.Link href="/" style={{ marginLeft: navBarMargin }}>
+              <Nav.Link
+                href="/"
+                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
+              >
                 Home
               </Nav.Link>
-              <Nav.Link href="foundation" style={{ marginLeft: navBarMargin }}>
+              <Nav.Link
+                href="foundation"
+                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
+              >
                 Foundation
               </Nav.Link>
-              <Nav.Link href="careers" style={{ marginLeft: navBarMargin }}>
+              <Nav.Link
+                href="careers"
+                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
+              >
                 Careers
               </Nav.Link>
-              <Nav.Link href="volunteer" style={{ marginLeft: navBarMargin }}>
+              <Nav.Link
+                href="volunteer"
+                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
+              >
                 Volunteer
               </Nav.Link>
-              <Nav.Link href="research" style={{ marginLeft: navBarMargin }}>
+              <Nav.Link
+                href="research"
+                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
+              >
                 Research
               </Nav.Link>
-              <Nav.Link href="learning" style={{ marginLeft: navBarMargin }}>
+              <Nav.Link
+                href="learning"
+                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
+              >
                 Learning
               </Nav.Link>
               <Nav.Link
                 href="patient_portal"
-                style={{ marginLeft: navBarMargin }}
+                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
               >
                 Patient Portal
               </Nav.Link>
