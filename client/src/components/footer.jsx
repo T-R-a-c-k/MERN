@@ -31,9 +31,6 @@ function Footer() {
           <a href="https://linkedin.com/" className="me-4 text-reset">
             <MDBIcon fab icon="linkedin" />
           </a>
-          <a href="https://github.com/" className="me-4 text-reset">
-            <MDBIcon fab icon="github" />
-          </a>
         </div>
       </section>
 
