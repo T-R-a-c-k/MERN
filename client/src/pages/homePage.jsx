@@ -8,7 +8,7 @@ import {
 
 const Home = () => {
   return (
-    <Carousel fade keyboard={true}>
+    <Carousel fade keyboard={true} indicators={true}>
       <Carousel.Item style={halfCarouselItem}>
         <img
           className={imageClass}
