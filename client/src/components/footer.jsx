@@ -40,7 +40,7 @@ function Footer() {
           <MDBRow className="mt-3">
             <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-5">
               <img
-                src="https://www.nicepng.com/png/detail/87-874647_red-cross-hospital-logo-hospital-logo-red-cross.png"
+                src="https://www.freeiconspng.com/uploads/ambulance-cross-hospital-icon-11.png"
                 style={{
                   height: "100%",
                   width: "50%",

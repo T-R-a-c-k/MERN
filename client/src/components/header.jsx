@@ -90,7 +90,7 @@ function Header() {
           <Col xs={6}>
             <a href="/" alt="Home Button">
               <img
-                src="https://www.nicepng.com/png/detail/87-874647_red-cross-hospital-logo-hospital-logo-red-cross.png"
+                src="https://www.freeiconspng.com/uploads/ambulance-cross-hospital-icon-11.png"
                 style={{
                   height: imageHeight,
                   width: "50%",
