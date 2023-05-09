@@ -85,30 +85,30 @@ function Header() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <Container>
+      <Container fluid>
         <Row>
-          <Col xs={6}>
+          <Col
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "Center",
+            }}
+          >
             <a href="/" alt="Home Button">
               <img
                 src="https://www.freeiconspng.com/uploads/ambulance-cross-hospital-icon-11.png"
                 style={{
                   height: imageHeight,
-                  width: "50%",
+                  width: "100%",
                   margin: "1%",
                 }}
                 alt="Hospital Logo"
               ></img>
             </a>
           </Col>
-          <Col
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "end",
-            }}
-          >
+          <Col>
             <Row>
-              <ul>
+              <ul className="hide">
                 <li>Contact</li>
                 <li>Covid-19</li>
                 <li>FAQs</li>
@@ -117,11 +117,21 @@ function Header() {
             </Row>
             <Row>
               <ul>
-                <li>Preparing for care</li>
-                <li>Care Programs</li>
-                <li>News & Media</li>
-                <li>About</li>
-                <li>Emergency</li>
+                <li>
+                  <h5>Preparing for care</h5>
+                </li>
+                <li>
+                  <h5>Care Programs</h5>
+                </li>
+                <li>
+                  <h5>News & Media</h5>
+                </li>
+                <li>
+                  <h5>About</h5>
+                </li>
+                <li>
+                  <h5>Emergency</h5>
+                </li>
               </ul>
             </Row>
           </Col>
