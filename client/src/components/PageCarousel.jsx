@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
+import Styles from "../css/PageCarousel.module.css";
 import {
   halfCarouselItem,
   imageClass,
@@ -22,7 +23,12 @@ const PageCarousel = (props) => {
               src={item.src}
               alt={item.alt}
             />
-            <div>{item.text}</div>
+            <div
+              className={Styles.carouselRight}
+              style={{ backgroundColor: item.color }}
+            >
+              {item.text}
+            </div>
           </Carousel.Item>
         );
       })}
