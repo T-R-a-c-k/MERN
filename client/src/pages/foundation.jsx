@@ -5,18 +5,21 @@ import createCarouselInfo from "../formatting/carouselInformation";
 const foundationInformation = [
   createCarouselInfo(
     "https://images.unsplash.com/photo-1579154204601-01588f351e67?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    "First slide",
-    "Some text about the image"
+    "New research slide",
+    "New Research Facities",
+    "With the increased funding and on board of staff, we have opened up a new research facilities!"
   ),
   createCarouselInfo(
     "https://images.unsplash.com/photo-1511174511562-5f7f18b874f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
-    "Second slide",
-    "Some text about the image"
+    "Methodology slide",
+    "Methodology and Practices",
+    "Any questions or concerns with how operations are carried out."
   ),
   createCarouselInfo(
     "https://images.unsplash.com/photo-1504439468489-c8920d796a29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
-    "Third slide",
-    "Some text about the image"
+    "Individuals slide",
+    "Indivual Qualities",
+    "About some of the talented individuals who help drive us forward."
   ),
 ];
 
