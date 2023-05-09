@@ -1,7 +1,52 @@
 .carouselRight {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: 100%;
+}
+
+.carouselRight_h1 {
+  text-align: center;
+  color: white;
+  font-size: 5em;
+  margin: 3%;
+}
+
+.carouselRight_p {
+  text-align: left;
+  color: white;
+  font-size: 2em;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.carouselRight_link {
+  text-align: center;
+  border-style: solid;
+  padding: 10px;
+  border-width: 1px;
+}
+
+.carouselRight_link:hover {
+  background-color: #364c48;
+}
+
+@media screen and (max-width: 700px) {
+  .carouselRight_p {
+    font-size: 0.64em;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .carouselRight_h1 {
+    font-size: 1.6em;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .carouselRight_link {
+    padding: 0px;
+    width: 80%;
+  }
 }

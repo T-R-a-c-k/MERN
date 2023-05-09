@@ -8,14 +8,15 @@ import createCarouselInfo from "../formatting/carouselInformation";
 
 const homeInformation = [
   createCarouselInfo(
-    "https://images.unsplash.com/photo-1538108149393-fbbd81895907?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80",
-    "First slide",
-    "Some text about the image"
-  ),
-  createCarouselInfo(
     "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1453&q=80",
     "Second slide",
     "Some text about the image"
+  ),
+  createCarouselInfo(
+    "https://images.unsplash.com/photo-1538108149393-fbbd81895907?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2128&q=80",
+    "Vistor Guidelines slide",
+    "Vistor Guidelines",
+    "For everything related to checking in, masking, and any additional updates for patients and family members."
   ),
   createCarouselInfo(
     "https://images.unsplash.com/photo-1599045118108-bf9954418b76?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",
@@ -39,7 +40,6 @@ const SearchBar = () => {
           aria-label="Search"
         />
       </form>
-      ;
     </>
   );
 };

@@ -1,9 +1,7 @@
-function createCarouselInfo(src, alt, text) {
+function createCarouselInfo(src, alt, text, paragraph) {
   const colors = [
-    "White",
     "Green",
     "Blue",
-    "Azure",
     "DarkSlateGray",
     "GoldenRod",
     "LightCoral",
@@ -15,6 +13,7 @@ function createCarouselInfo(src, alt, text) {
     alt,
     text,
     color: colors[Math.floor(Math.random() * colors.length)],
+    paragraph,
   };
 }
 
