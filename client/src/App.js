@@ -12,6 +12,13 @@ import Research from "./pages/Research";
 import Learning from "./pages/Learning";
 import PatientPortal from "./pages/patientPortal";
 import Footer from "./components/footer";
+import About from "./pages/About";
+import CarePrograms from "./pages/CarePrograms";
+import Contact from "./pages/Contact";
+import Covid from "./pages/Covid";
+import FAQ from "./pages/FAQ";
+import PreparingCare from "./pages/PreparingCare";
+import Staff from "./pages/Staff";
 
 function App() {
   return (
@@ -28,6 +35,13 @@ function App() {
           <Route path="/learning" element={<Learning />} />
           <Route path="/patient_portal" element={<PatientPortal />} />
           <Route path="/sign_up" element={<SignUp />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/care_programs" element={<CarePrograms />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/covid" element={<Covid />} />
+          <Route path="/faq" element={<FAQ />} />
+          <Route path="/preparing_care" element={<PreparingCare />} />
+          <Route path="/staff" element={<Staff />} />
         </Routes>
       </Router>
       <Footer />

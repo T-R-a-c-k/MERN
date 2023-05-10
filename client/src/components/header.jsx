@@ -104,13 +104,7 @@ function Header() {
                   <h5>Care Programs</h5>
                 </li>
                 <li>
-                  <h5>News & Media</h5>
-                </li>
-                <li>
                   <h5>About</h5>
-                </li>
-                <li>
-                  <h5>Emergency</h5>
                 </li>
               </ul>
             </Row>
