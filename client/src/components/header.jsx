@@ -4,10 +4,11 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { MDBIcon } from "mdb-react-ui-kit";
 import "../css/header.module.css";
-
-const imageHeight = "15vh";
-const noPadding = "0px";
-const navBarMargin = "5%";
+import {
+  imageHeight,
+  noPadding,
+  navLinkStyle,
+} from "../formatting/headerFormat";
 
 function Header() {
   return (
@@ -17,19 +18,19 @@ function Header() {
           <Navbar.Brand style={{ width: "20%", marginLeft: "5%" }}>
             <div>
               <a href="https://facebook.com/" className="me-4 text-reset">
-                <MDBIcon fab icon="facebook-f" />
+                <MDBIcon fab icon="facebook-f" style={{ color: "white" }} />
               </a>
               <a href="https://twitter.com/" className="me-4 text-reset">
-                <MDBIcon fab icon="twitter" />
+                <MDBIcon fab icon="twitter" style={{ color: "white" }} />
               </a>
               <a href="https://google.com/" className="me-4 text-reset">
-                <MDBIcon fab icon="google" />
+                <MDBIcon fab icon="google" style={{ color: "white" }} />
               </a>
               <a href="https://instagram.com/" className="me-4 text-reset">
-                <MDBIcon fab icon="instagram" />
+                <MDBIcon fab icon="instagram" style={{ color: "white" }} />
               </a>
               <a href="https://linkedin.com/" className="me-4 text-reset">
-                <MDBIcon fab icon="linkedin" />
+                <MDBIcon fab icon="linkedin" style={{ color: "white" }} />
               </a>
             </div>
           </Navbar.Brand>
@@ -39,46 +40,25 @@ function Header() {
             style={{ justifyContent: "center" }}
           >
             <Nav>
-              <Nav.Link
-                href="/"
-                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
-              >
+              <Nav.Link href="/" style={navLinkStyle}>
                 Home
               </Nav.Link>
-              <Nav.Link
-                href="foundation"
-                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
-              >
+              <Nav.Link href="foundation" style={navLinkStyle}>
                 Foundation
               </Nav.Link>
-              <Nav.Link
-                href="careers"
-                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
-              >
+              <Nav.Link href="careers" style={navLinkStyle}>
                 Careers
               </Nav.Link>
-              <Nav.Link
-                href="volunteer"
-                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
-              >
+              <Nav.Link href="volunteer" style={navLinkStyle}>
                 Volunteer
               </Nav.Link>
-              <Nav.Link
-                href="research"
-                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
-              >
+              <Nav.Link href="research" style={navLinkStyle}>
                 Research
               </Nav.Link>
-              <Nav.Link
-                href="learning"
-                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
-              >
+              <Nav.Link href="learning" style={navLinkStyle}>
                 Learning
               </Nav.Link>
-              <Nav.Link
-                href="patient_portal"
-                style={{ marginLeft: navBarMargin, whiteSpace: "nowrap" }}
-              >
+              <Nav.Link href="patient_portal" style={navLinkStyle}>
                 Patient Portal
               </Nav.Link>
             </Nav>

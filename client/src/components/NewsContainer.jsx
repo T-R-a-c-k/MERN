@@ -28,7 +28,7 @@ const NewsContainer = () => {
                     src="https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp"
                     className="img-fluid"
                   />
-                  <a href="#!">
+                  <a href="/">
                     <div
                       className="mask"
                       style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
@@ -37,13 +37,13 @@ const NewsContainer = () => {
                 </MDBRipple>
                 <MDBRow className="mb-3">
                   <MDBCol col="6">
-                    <a href="" className="text-info">
+                    <a href="/" className="text-info">
                       <MDBIcon fas icon="newspaper" className="me-1" />
                       News
                     </a>
                   </MDBCol>
                 </MDBRow>
-                <a href="#!" className="text-dark">
+                <a href="/" className="text-dark">
                   <h5>Recent Events</h5>
                   <p>
                     With ever increasing demands, check out our improvements and
@@ -51,7 +51,7 @@ const NewsContainer = () => {
                   </p>
                 </a>
                 <hr />
-                <a href="#!" className="text-dark">
+                <a href="/research" className="text-dark">
                   <MDBRow className="mb-4 border-bottom pb-2">
                     <MDBCol size="3">
                       <img
@@ -71,7 +71,7 @@ const NewsContainer = () => {
                     </MDBCol>
                   </MDBRow>
                 </a>
-                <a href="#!" className="text-dark">
+                <a href="/foundation" className="text-dark">
                   <MDBRow className="mb-4 border-bottom pb-2">
                     <MDBCol size="3">
                       <img
@@ -91,7 +91,7 @@ const NewsContainer = () => {
                     </MDBCol>
                   </MDBRow>
                 </a>
-                <a href="#!" className="text-dark">
+                <a href="/careers" className="text-dark">
                   <MDBRow className="mb-4 border-bottom pb-2">
                     <MDBCol size="3">
                       <img
@@ -111,7 +111,7 @@ const NewsContainer = () => {
                     </MDBCol>
                   </MDBRow>
                 </a>
-                <a href="#!" className="text-dark">
+                <a href="/covid" className="text-dark">
                   <MDBRow className="mb-4 border-bottom pb-2">
                     <MDBCol size="3">
                       <img

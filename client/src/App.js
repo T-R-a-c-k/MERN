@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import NotFound from "./pages/NotFound";
 import Header from "./components/header";
 import SignUp from "./pages/SignUpPage";
 import HomePage from "./pages/HomePage";
@@ -18,6 +19,7 @@ function App() {
       <Header />
       <Router>
         <Routes>
+          <Route path="*" element={<NotFound />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/foundation" element={<Foundation />} />
           <Route path="/careers" element={<Careers />} />
