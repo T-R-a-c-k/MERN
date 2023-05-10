@@ -4,10 +4,10 @@ import createCarouselInfo from "../formatting/carouselInformation";
 
 const contactInformation = [
   createCarouselInfo(
-    "https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "Contact slide",
     "Contact",
-    "For information about potential careers."
+    "Any and all inqueries for how to contact us."
   ),
 ];
 

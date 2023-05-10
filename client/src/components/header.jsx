@@ -89,22 +89,50 @@ function Header() {
           <Col>
             <Row>
               <ul className="hide">
-                <li>Contact</li>
-                <li>Covid-19</li>
-                <li>FAQs</li>
-                <li>Staff</li>
+                <li>
+                  <a href="/contact" style={{ color: "#445f5a" }}>
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a href="/covid" style={{ color: "#445f5a" }}>
+                    Covid-19
+                  </a>
+                </li>
+                <li>
+                  <a href="/faq" style={{ color: "#445f5a" }}>
+                    FAQs
+                  </a>
+                </li>
+                <li>
+                  <a href="/staff" style={{ color: "#445f5a" }}>
+                    Staff
+                  </a>
+                </li>
               </ul>
             </Row>
             <Row>
               <ul>
                 <li>
-                  <h5>Preparing for care</h5>
+                  <h5>
+                    <a href="preparing_care" style={{ color: "#445f5a" }}>
+                      Preparing for care
+                    </a>
+                  </h5>
                 </li>
                 <li>
-                  <h5>Care Programs</h5>
+                  <h5>
+                    <a href="care_programs" style={{ color: "#445f5a" }}>
+                      Care programs
+                    </a>
+                  </h5>
                 </li>
                 <li>
-                  <h5>About</h5>
+                  <h5>
+                    <a href="about" style={{ color: "#445f5a" }}>
+                      About
+                    </a>
+                  </h5>
                 </li>
               </ul>
             </Row>

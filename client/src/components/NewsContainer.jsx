@@ -44,25 +44,27 @@ const Cards = () => {
           <MDBCol key={arrIndex} className="py-5">
             {cardArray.map((card, index) => {
               return (
-                <Card
-                  key={index}
-                  style={{
-                    width: "18rem",
-                    marginTop: "5%",
-                    backgroundColor: "#445f5a",
-                  }}
-                >
-                  <Card.Body>
-                    <Card.Title style={{ color: "white" }}>
-                      {card.title}
-                    </Card.Title>
-                  </Card.Body>
-                  <Card.Body>
-                    <Card.Link href={card.link} style={{ color: "white" }}>
-                      {card.linkTitle}
-                    </Card.Link>
-                  </Card.Body>
-                </Card>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <Card
+                    key={index}
+                    style={{
+                      width: "18rem",
+                      marginTop: "5%",
+                      backgroundColor: "#445f5a",
+                    }}
+                  >
+                    <Card.Body>
+                      <Card.Title style={{ color: "white" }}>
+                        {card.title}
+                      </Card.Title>
+                    </Card.Body>
+                    <Card.Body>
+                      <Card.Link href={card.link} style={{ color: "white" }}>
+                        {card.linkTitle}
+                      </Card.Link>
+                    </Card.Body>
+                  </Card>
+                </div>
               );
             })}
           </MDBCol>
@@ -78,8 +80,8 @@ const NewsContainer = () => {
       <MDBRow>
         <MDBCol>
           <MDBContainer className="py-5">
-            <MDBCard className="px-3 pt-3" style={{ maxWidth: "32rem" }}>
-              <div>
+            <MDBCard className="px-3 pt-3" style={{ maxWidth: "36rem" }}>
+              <MDBCol>
                 <MDBRipple
                   className="bg-image hover-overlay shadow-1-strong ripple rounded-5 mb-4"
                   rippleTag="div"
@@ -192,7 +194,7 @@ const NewsContainer = () => {
                     </MDBCol>
                   </MDBRow>
                 </a>
-              </div>
+              </MDBCol>
             </MDBCard>
           </MDBContainer>
         </MDBCol>

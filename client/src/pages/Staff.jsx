@@ -4,10 +4,10 @@ import createCarouselInfo from "../formatting/carouselInformation";
 
 const staffInformation = [
   createCarouselInfo(
-    "https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    "https://media.istockphoto.com/id/1324292283/photo/shot-of-a-diverse-group-of-medical-professionals-in-a-hospitals.jpg?s=612x612&w=0&k=20&c=Jfrlm02ShAJJC90DClQK0ScG6DqhEMQ3tW4KOZKlzKA=",
     "Staff slide",
     "Staff",
-    "For information about potential careers."
+    "Information about those who make us."
   ),
 ];
 

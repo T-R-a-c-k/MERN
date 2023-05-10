@@ -4,10 +4,10 @@ import createCarouselInfo from "../formatting/carouselInformation";
 
 const faqInformation = [
   createCarouselInfo(
-    "https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    "https://www.shutterstock.com/image-vector/faq-blue-typography-banner-600w-1356204374.jpg",
     "FAQ slide",
     "FAQ",
-    "For information about potential careers."
+    "General information that is often looked for can be found here."
   ),
 ];
 
