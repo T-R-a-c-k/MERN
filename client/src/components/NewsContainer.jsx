@@ -38,21 +38,16 @@ const NewsContainer = () => {
                 <MDBRow className="mb-3">
                   <MDBCol col="6">
                     <a href="" className="text-info">
-                      <MDBIcon fas icon="plane" className="me-1" />
-                      Travels
+                      <MDBIcon fas icon="newspaper" className="me-1" />
+                      News
                     </a>
-                  </MDBCol>
-                  <MDBCol col="6" className="text-end">
-                    <u> 15.07.2020</u>
                   </MDBCol>
                 </MDBRow>
                 <a href="#!" className="text-dark">
-                  <h5>This is title of the news</h5>
+                  <h5>Recent Events</h5>
                   <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Odit, iste aliquid. Sed id nihil magni, sint vero provident
-                    esse numquam perferendis ducimus dicta adipisci iusto nam
-                    temporibus modi animi laboriosam?
+                    With ever increasing demands, check out our improvements and
+                    plans on how we plan to overcome these challenges.
                   </p>
                 </a>
                 <hr />
@@ -68,10 +63,10 @@ const NewsContainer = () => {
 
                     <MDBCol size="9">
                       <p className="mb-2">
-                        <strong>Lorem ipsum dolor sit amet</strong>
+                        <strong>New Technological Discoveries</strong>
                       </p>
                       <p>
-                        <u> 15.07.2020</u>
+                        <u> 08.05.2023</u>
                       </p>
                     </MDBCol>
                   </MDBRow>
@@ -88,10 +83,10 @@ const NewsContainer = () => {
 
                     <MDBCol size="9">
                       <p className="mb-2">
-                        <strong>Lorem ipsum dolor sit amet</strong>
+                        <strong>Brand New Department Openings</strong>
                       </p>
                       <p>
-                        <u> 15.07.2020</u>
+                        <u> 23.04.2023</u>
                       </p>
                     </MDBCol>
                   </MDBRow>
@@ -108,10 +103,10 @@ const NewsContainer = () => {
 
                     <MDBCol size="9">
                       <p className="mb-2">
-                        <strong>Lorem ipsum dolor sit amet</strong>
+                        <strong>New Career Opportunities</strong>
                       </p>
                       <p>
-                        <u> 15.07.2020</u>
+                        <u> 06.04.2023</u>
                       </p>
                     </MDBCol>
                   </MDBRow>
@@ -128,10 +123,10 @@ const NewsContainer = () => {
 
                     <MDBCol size="9">
                       <p className="mb-2">
-                        <strong>Lorem ipsum dolor sit amet</strong>
+                        <strong>Covid Policies and Changes</strong>
                       </p>
                       <p>
-                        <u> 15.07.2020</u>
+                        <u> 03.16.2023</u>
                       </p>
                     </MDBCol>
                   </MDBRow>
