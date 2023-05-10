@@ -1,6 +1,5 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
 
 import {
   MDBCol,
@@ -11,21 +10,67 @@ import {
   MDBRipple,
 } from "mdb-react-ui-kit";
 
-const createCard = (title, linkTitle) => {
+const createCard = (title, linkTitle, link) => {
   return {
     title: title ? title : "some card title",
     linkTitle: linkTitle ? linkTitle : "some link title",
+    link: link ? link : "",
   };
 };
 
-//To create multiple columns (test):
-//array of array of objects
-//map over each arrays object by using 2 maps
-
 const cards = [
-  [createCard(), createCard(), createCard()],
-  [createCard(), createCard(), createCard(), createCard()],
+  [
+    createCard("Foundation", "Vist Foundation page", "/foundation"),
+    createCard("Volunteer", "Read more", "/volunteer"),
+    createCard(
+      "Covid Information",
+      "For more information on Covid-19, visit here",
+      "/covid"
+    ),
+  ],
+  [
+    createCard("Care Programs", "Read more", "/care_programs"),
+    createCard("About", "Read more", "/about"),
+    createCard("Staff", "To learn more about who we are", "/staff"),
+    createCard("Research", "Vist Research Page", "/research"),
+  ],
 ];
+
+const Cards = () => {
+  return (
+    <>
+      {cards.map((cardArray, arrIndex) => {
+        return (
+          <MDBCol key={arrIndex} className="py-5">
+            {cardArray.map((card, index) => {
+              return (
+                <Card
+                  key={index}
+                  style={{
+                    width: "18rem",
+                    marginTop: "5%",
+                    backgroundColor: "#445f5a",
+                  }}
+                >
+                  <Card.Body>
+                    <Card.Title style={{ color: "white" }}>
+                      {card.title}
+                    </Card.Title>
+                  </Card.Body>
+                  <Card.Body>
+                    <Card.Link href={card.link} style={{ color: "white" }}>
+                      {card.linkTitle}
+                    </Card.Link>
+                  </Card.Body>
+                </Card>
+              );
+            })}
+          </MDBCol>
+        );
+      })}
+    </>
+  );
+};
 
 const NewsContainer = () => {
   return (
@@ -151,28 +196,7 @@ const NewsContainer = () => {
             </MDBCard>
           </MDBContainer>
         </MDBCol>
-        {cards.map((cardArray, arrIndex) => {
-          return (
-            <MDBCol key={arrIndex} className="py-5">
-              {cardArray.map((card, index) => {
-                return (
-                  <Card key={index} style={{ width: "18rem", marginTop: "5%" }}>
-                    <Card.Img
-                      variant="top"
-                      src="holder.js/100px180?text=Image cap"
-                    />
-                    <Card.Body>
-                      <Card.Title>{card.title}</Card.Title>
-                    </Card.Body>
-                    <Card.Body>
-                      <Card.Link href="#">{card.linkTitle}</Card.Link>
-                    </Card.Body>
-                  </Card>
-                );
-              })}
-            </MDBCol>
-          );
-        })}
+        <Cards />
       </MDBRow>
     </MDBContainer>
   );
