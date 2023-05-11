@@ -7,35 +7,40 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 
+import Styles from "../css/footer.module.css";
+
 function Footer() {
   return (
     <MDBFooter
       style={{ background: "#364c48" }}
       className="text-center text-lg-start text-muted"
     >
-      <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <section
+        className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+        style={{ color: "white" }}
+      >
         <div className="me-5 d-none d-lg-block"></div>
 
         <div>
           <a href="https://facebook.com/" className="me-4 text-reset">
-            <MDBIcon fab icon="facebook-f" />
+            <MDBIcon fab icon="facebook-f" className={Styles.footerLink} />
           </a>
           <a href="https://twitter.com/" className="me-4 text-reset">
-            <MDBIcon fab icon="twitter" />
+            <MDBIcon fab icon="twitter" className={Styles.footerLink} />
           </a>
           <a href="https://google.com/" className="me-4 text-reset">
-            <MDBIcon fab icon="google" />
+            <MDBIcon fab icon="google" className={Styles.footerLink} />
           </a>
           <a href="https://instagram.com/" className="me-4 text-reset">
-            <MDBIcon fab icon="instagram" />
+            <MDBIcon fab icon="instagram" className={Styles.footerLink} />
           </a>
           <a href="https://linkedin.com/" className="me-4 text-reset">
-            <MDBIcon fab icon="linkedin" />
+            <MDBIcon fab icon="linkedin" className={Styles.footerLink} />
           </a>
         </div>
       </section>
 
-      <section className="">
+      <section style={{ color: "white" }}>
         <MDBContainer className="text-center text-md-start mt-5">
           <MDBRow className="mt-3">
             <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-5">
@@ -63,7 +68,7 @@ function Footer() {
               <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
               <p>
                 <MDBIcon icon="home" className="me-2" />
-                New York, NY 10012, US
+                Toronto, ON, CA
               </p>
               <p>
                 <MDBIcon icon="envelope" className="me-3" />

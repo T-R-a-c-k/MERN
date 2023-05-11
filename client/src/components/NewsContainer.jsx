@@ -9,6 +9,7 @@ import {
   MDBCard,
   MDBRipple,
 } from "mdb-react-ui-kit";
+import Styles from "../css/NewsContainer.module.css";
 
 const createCard = (title, linkTitle, link) => {
   return {
@@ -46,6 +47,7 @@ const Cards = () => {
               return (
                 <div style={{ display: "flex", justifyContent: "center" }}>
                   <Card
+                    className={Styles.cardLink}
                     key={index}
                     style={{
                       width: "18rem",
@@ -90,6 +92,7 @@ const NewsContainer = () => {
                   <img
                     src="https://mdbcdn.b-cdn.net/img/new/fluid/city/113.webp"
                     className="img-fluid"
+                    alt="First"
                   />
                   <a href="/">
                     <div
@@ -107,7 +110,7 @@ const NewsContainer = () => {
                   </MDBCol>
                 </MDBRow>
                 <a href="/" className="text-dark">
-                  <h5>Recent Events</h5>
+                  <h5 className={Styles.newsLink}>Recent Events</h5>
                   <p>
                     With ever increasing demands, check out our improvements and
                     plans on how we plan to overcome these challenges.
@@ -126,7 +129,9 @@ const NewsContainer = () => {
 
                     <MDBCol size="9">
                       <p className="mb-2">
-                        <strong>New Technological Discoveries</strong>
+                        <strong className={Styles.newsLink}>
+                          New Technological Discoveries
+                        </strong>
                       </p>
                       <p>
                         <u> 08.05.2023</u>
@@ -146,7 +151,9 @@ const NewsContainer = () => {
 
                     <MDBCol size="9">
                       <p className="mb-2">
-                        <strong>Brand New Department Openings</strong>
+                        <strong className={Styles.newsLink}>
+                          Brand New Department Openings
+                        </strong>
                       </p>
                       <p>
                         <u> 23.04.2023</u>
@@ -166,7 +173,9 @@ const NewsContainer = () => {
 
                     <MDBCol size="9">
                       <p className="mb-2">
-                        <strong>New Career Opportunities</strong>
+                        <strong className={Styles.newsLink}>
+                          New Career Opportunities
+                        </strong>
                       </p>
                       <p>
                         <u> 06.04.2023</u>
@@ -186,7 +195,9 @@ const NewsContainer = () => {
 
                     <MDBCol size="9">
                       <p className="mb-2">
-                        <strong>Covid Policies and Changes</strong>
+                        <strong className={Styles.newsLink}>
+                          Covid Policies and Changes
+                        </strong>
                       </p>
                       <p>
                         <u> 03.16.2023</u>

@@ -1,0 +1,7 @@
+.newsLink:hover {
+  text-decoration: underline black;
+}
+
+.cardLink:hover {
+  text-decoration: underline white;
+}
