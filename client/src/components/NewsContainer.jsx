@@ -11,6 +11,8 @@ import {
 } from "mdb-react-ui-kit";
 import Styles from "../css/NewsContainer.module.css";
 
+import { Link } from "react-router-dom";
+
 const createCard = (title, linkTitle, link) => {
   return {
     title: title ? title : "some card title",
@@ -61,9 +63,9 @@ const Cards = () => {
                       </Card.Title>
                     </Card.Body>
                     <Card.Body>
-                      <Card.Link href={card.link} style={{ color: "white" }}>
+                      <Link to={card.link} style={{ color: "white" }}>
                         {card.linkTitle}
-                      </Card.Link>
+                      </Link>
                     </Card.Body>
                   </Card>
                 </div>
@@ -94,30 +96,30 @@ const NewsContainer = () => {
                     className="img-fluid"
                     alt="First"
                   />
-                  <a href="/">
+                  <Link to={"/"}>
                     <div
                       className="mask"
                       style={{ backgroundColor: "rgba(251, 251, 251, 0.15)" }}
                     ></div>
-                  </a>
+                  </Link>
                 </MDBRipple>
                 <MDBRow className="mb-3">
                   <MDBCol col="6">
-                    <a href="/" className="text-info">
+                    <Link to={"/"} className="text-info">
                       <MDBIcon fas icon="newspaper" className="me-1" />
                       News
-                    </a>
+                    </Link>
                   </MDBCol>
                 </MDBRow>
-                <a href="/" className="text-dark">
+                <Link to={"/"} className="text-dark">
                   <h5 className={Styles.newsLink}>Recent Events</h5>
                   <p>
                     With ever increasing demands, check out our improvements and
                     plans on how we plan to overcome these challenges.
                   </p>
-                </a>
+                </Link>
                 <hr />
-                <a href="/research" className="text-dark">
+                <Link to={"/research"} className="text-dark">
                   <MDBRow className="mb-4 border-bottom pb-2">
                     <MDBCol size="3">
                       <img
@@ -138,8 +140,8 @@ const NewsContainer = () => {
                       </p>
                     </MDBCol>
                   </MDBRow>
-                </a>
-                <a href="/foundation" className="text-dark">
+                </Link>
+                <Link to={"/foundation"} className="text-dark">
                   <MDBRow className="mb-4 border-bottom pb-2">
                     <MDBCol size="3">
                       <img
@@ -160,8 +162,8 @@ const NewsContainer = () => {
                       </p>
                     </MDBCol>
                   </MDBRow>
-                </a>
-                <a href="/careers" className="text-dark">
+                </Link>
+                <Link to={"/careers"} className="text-dark">
                   <MDBRow className="mb-4 border-bottom pb-2">
                     <MDBCol size="3">
                       <img
@@ -182,8 +184,8 @@ const NewsContainer = () => {
                       </p>
                     </MDBCol>
                   </MDBRow>
-                </a>
-                <a href="/covid" className="text-dark">
+                </Link>
+                <Link to={"/covid"} className="text-dark">
                   <MDBRow className="mb-4 border-bottom pb-2">
                     <MDBCol size="3">
                       <img
@@ -204,7 +206,7 @@ const NewsContainer = () => {
                       </p>
                     </MDBCol>
                   </MDBRow>
-                </a>
+                </Link>
               </MDBCol>
             </MDBCard>
           </MDBContainer>

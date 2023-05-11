@@ -10,6 +10,7 @@ import {
   noPadding,
   navLinkStyle,
 } from "../formatting/headerFormat";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -18,74 +19,60 @@ function Header() {
         <Container fluid>
           <Navbar.Brand style={{ width: "20%", marginLeft: "5%" }}>
             <div>
-              <a href="https://facebook.com/" className="me-4 text-reset">
+              <Link to={"https://facebook.com/"} className="me-4 text-reset">
                 <MDBIcon fab icon="facebook-f" className={Styles.headerLink} />
-              </a>
-              <a href="https://twitter.com/" className="me-4 text-reset">
+              </Link>
+              <Link to={"https://twitter.com/"} className="me-4 text-reset">
                 <MDBIcon fab icon="twitter" className={Styles.headerLink} />
-              </a>
-              <a href="https://google.com/" className="me-4 text-reset">
+              </Link>
+              <Link to={"https://google.com/"} className="me-4 text-reset">
                 <MDBIcon fab icon="google" className={Styles.headerLink} />
-              </a>
-              <a href="https://instagram.com/" className="me-4 text-reset">
+              </Link>
+              <Link to={"https://instagram.com/"} className="me-4 text-reset">
                 <MDBIcon fab icon="instagram" className={Styles.headerLink} />
-              </a>
-              <a href="https://linkedin.com/" className="me-4 text-reset">
+              </Link>
+              <Link to={"https://linkedin.com/"} className="me-4 text-reset">
                 <MDBIcon fab icon="linkedin" className={Styles.headerLink} />
-              </a>
+              </Link>
             </div>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" style={{ width: "100%" }}>
             <Nav style={{ width: "100%", justifyContent: "flex-end" }}>
-              <Nav.Link
-                href="/"
-                style={navLinkStyle}
-                className={Styles.headerLink}
-              >
-                Home
+              <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
+                <Link to={"/"} style={{ color: "white" }}>
+                  Home
+                </Link>
               </Nav.Link>
-              <Nav.Link
-                href="foundation"
-                style={navLinkStyle}
-                className={Styles.headerLink}
-              >
-                Foundation
+              <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
+                <Link to={"foundation"} style={{ color: "white" }}>
+                  Foundation
+                </Link>
               </Nav.Link>
-              <Nav.Link
-                href="careers"
-                style={navLinkStyle}
-                className={Styles.headerLink}
-              >
-                Careers
+              <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
+                <Link to={"careers"} style={{ color: "white" }}>
+                  Careers
+                </Link>
               </Nav.Link>
-              <Nav.Link
-                href="volunteer"
-                style={navLinkStyle}
-                className={Styles.headerLink}
-              >
-                Volunteer
+              <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
+                <Link to={"volunteer"} style={{ color: "white" }}>
+                  Volunteer
+                </Link>
               </Nav.Link>
-              <Nav.Link
-                href="research"
-                style={navLinkStyle}
-                className={Styles.headerLink}
-              >
-                Research
+              <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
+                <Link to={"research"} style={{ color: "white" }}>
+                  Research
+                </Link>
               </Nav.Link>
-              <Nav.Link
-                href="learning"
-                style={navLinkStyle}
-                className={Styles.headerLink}
-              >
-                Learning
+              <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
+                <Link to={"learning"} style={{ color: "white" }}>
+                  Learning
+                </Link>
               </Nav.Link>
-              <Nav.Link
-                href="patient_portal"
-                style={navLinkStyle}
-                className={Styles.headerLink}
-              >
-                Patient Portal
+              <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
+                <Link to={"/patient_portal"} style={{ color: "white" }}>
+                  Patient Portal
+                </Link>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
@@ -100,7 +87,7 @@ function Header() {
               alignItems: "Center",
             }}
           >
-            <a href="/" alt="Home Button">
+            <Link to={"/"} alt="Home Button">
               <img
                 src="https://www.freeiconspng.com/uploads/ambulance-cross-hospital-icon-11.png"
                 style={{
@@ -110,30 +97,30 @@ function Header() {
                 }}
                 alt="Hospital Logo"
               ></img>
-            </a>
+            </Link>
           </Col>
           <Col>
             <Row>
               <ul className="hide">
                 <li>
-                  <a href="/contact" style={{ color: "#445f5a" }}>
+                  <Link to={"/contact"} style={{ color: "#445f5a" }}>
                     Contact
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/covid" style={{ color: "#445f5a" }}>
+                  <Link to={"/covid"} style={{ color: "#445f5a" }}>
                     Covid-19
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/faq" style={{ color: "#445f5a" }}>
+                  <Link to={"/faq"} style={{ color: "#445f5a" }}>
                     FAQs
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/staff" style={{ color: "#445f5a" }}>
+                  <Link to={"/staff"} style={{ color: "#445f5a" }}>
                     Staff
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </Row>
@@ -141,23 +128,23 @@ function Header() {
               <ul>
                 <li>
                   <h5>
-                    <a href="preparing_care" style={{ color: "#445f5a" }}>
+                    <Link to={"/preparing_care"} style={{ color: "#445f5a" }}>
                       Preparing for care
-                    </a>
+                    </Link>
                   </h5>
                 </li>
                 <li>
                   <h5>
-                    <a href="care_programs" style={{ color: "#445f5a" }}>
+                    <Link to={"/care_programs"} style={{ color: "#445f5a" }}>
                       Care programs
-                    </a>
+                    </Link>
                   </h5>
                 </li>
                 <li>
                   <h5>
-                    <a href="about" style={{ color: "#445f5a" }}>
+                    <Link to={"/about"} style={{ color: "#445f5a" }}>
                       About
-                    </a>
+                    </Link>
                   </h5>
                 </li>
               </ul>

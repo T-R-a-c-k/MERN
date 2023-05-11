@@ -6,6 +6,7 @@ import {
   MDBCol,
   MDBIcon,
 } from "mdb-react-ui-kit";
+import { Link } from "react-router-dom";
 
 import Styles from "../css/footer.module.css";
 
@@ -22,21 +23,21 @@ function Footer() {
         <div className="me-5 d-none d-lg-block"></div>
 
         <div>
-          <a href="https://facebook.com/" className="me-4 text-reset">
+          <Link to={"https://facebook.com/"} className="me-4 text-reset">
             <MDBIcon fab icon="facebook-f" className={Styles.footerLink} />
-          </a>
-          <a href="https://twitter.com/" className="me-4 text-reset">
+          </Link>
+          <Link to={"https://twitter.com/"} className="me-4 text-reset">
             <MDBIcon fab icon="twitter" className={Styles.footerLink} />
-          </a>
-          <a href="https://google.com/" className="me-4 text-reset">
+          </Link>
+          <Link to={"https://google.com/"} className="me-4 text-reset">
             <MDBIcon fab icon="google" className={Styles.footerLink} />
-          </a>
-          <a href="https://instagram.com/" className="me-4 text-reset">
+          </Link>
+          <Link to={"https://instagram.com/"} className="me-4 text-reset">
             <MDBIcon fab icon="instagram" className={Styles.footerLink} />
-          </a>
-          <a href="https://linkedin.com/" className="me-4 text-reset">
+          </Link>
+          <Link to={"https://linkedin.com/"} className="me-4 text-reset">
             <MDBIcon fab icon="linkedin" className={Styles.footerLink} />
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -87,9 +88,12 @@ function Footer() {
 
       <div className="text-center p-4" style={{ backgroundColor: "white" }}>
         © 2023 site created by:　
-        <a className="text-reset fw-bold" href="https://github.com/T-R-a-c-k">
+        <Link
+          className="text-reset fw-bold"
+          to={"https://github.com/T-R-a-c-k"}
+        >
           Tyler Rack
-        </a>
+        </Link>
       </div>
     </MDBFooter>
   );

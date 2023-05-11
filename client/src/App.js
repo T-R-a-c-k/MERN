@@ -23,8 +23,8 @@ import Staff from "./pages/Staff";
 function App() {
   return (
     <div className="App">
-      <Header />
       <Router>
+        <Header />
         <Routes>
           <Route path="*" element={<NotFound />} />
           <Route path="/" element={<HomePage />} />
@@ -43,8 +43,9 @@ function App() {
           <Route path="/preparing_care" element={<PreparingCare />} />
           <Route path="/staff" element={<Staff />} />
         </Routes>
+
+        <Footer />
       </Router>
-      <Footer />
     </div>
   );
 }
