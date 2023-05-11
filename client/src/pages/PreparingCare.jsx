@@ -1,6 +1,8 @@
 import PageCarousel from "../components/PageCarousel";
 import NewsContainer from "../components/NewsContainer";
 import createCarouselInfo from "../formatting/carouselInformation";
+import AccordianItems from "../components/Accordian";
+import createAccordianInformation from "../formatting/accordianInformation";
 
 const preparingCareInformation = [
   createCarouselInfo(
@@ -11,10 +13,65 @@ const preparingCareInformation = [
   ),
 ];
 
+const preparingCareAccordianInfo = [
+  [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+  ],
+  [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+  ],
+  [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+  ],
+];
+
+const preparingCareAccordianTitles = [
+  "An important Concern",
+  "Some Other Issue",
+  "Something to Consider",
+];
+
 function PreparingCare() {
   return (
     <>
       <PageCarousel toDisplay={preparingCareInformation} />
+      <AccordianItems
+        toDisplay={preparingCareAccordianInfo}
+        titles={preparingCareAccordianTitles}
+      />
       <NewsContainer />
     </>
   );

@@ -1,6 +1,8 @@
 import PageCarousel from "../components/PageCarousel";
 import NewsContainer from "../components/NewsContainer";
 import createCarouselInfo from "../formatting/carouselInformation";
+import AccordianItems from "../components/Accordian";
+import createAccordianInformation from "../formatting/accordianInformation";
 
 const contactInformation = [
   createCarouselInfo(
@@ -11,10 +13,65 @@ const contactInformation = [
   ),
 ];
 
+const contactAccordianInfo = [
+  [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+  ],
+  [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+  ],
+  [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+  ],
+];
+
+const contactAccordianTitles = [
+  "An important Concern",
+  "Some Other Issue",
+  "Something to Consider",
+];
+
 function Contact() {
   return (
     <>
       <PageCarousel toDisplay={contactInformation} />
+      <AccordianItems
+        toDisplay={contactAccordianInfo}
+        titles={contactAccordianTitles}
+      />
       <NewsContainer />
     </>
   );

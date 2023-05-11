@@ -1,6 +1,8 @@
 import PageCarousel from "../components/PageCarousel";
 import NewsContainer from "../components/NewsContainer";
 import createCarouselInfo from "../formatting/carouselInformation";
+import AccordianItems from "../components/Accordian";
+import createAccordianInformation from "../formatting/accordianInformation";
 
 const staffInformation = [
   createCarouselInfo(
@@ -11,10 +13,65 @@ const staffInformation = [
   ),
 ];
 
+const staffAccordianInfo = [
+  [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+  ],
+  [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+  ],
+  [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+  ],
+];
+
+const staffAccordianTitles = [
+  "An important Concern",
+  "Some Other Issue",
+  "Something to Consider",
+];
+
 function Staff() {
   return (
     <>
       <PageCarousel toDisplay={staffInformation} />
+      <AccordianItems
+        toDisplay={staffAccordianInfo}
+        titles={staffAccordianTitles}
+      />
       <NewsContainer />
     </>
   );
