@@ -1,0 +1,59 @@
+{
+"name": "Emergency Department",
+"location": "Ground Floor",
+"budget": 5000000
+}
+
+{
+"name": "Cardiology Department",
+"location": "Second Floor",
+"budget": 3000000
+}
+
+{
+"name": "Laboratory Services",
+"location": "Basement",
+"budget": 2000000
+}
+
+{
+"name": "Radiology Department",
+"location": "Third Floor",
+"budget": 4000000
+}
+
+{
+"name": "Surgical Department",
+"location": "Fourth Floor",
+"budget": 6000000
+}
+
+{
+"name": "Pediatrics Department",
+"location": "Fifth Floor",
+"budget": 3500000
+}
+
+{
+"name": "Obstetrics and Gynecology Department",
+"location": "Maternity Wing",
+"budget": 4500000
+}
+
+{
+"name": "Orthopedic Department",
+"location": "Sixth Floor",
+"budget": 3800000
+}
+
+{
+"name": "Intensive Care Unit",
+"location": "Critical Care Wing",
+"budget": 5500000
+}
+
+{
+"name": "Pharmacy Department",
+"location": "Main Building",
+"budget": 2800000
+}

@@ -1,4 +1,4 @@
-const Prescription = require("../models/prescriptions");
+const Prescription = require("../models/prescriptionsModel");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 

@@ -1,4 +1,4 @@
-const Patients = require("../models/patients");
+const Patients = require("../models/patientsModel");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
