@@ -1,0 +1,302 @@
+
+{
+"name": "Lipitor",
+"usage":
+"Lowering cholesterol levels",
+"sideEffects":
+[
+"Muscle pain",
+"Liver problems",
+"Digestive issues",],
+}
+
+{
+"name": "Zoloft"
+"usage":
+"Treating depression and anxiety disorders",
+"sideEffects":
+["Nausea",
+"Insomnia",
+"Sexual dysfunction",],
+}
+
+{
+"name": "Advair",
+"usage":
+"Managing asthma and chronic obstructive pulmonary disease (COPD)",
+"sideEffects":
+["Headache",
+"Throat irritation",
+"Increased heart rate",],
+}
+
+{
+"name": "Prozac",
+"usage":
+"Treating depression, panic disorder, and bulimia nervosa",
+"sideEffects":
+["Nausea",
+"Weight changes",
+"Sexual dysfunction",],
+}
+
+{
+"name": "Nexium",
+"usage":
+"Reducing stomach acid for gastroesophageal reflux disease (GERD)",
+"sideEffects":
+["Headache",
+"Diarrhea",
+"Abdominal pain",],
+}
+
+{
+"name": "Xanax",
+"usage":
+"Treating anxiety and panic disorders",
+"sideEffects":
+["Drowsiness",
+"Dizziness",
+"Memory problems",],
+}
+
+{
+"name": "Vicodin",
+"usage":
+"Managing moderate to severe pain",
+"sideEffects":
+["Nausea",
+"Drowsiness",
+"Constipation",],
+}
+
+{
+"name": "Synthroid",
+"usage":
+"Treating an underactive thyroid (hypothyroidism)",
+"sideEffects":
+["Hair loss",
+"Weight changes",
+"Heat intolerance",],
+}
+
+{
+"name": "Ambien",
+"usage":
+"Treating insomnia",
+"sideEffects":
+["Drowsiness",
+"Dizziness",
+"Sleepwalking",],
+}
+
+{
+"name": "Adderall",
+"usage":
+"Treating attention deficit hyperactivity disorder (ADHD)",
+"sideEffects":
+["Loss of appetite",
+"Insomnia",
+"Increased heart rate",],
+}
+
+{
+"name": "Prilosec",
+"usage":
+"Reducing stomach acid for ulcers and acid reflux",
+"sideEffects":
+["Headache",
+"Diarrhea",
+"Abdominal pain",],
+}
+
+{
+"name": "Effexor",
+"usage":
+"Treating depression and anxiety disorders",
+"sideEffects":
+["Nausea",
+"Dizziness",
+"Sweating",],
+}
+
+{
+"name": "Crestor",
+"usage":
+"Lowering cholesterol levels",
+"sideEffects":
+["Muscle pain",
+"Liver problems",
+"Digestive issues",],
+}
+
+{
+"name": "Cymbalta",
+"usage":
+"Treating depression and certain types of pain",
+"sideEffects":
+["Nausea",
+"Dry mouth",
+"Fatigue",],
+}
+
+{
+"name": "Plavix",
+"usage":
+"Preventing blood clots in people with cardiovascular conditions",
+"sideEffects":
+["Easy bruising",
+"Bleeding",
+"Stomach pain",
+],
+}
+
+{
+"name": "Lexapro",
+"usage":
+"Treating depression and anxiety disorders",
+"sideEffects":
+["Nausea",
+"Sexual dysfunction",
+"Sleep problems",],
+}
+
+{
+"name": "Singulair",
+"usage":
+"Managing asthma and seasonal allergies",
+"sideEffects":
+["Headache",
+"Fatigue",
+"Abdominal pain",],
+}
+
+{
+"name": "Wellbutrin",
+"usage":
+"Treating depression and seasonal affective disorder (SAD)",
+"sideEffects":
+["Dry mouth",
+"Insomnia",
+"Increased heart rate",],
+}
+
+{
+"name": "Ritalin",
+"usage":
+"Treating attention deficit hyperactivity disorder (ADHD)",
+"sideEffects":
+["Loss of appetite",
+"Nervousness",
+"Increased blood pressure",],
+}
+
+{
+"name": "OxyContin",
+"usage":
+"Managing severe pain",
+"sideEffects":
+["Constipation",
+"Drowsiness",
+"Respiratory depression",],
+}
+
+{
+"name": "Klonopin",
+"usage":
+"Treating seizures and panic disorders",
+"sideEffects":
+["Drowsiness",
+"Memory problems",
+"Impaired coordination",],
+}
+
+{
+"name": "Pravastatin",
+"usage":
+"Lowering cholesterol levels",
+"sideEffects":
+["Muscle pain",
+"Liver problems",
+"Digestive issues",],
+}
+
+{
+"name": "Zyrtec",
+"usage":
+"Relieving allergy symptoms",
+"sideEffects":
+["Drowsiness",
+"Dry mouth",
+"Headache",],
+}
+
+{
+"name": "Ciprofloxacin",
+"usage":
+"Treating bacterial infections",
+"sideEffects":
+["Nausea",
+"Diarrhea",
+"Tendonitis",],
+}
+
+{
+"name": "Celexa",
+"usage":
+"Treating depression and anxiety disorders",
+"sideEffects":
+["Nausea",
+"Drowsiness",
+"Sexual dysfunction",],
+}
+
+{
+"name": "Alprazolam",
+"usage":
+"Treating anxiety and panic disorders",
+"sideEffects":
+["Drowsiness",
+"Dizziness",
+"Memory problems",],
+}
+
+{
+"name": "Metformin",
+"usage":
+"Managing type 2 diabetes",
+"sideEffects":
+["Nausea",
+"Diarrhea",
+"Abdominal discomfort",],
+}
+
+{
+"name": "Humira",
+"usage":
+"Treating autoimmune conditions like rheumatoid arthritis",
+"sideEffects":
+["Injection site reactions",
+"Headache",
+"Upper respiratory infections",],
+}
+
+{
+"name": "Vyvanse",
+"usage":
+"Treating ADHD and binge eating disorder",
+"sideEffects":
+["Loss of appetite",
+"Insomnia",
+"Increased heart rate",],
+}
+
+{
+"name": "Abilify",
+"usage":
+"Treating schizophrenia and bipolar disorder",
+"sideEffects":
+["Nausea",
+"Weight gain",
+"Restlessness"]
+}
