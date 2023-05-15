@@ -1,0 +1,173 @@
+{
+"occurredDate": "2023-01-05T10:15:00Z",
+"note": "The patient presented with symptoms of seasonal allergies.",
+"prescription": ["646265063f4e1f7453cba8bc"]
+}
+
+{
+"occurredDate": "2023-02-10T14:30:00Z",
+"note": "Follow-up visit for monitoring blood pressure.",
+"prescription": ["646264ce3f4e1f7453cba8a2", "646265143f4e1f7453cba8c2"]
+}
+
+{
+"occurredDate": "2023-03-17T11:45:00Z",
+"note": "The patient reported symptoms of depression and anxiety.",
+"prescription": ["646264a73f4e1f7453cba890"]
+}
+
+{
+"occurredDate": "2023-04-22T16:00:00Z",
+"note": "Routine check-up.",
+"prescription": ["646265103f4e1f7453cba8c0", "646264af3f4e1f7453cba894"]
+}
+
+{
+"occurredDate": "2023-05-30T13:15:00Z",
+"note": "The patient came in with a sprained ankle.",
+"prescription": ["646265183f4e1f7453cba8c4"]
+}
+
+{
+"occurredDate": "2023-06-12T09:30:00Z",
+"note": "Follow-up visit after surgery.",
+"prescription": ["646264f83f4e1f7453cba8b6", "646264c93f4e1f7453cba8a0"]
+}
+
+{
+"occurredDate": "2023-07-18T11:00:00Z",
+"note": "The patient reported symptoms of a urinary tract infection.",
+"prescription": ["646264eb3f4e1f7453cba8b0"]
+}
+
+{
+"occurredDate": "2023-08-25T14:45:00Z",
+"note": "Routine check-up.",
+"prescription": ["646264e33f4e1f7453cba8ac", "646264bc3f4e1f7453cba89a"]
+}
+
+{
+"occurredDate": "2023-09-02T10:30:00Z",
+"note": "The patient complained of back pain.",
+"prescription": ["646264b83f4e1f7453cba898", "646265143f4e1f7453cba8c2"]
+}
+
+{
+"occurredDate": "2023-10-10T13:00:00Z",
+"note": "Follow-up visit for medication adjustment.",
+"prescription": ["646264e73f4e1f7453cba8ae", "646264b43f4e1f7453cba896"]
+}
+
+{
+"occurredDate": "2023-11-15T15:20:00Z",
+"note": "The patient came in with a common cold.",
+"prescription": ["6462649a3f4e1f7453cba88e"]
+}
+
+{
+"occurredDate": "2023-12-01T09:45:00Z",
+"note": "Routine check-up.",
+"prescription": ["646264fc3f4e1f7453cba8b8", "646264d33f4e1f7453cba8a4", "646264d73f4e1f7453cba8a6"]
+}
+
+{
+"occurredDate": "2024-01-08T14:10:00Z",
+"note": "The patient complained of stomach pain.",
+"prescription": ["646264c03f4e1f7453cba89c"]
+}
+
+{
+"occurredDate": "2024-02-14T11:30:00Z",
+"note": "Follow-up visit after surgery.",
+"prescription": ["646264b83f4e1f7453cba898", "646264f03f4e1f7453cba8b2"]
+}
+
+{
+"occurredDate": "2024-03-21T16:50:00Z",
+"note": "Routine check-up.",
+"prescription": ["646264da3f4e1f7453cba8a8"]
+}
+
+{
+"occurredDate": "2024-04-28T10:00:00Z",
+"note": "The patient reported symptoms of allergies.",
+"prescription": ["646264f83f4e1f7453cba8b6", "646264c93f4e1f7453cba8a0"]
+}
+
+{
+"occurredDate": "2024-05-05T13:25:00Z",
+"note": "Follow-up visit for medication adjustment.",
+"prescription": ["646264f03f4e1f7453cba8b2", "646264c03f4e1f7453cba89c"]
+}
+
+{
+"occurredDate": "2024-06-12T09:30:00Z",
+"note": "The patient came in with a sprained wrist.",
+"prescription": ["646264e73f4e1f7453cba8ae", "646264b43f4e1f7453cba896"]
+}
+
+{
+"occurredDate": "2024-07-19T11:15:00Z",
+"note": "Routine check-up.",
+"prescription": ["646264b83f4e1f7453cba898", "646264fc3f4e1f7453cba8b8"]
+}
+
+{
+"occurredDate": "2024-08-26T14:40:00Z",
+"note": "The patient complained of a sore throat.",
+"prescription": ["646264f53f4e1f7453cba8b4"]
+}
+
+{
+"occurredDate": "2024-09-02T10:30:00Z",
+"note": "Follow-up visit for medication adjustment.",
+"prescription": ["646264e73f4e1f7453cba8ae", "646264d73f4e1f7453cba8a6"]
+}
+
+{
+"occurredDate": "2024-10-09T12:20:00Z",
+"note": "Routine check-up.",
+"prescription": ["646264c53f4e1f7453cba89e", "646265013f4e1f7453cba8ba"]
+}
+
+{
+"occurredDate": "2024-11-16T15:40:00Z",
+"note": "The patient reported symptoms of a sinus infection.",
+"prescription": ["646264c03f4e1f7453cba89c"]
+}
+
+{
+"occurredDate": "2024-12-23T11:10:00Z",
+"note": "Follow-up visit for blood test results.",
+"prescription": ["646264e33f4e1f7453cba8ac", "646264bc3f4e1f7453cba89a", "646264f83f4e1f7453cba8b6"]
+}
+
+{
+"occurredDate": "2025-01-30T14:50:00Z",
+"note": "Routine check-up.",
+"prescription": ["646264d33f4e1f7453cba8a4"]
+}
+
+{
+"occurredDate": "2025-03-07T09:00:00Z",
+"note": "The patient complained of fatigue and dizziness.",
+"prescription": ["646264d73f4e1f7453cba8a6", "646264ce3f4e1f7453cba8a2"]
+}
+
+{
+"occurredDate": "2025-04-14T12:35:00Z",
+"note": "Follow-up visit for medication adjustment.",
+"prescription": ["646264da3f4e1f7453cba8a8", "646264c93f4e1f7453cba8a0"]
+}
+
+{
+"occurredDate": "2025-05-21T15:15:00Z",
+"note": "The patient came in with a minor injury.",
+"prescription": ["646264b83f4e1f7453cba898", "646264f03f4e1f7453cba8b2"]
+}
+
+{
+"occurredDate": "2025-06-28T10:25:00Z",
+"note": "Routine check-up.",
+"prescription": ["646264e73f4e1f7453cba8ae"]
+}

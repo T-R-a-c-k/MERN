@@ -2,6 +2,13 @@ const Prescription = require("../models/prescriptionsModel");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
+exports.prescription_list_get = asyncHandler(async (req, res, next) => {
+  const prescriptions = await Prescription.find({}, { _id: 1 })
+    .sort({ name: 1 })
+    .exec();
+  res.json(prescriptions);
+});
+
 exports.prescription_create_get = asyncHandler(async (req, res, next) => {
   res.json("This is the prescription get end point");
 });

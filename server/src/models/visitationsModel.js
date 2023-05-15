@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const VisitationSchema = new Schema({
-  occuredDate: { type: Date, required: true },
+  occurredDate: { type: Date, required: true },
   note: { type: String, maxLength: 200 },
   prescription: [{ type: Schema.Types.ObjectId, ref: "Prescription" }],
 });

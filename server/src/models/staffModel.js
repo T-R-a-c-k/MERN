@@ -4,12 +4,13 @@ const Schema = mongoose.Schema;
 const Staff = new Schema({
   firstName: { type: String, required: true, maxLength: 100, minlength: 1 },
   lastName: { type: String, required: true, maxLength: 100, minlength: 1 },
-  position: { type: Schema.Types.ObjectId, ref: "Position", required: true },
+  position: { type: String, required: true },
   salary: { type: Number, required: true },
   deptID: { type: Schema.Types.ObjectId, ref: "Department", required: true },
   phoneNumber: { type: Number, required: true },
   email: { type: String, required: true },
   hireDate: { type: Date, required: true },
+  password: { type: String, required: true, minLength: 16, maxLength: 32 },
 });
 
 Staff.virtual("fullName").get(function () {
