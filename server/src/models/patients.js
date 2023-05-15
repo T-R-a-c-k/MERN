@@ -7,6 +7,7 @@ const PatientScheme = new Schema({
   birthDate: { type: Date, required: true },
   medicalNumber: { type: Number, required: true },
   email: { type: String, required: true, maxlength: 100 },
+  visitations: [{ type: Schema.Types.ObjectId, ref: "Visitation" }],
 });
 
 PatientScheme.virtual("fullName").get(function () {
