@@ -7,10 +7,11 @@ const Staff = new Schema({
   position: { type: String, required: true },
   salary: { type: Number, required: true },
   deptID: { type: Schema.Types.ObjectId, ref: "Department", required: true },
-  phoneNumber: { type: Number, required: true },
+  phoneNumber: { type: String, required: true, minLength: 12, maxLength: 12 },
   email: { type: String, required: true },
   hireDate: { type: Date, required: true },
-  password: { type: String, required: true, minLength: 16, maxLength: 32 },
+  password: { type: String, required: true, minLength: 16 },
+  role: { type: String, required: true },
 });
 
 Staff.virtual("fullName").get(function () {

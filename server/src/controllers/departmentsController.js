@@ -2,6 +2,11 @@ const Department = require("../models/departmentsModel");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
+exports.departments_list = asyncHandler(async (req, res, next) => {
+  const allDepartments = await Department.find({}, { _id: 1 }).exec();
+  res.json(allDepartments);
+});
+
 exports.departments_create_get = asyncHandler(async (req, res, next) => {
   res.json("This is the department get end point");
 });

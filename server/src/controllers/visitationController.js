@@ -3,7 +3,8 @@ const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
 exports.visitation_list_get = asyncHandler(async (req, res, next) => {
-  res.json("Visitation list get");
+  const allVisitations = await Visitation.find({}).exec();
+  res.json(allVisitations);
 });
 
 exports.visitation_create_get = asyncHandler(async (req, res, next) => {

@@ -6,18 +6,20 @@ const dotenv = require("dotenv");
 dotenv.config({ path: ".env" });
 const mongoDB = process.env.MONGODB_URI;
 
-const loginRouter = require("./routes/log_in");
+const staffRouter = require("./routes/staffRoute");
 const prescriptionRouter = require("./routes/prescriptionsRoute");
-const departmentRouter = require("./routes/departmentRoute");
-const visitationRouter = require("./routes/visitationRoute");
+const departmentRouter = require("./routes/departmentsRoute");
+const visitationRouter = require("./routes/visitationsRoute");
+const patientRouter = require("./routes/patientsRoute");
 
 app.use(express.json());
 app.use(cors());
 
-app.use("/sign_up", loginRouter);
+app.use("/staff", staffRouter);
 app.use("/prescription", prescriptionRouter);
 app.use("/department", departmentRouter);
 app.use("/visitation", visitationRouter);
+app.use("/patient", patientRouter);
 
 mongoose.connect(mongoDB).then(() => {
   console.log(`connected to the DB`);

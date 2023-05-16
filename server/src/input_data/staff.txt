@@ -1,0 +1,129 @@
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "position": "Manager",
+  "salary": 50000,
+  "deptID": "64626bbc49310de625bb821f",
+  "phoneNumber": "123-456-7890",
+  "email": "johndoe@example.com",
+  "hireDate": "2023-05-01T00:00:00Z",
+  "password": "R9xm$7AeS&3^f@2T",
+  "role": "admin"
+}
+
+{
+  "firstName": "Alice",
+  "lastName": "Smith",
+  "position": "Assistant",
+  "salary": 35000,
+  "deptID": "64626bc849310de625bb8221",
+  "phoneNumber": "987-654-3210",
+  "email": "alicesmith@example.com",
+  "hireDate": "2023-05-05T00:00:00Z",
+  "password": "X5t@P2hR#s7&b$9M",
+  "role": "staff"
+}
+
+{
+  "firstName": "Emma",
+  "lastName": "Johnson",
+  "position": "Nurse",
+  "salary": 40000,
+  "deptID": "64626bcc49310de625bb8223",
+  "phoneNumber": "555-123-4567",
+  "email": "emma.johnson@example.com",
+  "hireDate": "2023-05-02T00:00:00Z",
+  "password": "P7m2$kR#9e6@4nQ5",
+  "role": "staff"
+}
+
+{
+  "firstName": "David",
+  "lastName": "Wilson",
+  "position": "Technician",
+  "salary": 38000,
+  "deptID": "646278f7a7f90ad6564b6b1f",
+  "phoneNumber": "555-987-6543",
+  "email": "david.wilson@example.com",
+  "hireDate": "2023-05-08T00:00:00Z",
+  "password": "R8f$P6sN#3v^M2gA",
+  "role": "admin"
+}
+
+{
+  "firstName": "Sophia",
+  "lastName": "Davis",
+  "position": "Receptionist",
+  "salary": 32000,
+  "deptID": "646278fda7f90ad6564b6b21",
+  "phoneNumber": "123-789-4560",
+  "email": "sophiadavis@example.com",
+  "hireDate": "2023-05-10T00:00:00Z",
+  "password": "N4$eH9tQ&7d^F5wX",
+  "role": "staff"
+}
+
+{
+  "firstName": "Ethan",
+  "lastName": "Anderson",
+  "position": "Pharmacist",
+  "salary": 60000,
+  "deptID": "64627903a7f90ad6564b6b23",
+  "phoneNumber": "987-654-3219",
+  "email": "ethan.anderson@example.com",
+  "hireDate": "2023-05-12T00:00:00Z",
+  "password": "V7$zB2qP#1n&X5sW",
+  "role": "staff"
+}
+
+{
+  "firstName": "Olivia",
+  "lastName": "Thomas",
+  "position": "Lab Technician",
+  "salary": 38000,
+  "deptID": "64627908a7f90ad6564b6b25",
+  "phoneNumber": "555-123-7894",
+  "email": "olivia.thomas@example.com",
+  "hireDate": "2023-05-15T00:00:00Z",
+  "password": "G1h&F2rS#6e@J3dM",
+  "role": "staff"
+}
+
+{
+  "firstName": "James",
+  "lastName": "Wilson",
+  "position": "Nurse",
+  "salary": 40000,
+  "deptID": "6462790da7f90ad6564b6b27",
+  "phoneNumber": "123-456-7895",
+  "email": "jameswilson@example.com",
+  "hireDate": "2023-05-18T00:00:00Z",
+  "password": "D5q&R6wE#2p@L9zU",
+  "role": "staff"
+}
+
+{
+  "firstName": "Ava",
+  "lastName": "Harris",
+  "position": "Technician",
+  "salary": 38000,
+  "deptID": "64627911a7f90ad6564b6b29",
+  "phoneNumber": "987-654-3214",
+  "email": "avaharris@example.com",
+  "hireDate": "2023-05-20T00:00:00Z",
+  "password": "M2e@B7pU#4t&F6qD",
+  "role": "admin"
+}
+
+{
+  "firstName": "Emma",
+  "lastName": "Roberts",
+  "position": "Physician",
+  "salary": 80000,
+  "deptID": "64627915a7f90ad6564b6b2b",
+  "phoneNumber": "555-123-7890",
+  "email": "emma.roberts@example.com",
+  "hireDate": "2023-05-23T00:00:00Z",
+  "password": "Q3s#F6gN&9m^W2eD",
+  "role": "staff"
+}
