@@ -2,6 +2,13 @@ const Staff = require("../models/staffModel");
 const asyncHandler = require("express-async-handler");
 const auth = require("../authentication/encrypt");
 
+const removeUnwantedData = (user) => {
+  const userObject = Object.create(user);
+  userObject.password = undefined;
+  userObject.__v = undefined;
+  return userObject;
+};
+
 exports.staff_create_get = asyncHandler(async (req, res, next) => {
   res.json("This is the login get end point");
 });
@@ -36,4 +43,28 @@ exports.staff_create_post = asyncHandler(async (req, res, next) => {
 
   await staffInstance.save();
   res.json(staffInstance);
+});
+
+exports.staff_login_get = asyncHandler(async (req, res, next) => {
+  res.json("This is the staff login get end point");
+});
+
+exports.staff_login_post = asyncHandler(async (req, res, next) => {
+  const { email, password } = req.body;
+  const user = await Staff.findOne({ email: email }, { _id: 0 }).exec();
+
+  if (!user) {
+    res.status(404);
+    res.json("This user does not exist");
+    return;
+  } else {
+    const hash = await auth.validateUser(password, user.password);
+    if (hash) {
+      const userObject = removeUnwantedData(user);
+      res.json(userObject);
+    } else {
+      res.status(403);
+      res.json("This password and username do not match");
+    }
+  }
 });
