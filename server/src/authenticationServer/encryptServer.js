@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 const dotenv = require("dotenv");
 dotenv.config({ path: ".env" });
-const saltRounds = process.env.SALT_ROUNDS;
+const saltRounds = Number(process.env.SALT_ROUNDS);
 
 async function encrypt(password) {
   try {

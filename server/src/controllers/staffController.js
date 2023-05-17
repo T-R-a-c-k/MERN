@@ -72,3 +72,12 @@ exports.staff_login_post = asyncHandler(async (req, res, next) => {
     }
   }
 });
+
+exports.staff_encrypt_password_post = asyncHandler(async (req, res, next) => {
+  const { email, password } = req.body;
+  const user = await Staff.findOne({ email: email }, { _id: 0 }).exec();
+
+  const hash = await auth.encrypt(password);
+
+  res.json({ hash });
+});
