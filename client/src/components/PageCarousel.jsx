@@ -39,7 +39,7 @@ const PageCarousel = (props) => {
             >
               <h1 className={Styles.carouselRight_h1}>{item.text}</h1>
               <p className={Styles.carouselRight_p}>{item.paragraph}</p>
-              <a
+              <div
                 className={Styles.carouselRight_link}
                 style={{ color: "white" }}
               >
@@ -50,7 +50,7 @@ const PageCarousel = (props) => {
                 >
                   <div sty>Read more</div>
                 </OverlayTrigger>
-              </a>
+              </div>
             </div>
           </Carousel.Item>
         );

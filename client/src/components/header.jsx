@@ -70,8 +70,8 @@ function Header() {
                 </Link>
               </Nav.Link>
               <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
-                <Link to={"/patient_portal"} style={{ color: "white" }}>
-                  Patient Portal
+                <Link to={"/staff_portal"} style={{ color: "white" }}>
+                  Staff Portal
                 </Link>
               </Nav.Link>
             </Nav>

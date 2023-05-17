@@ -10,7 +10,7 @@ import Careers from "./pages/Careers";
 import Volunteer from "./pages/Volunteer";
 import Research from "./pages/Research";
 import Learning from "./pages/Learning";
-import PatientPortal from "./pages/patientPortal";
+import StaffPortal from "./pages/staffPortal";
 import Footer from "./components/Footer";
 import About from "./pages/About";
 import CarePrograms from "./pages/CarePrograms";
@@ -33,7 +33,7 @@ function App() {
           <Route path="/volunteer" element={<Volunteer />} />
           <Route path="/research" element={<Research />} />
           <Route path="/learning" element={<Learning />} />
-          <Route path="/patient_portal" element={<PatientPortal />} />
+          <Route path="/staff_portal" element={<StaffPortal />} />
           <Route path="/sign_up" element={<SignUp />} />
           <Route path="/about" element={<About />} />
           <Route path="/care_programs" element={<CarePrograms />} />

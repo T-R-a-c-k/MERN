@@ -1,12 +1,15 @@
 const Staff = require("../models/staffModel");
 const asyncHandler = require("express-async-handler");
-const auth = require("../authentication/encrypt");
+const auth = require("../authenticationServer/encryptServer");
+const jwt = require("jsonwebtoken");
+const dotenv = require("dotenv");
+dotenv.config({ path: ".env" });
 
 const removeUnwantedData = (user) => {
   const userObject = Object.create(user);
   userObject.password = undefined;
   userObject.__v = undefined;
-  return userObject;
+  return userObject.toObject();
 };
 
 exports.staff_create_get = asyncHandler(async (req, res, next) => {
@@ -61,7 +64,8 @@ exports.staff_login_post = asyncHandler(async (req, res, next) => {
     const hash = await auth.validateUser(password, user.password);
     if (hash) {
       const userObject = removeUnwantedData(user);
-      res.json(userObject);
+      const token = jwt.sign(userObject, process.env.TOKEN_PASSWORD);
+      res.json({ token, user: userObject });
     } else {
       res.status(403);
       res.json("This password and username do not match");
