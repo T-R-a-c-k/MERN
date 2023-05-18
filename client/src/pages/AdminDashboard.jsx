@@ -3,7 +3,7 @@ import { UserContext } from "../context/UserProvider";
 import { Container, Row } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -17,19 +17,22 @@ const AdminDashboard = () => {
   return (
     <Container>
       <Row>
-        <h1>{userInstance?.firstName}'s Details</h1>
-        <Table striped bordered hover size="sm" style={{ margin: "1%" }}>
-          <tbody>
-            {Object.keys(userInstance).map((key, index) => {
-              return (
-                <tr>
-                  <td>{key}</td>
-                  <td>{userInstance[key]}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
+        <Link to={"departments"} style={{ color: "white" }}>
+          Departments
+        </Link>
+
+        <Link to={"patients"} style={{ color: "white" }}>
+          Patients
+        </Link>
+        <Link to={"precsriptions"} style={{ color: "white" }}>
+          Precsriptions
+        </Link>
+        <Link to={"staff"} style={{ color: "white" }}>
+          Staff
+        </Link>
+        <Link to={"visitations"} style={{ color: "white" }}>
+          Visitations
+        </Link>
       </Row>
 
       <Button style={{ margin: "1%" }} onClick={() => logoutHandler()}>

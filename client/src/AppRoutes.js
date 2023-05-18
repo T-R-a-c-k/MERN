@@ -50,7 +50,7 @@ function AppRoutes() {
         )}
         {userInstance && tokenInstance && userInstance.role === "admin" && (
           <Route path="admin">
-            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route index element={<AdminDashboard />} />
             <Route path=":category" element={<EditPage />} />
           </Route>
         )}

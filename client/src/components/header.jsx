@@ -18,7 +18,7 @@ function Header() {
   function isAdmin() {
     return userInstance.role === "admin" ? (
       <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
-        <Link to={"admin/dashboard"} style={{ color: "white" }}>
+        <Link to={"admin"} style={{ color: "white" }}>
           Admin Dashboard
         </Link>
       </Nav.Link>
