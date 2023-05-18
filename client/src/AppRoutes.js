@@ -18,6 +18,7 @@ import Covid from "./pages/Covid";
 import FAQ from "./pages/FAQ";
 import PreparingCare from "./pages/PreparingCare";
 import Staff from "./pages/Staff";
+import MyPortal from "./pages/MyPortal";
 
 function AppRoutes() {
   return (
@@ -40,6 +41,7 @@ function AppRoutes() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/preparing_care" element={<PreparingCare />} />
         <Route path="/staff" element={<Staff />} />
+        <Route path="/my_portal" element={<MyPortal />} />
       </Routes>
 
       <Footer />

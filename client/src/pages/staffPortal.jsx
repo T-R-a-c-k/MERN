@@ -9,7 +9,7 @@ import axios from "axios";
 
 function StaffPortal() {
   const navigate = useNavigate();
-  const { setUserInstance } = useContext(UserContext);
+  const { setUserInstance, setTokenInstance } = useContext(UserContext);
 
   const DEFAULT_FORM_OBJECT = {
     email: "",
@@ -42,10 +42,11 @@ function StaffPortal() {
         "http://localhost:8080/staff/login",
         form
       );
+      //TO DO: put token in local-storage
       const { token, user } = response.data;
-      console.log(user);
       setForm(DEFAULT_FORM_OBJECT);
-      setUserInstance({ ...user, token: token });
+      setUserInstance({ ...user });
+      setTokenInstance({ token });
       navigate("/");
     } catch {
       setErr("This username and password, don't match");
