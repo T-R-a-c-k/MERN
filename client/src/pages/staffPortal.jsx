@@ -34,16 +34,6 @@ function StaffPortal() {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    //This is not good, but as this is not an enterpises product,
-    //and a learning case, this can remain this way.
-    //In the future, this needs a better method to ensure the password
-    //is encrypted before it reaches the database
-    const hash = await axios.post(
-      "http://localhost:8080/staff/encrypted_password",
-      form
-    );
-    setForm({ ...form, password: hash });
-
     try {
       const response = await axios.post(
         "http://localhost:8080/staff/login",
