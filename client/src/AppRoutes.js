@@ -19,7 +19,9 @@ import FAQ from "./pages/FAQ";
 import PreparingCare from "./pages/PreparingCare";
 import Staff from "./pages/Staff";
 import MyPortal from "./pages/MyPortal";
+import AdminDashboard from "./pages/AdminDashboard";
 import { UserContext } from "./context/UserProvider";
+import EditPage from "./pages/EditPage";
 
 function AppRoutes() {
   const { userInstance, tokenInstance } = useContext(UserContext);
@@ -43,8 +45,14 @@ function AppRoutes() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/preparing_care" element={<PreparingCare />} />
         <Route path="/staff" element={<Staff />} />
-        {userInstance && tokenInstance && (
+        {userInstance && tokenInstance && userInstance.role !== "admin" && (
           <Route path="/my_portal" element={<MyPortal />} />
+        )}
+        {userInstance && tokenInstance && userInstance.role === "admin" && (
+          <Route path="admin">
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path=":category" element={<EditPage />} />
+          </Route>
         )}
       </Routes>
 

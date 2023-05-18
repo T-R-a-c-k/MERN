@@ -15,6 +15,22 @@ import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
 
 function Header() {
+  function isAdmin() {
+    return userInstance.role === "admin" ? (
+      <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
+        <Link to={"admin/dashboard"} style={{ color: "white" }}>
+          Admin Dashboard
+        </Link>
+      </Nav.Link>
+    ) : (
+      <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
+        <Link to={"/my_portal"} style={{ color: "white" }}>
+          {"Welcome, " + userInstance?.firstName}
+        </Link>
+      </Nav.Link>
+    );
+  }
+
   const { userInstance } = useContext(UserContext);
   return (
     <>
@@ -79,11 +95,7 @@ function Header() {
                   </Link>
                 </Nav.Link>
               ) : (
-                <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
-                  <Link to={"/my_portal"} style={{ color: "white" }}>
-                    {"Welcome, " + userInstance?.firstName}
-                  </Link>
-                </Nav.Link>
+                isAdmin()
               )}
             </Nav>
           </Navbar.Collapse>
