@@ -8,6 +8,4 @@ router.post("/", StaffController.staff_create_post);
 router.get("/login", StaffController.staff_login_get);
 router.post("/login", StaffController.staff_login_post);
 
-router.post("/encrypted_password", StaffController.staff_encrypt_password_post);
-
 module.exports = router;

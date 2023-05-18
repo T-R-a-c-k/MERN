@@ -11,8 +11,11 @@ import {
   navLinkStyle,
 } from "../formatting/headerFormat";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 
 function Header() {
+  const { userInstance } = useContext(UserContext);
   return (
     <>
       <Navbar expand="lg" style={{ background: "#445f5a", padding: noPadding }}>
@@ -69,11 +72,19 @@ function Header() {
                   Learning
                 </Link>
               </Nav.Link>
-              <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
-                <Link to={"/staff_portal"} style={{ color: "white" }}>
-                  Staff Portal
-                </Link>
-              </Nav.Link>
+              {userInstance === null ? (
+                <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
+                  <Link to={"/staff_portal"} style={{ color: "white" }}>
+                    Staff Portal
+                  </Link>
+                </Nav.Link>
+              ) : (
+                <Nav.Link style={navLinkStyle} className={Styles.headerLink}>
+                  <Link to={"/my_portal"} style={{ color: "white" }}>
+                    {"Welcome, " + userInstance?.firstName}
+                  </Link>
+                </Nav.Link>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

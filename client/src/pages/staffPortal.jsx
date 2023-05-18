@@ -1,13 +1,16 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import { UserContext } from "../context/UserProvider";
 
 import axios from "axios";
 
 function StaffPortal() {
   const navigate = useNavigate();
+  const { setUserInstance } = useContext(UserContext);
+
   const DEFAULT_FORM_OBJECT = {
     email: "",
     password: "",
@@ -42,6 +45,7 @@ function StaffPortal() {
       const { token, user } = response.data;
       console.log(user);
       setForm(DEFAULT_FORM_OBJECT);
+      setUserInstance({ ...user, token: token });
       navigate("/");
     } catch {
       setErr("This username and password, don't match");
