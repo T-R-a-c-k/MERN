@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
@@ -19,8 +19,10 @@ import FAQ from "./pages/FAQ";
 import PreparingCare from "./pages/PreparingCare";
 import Staff from "./pages/Staff";
 import MyPortal from "./pages/MyPortal";
+import { UserContext } from "./context/UserProvider";
 
 function AppRoutes() {
+  const { userInstance, tokenInstance } = useContext(UserContext);
   return (
     <Router>
       <Header />
@@ -41,7 +43,9 @@ function AppRoutes() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/preparing_care" element={<PreparingCare />} />
         <Route path="/staff" element={<Staff />} />
-        <Route path="/my_portal" element={<MyPortal />} />
+        {userInstance && tokenInstance && (
+          <Route path="/my_portal" element={<MyPortal />} />
+        )}
       </Routes>
 
       <Footer />
