@@ -42,7 +42,6 @@ function StaffPortal() {
         "http://localhost:8080/staff/login",
         form
       );
-      //TO DO: put token in local-storage
       const { token, user } = response.data;
       setForm(DEFAULT_FORM_OBJECT);
       setUserInstance({ ...user });
