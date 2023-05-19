@@ -3,7 +3,10 @@ const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
 exports.prescription_list_get = asyncHandler(async (req, res, next) => {
-  const prescriptions = await Prescription.find({}, { _id: 1 })
+  const prescriptions = await Prescription.find(
+    {},
+    { name: 1, usage: 1, sideEffects: 1, _id: 0 }
+  )
     .sort({ name: 1 })
     .exec();
   res.json(prescriptions);

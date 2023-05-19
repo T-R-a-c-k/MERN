@@ -21,7 +21,7 @@ import Staff from "./pages/Staff";
 import MyPortal from "./pages/MyPortal";
 import AdminDashboard from "./pages/AdminDashboard";
 import { UserContext } from "./context/UserProvider";
-import EditPage from "./pages/EditPage";
+import EditPrescriptionPage from "./pages/EditPrescriptionPage";
 
 function AppRoutes() {
   const { userInstance, tokenInstance } = useContext(UserContext);
@@ -51,7 +51,7 @@ function AppRoutes() {
         {userInstance && tokenInstance && userInstance.role === "admin" && (
           <Route path="admin">
             <Route index element={<AdminDashboard />} />
-            <Route path=":category" element={<EditPage />} />
+            <Route path="prescription" element={<EditPrescriptionPage />} />
           </Route>
         )}
       </Routes>
