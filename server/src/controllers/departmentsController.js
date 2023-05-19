@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
 exports.departments_list = asyncHandler(async (req, res, next) => {
-  const allDepartments = await Department.find({}, { _id: 1 }).exec();
+  const allDepartments = await Department.find({}, { _id: 0, __v: 0 }).exec();
   res.json(allDepartments);
 });
 

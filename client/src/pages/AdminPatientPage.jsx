@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
 
-function EditPrescriptionPage() {
+function AdminPatientPage() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const values = await axios.get(`http://localhost:8080/prescription/list`);
+      const values = await axios.get(`http://localhost:8080/patient/list`);
       setData([...values.data]);
     };
     getData();
   }, []);
   return (
     <>
-      <h1>Prescription table</h1>
+      <h1>Patient table</h1>
 
       <Table
         striped
@@ -33,10 +33,16 @@ function EditPrescriptionPage() {
               <strong>Name</strong>
             </td>
             <td>
-              <strong>Usage</strong>
+              <strong>Birth Date</strong>
             </td>
             <td>
-              <strong>Side Effects</strong>
+              <strong>Medical Number</strong>
+            </td>
+            <td>
+              <strong>Email</strong>
+            </td>
+            <td>
+              <strong>Visitations</strong>
             </td>
           </tr>
         </thead>
@@ -45,12 +51,14 @@ function EditPrescriptionPage() {
             return (
               <tr>
                 <td>
-                  <h4>{item.name}</h4>
+                  <h4>{item.fullName}</h4>
                   <Button>Edit</Button>
                 </td>
-                <td>{item.usage}</td>
+                <td>{item.birthDateFormatted}</td>
+                <td>{item.medicalNumber}</td>
+                <td>{item.email}</td>
                 <td>
-                  {item.sideEffects.map((item) => {
+                  {item.visitations.map((item) => {
                     return <pre>{item}</pre>;
                   })}
                 </td>
@@ -62,4 +70,4 @@ function EditPrescriptionPage() {
     </>
   );
 }
-export default EditPrescriptionPage;
+export default AdminPatientPage;

@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
 exports.patient_list_get = asyncHandler(async (req, res, next) => {
-  const allPatients = await Patient.find({}).exec();
+  const allPatients = await Patient.find({}, { _id: 0, __v: 0 }).exec();
   res.json(allPatients);
 });
 

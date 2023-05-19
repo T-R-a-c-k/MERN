@@ -12,6 +12,11 @@ const removeUnwantedData = (user) => {
   return userObject.toObject();
 };
 
+exports.staff_list_get = asyncHandler(async (req, res, next) => {
+  const allStaff = await Staff.find({}, { _id: 0, __v: 0, password: 0 }).exec();
+  res.json(allStaff);
+});
+
 exports.staff_create_get = asyncHandler(async (req, res, next) => {
   res.json("This is the login get end point");
 });
