@@ -13,7 +13,7 @@ function AdminDepatrmentPage() {
   }, []);
   return (
     <>
-      <h1>Department table</h1>
+      <h1 style={{ textAlign: "center" }}>Department table</h1>
 
       <Table
         striped

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 //TO DO
 //Add a patient to each visitation
@@ -18,7 +19,7 @@ function AdminVisitationPage() {
   }, []);
   return (
     <>
-      <h1>Visitation table</h1>
+      <h1 style={{ textAlign: "center" }}>Visitation table</h1>
 
       <Table
         striped
@@ -34,6 +35,7 @@ function AdminVisitationPage() {
       >
         <thead style={{ textAlign: "center" }}>
           <tr>
+            <td>ID</td>
             <td>
               <strong>Occurred Date</strong>
             </td>
@@ -50,8 +52,10 @@ function AdminVisitationPage() {
             return (
               <tr>
                 <td>
-                  <h4>{item.fullName}</h4>
-                  <Button>Edit</Button>
+                  <p>{item._id}</p>
+                  <Button>
+                    <Link to={item._id}>Edit</Link>
+                  </Button>
                 </td>
                 <td>{item.occurredDateFormatted}</td>
                 <td>{item.note}</td>

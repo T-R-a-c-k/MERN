@@ -26,6 +26,7 @@ import AdminDepartmentPage from "./pages/AdminDepartmentPage";
 import AdminPatientPage from "./pages/AdminPatientPage";
 import AdminVisitationPage from "./pages/AdminVisitationPage";
 import AdminStaffPage from "./pages/AdminStaffPage";
+import SelectedItem from "./pages/SelectedItemPage";
 
 function AppRoutes() {
   const { userInstance, tokenInstance } = useContext(UserContext);
@@ -55,11 +56,51 @@ function AppRoutes() {
         {userInstance && tokenInstance && userInstance.role === "admin" && (
           <Route path="admin">
             <Route index element={<AdminDashboard />} />
-            <Route path="prescription" element={<AdminPrescriptionPage />} />
-            <Route path="department" element={<AdminDepartmentPage />} />
-            <Route path="visitation" element={<AdminVisitationPage />} />
-            <Route path="patient" element={<AdminPatientPage />} />
-            <Route path="staff" element={<AdminStaffPage />} />
+            <Route path="prescription">
+              <Route index element={<AdminPrescriptionPage />} />
+              <Route path=":id">
+                <Route index element={<SelectedItem />} />
+                <Route path="create" element={<Staff />} />
+                <Route path="delete" element={<FAQ />} />
+                <Route path="update" element={<Contact />} />
+              </Route>
+            </Route>
+            <Route path="department">
+              <Route index element={<AdminDepartmentPage />} />
+              <Route path=":id">
+                <Route index element={<SelectedItem />} />
+                <Route path="create" element={<Staff />} />
+                <Route path="delete" element={<FAQ />} />
+                <Route path="update" element={<Contact />} />
+              </Route>
+            </Route>
+            <Route path="visitation">
+              <Route index element={<AdminVisitationPage />} />
+              <Route path=":id">
+                <Route index element={<SelectedItem />} />
+                <Route path="create" element={<Staff />} />
+                <Route path="delete" element={<FAQ />} />
+                <Route path="update" element={<Contact />} />
+              </Route>
+            </Route>
+            <Route path="patient">
+              <Route index element={<AdminPatientPage />} />
+              <Route path=":id">
+                <Route index element={<SelectedItem />} />
+                <Route path="create" element={<Staff />} />
+                <Route path="delete" element={<FAQ />} />
+                <Route path="update" element={<Contact />} />
+              </Route>
+            </Route>
+            <Route path="staff">
+              <Route index element={<AdminStaffPage />} />
+              <Route path=":id">
+                <Route index element={<SelectedItem />} />
+                <Route path="create" element={<Staff />} />
+                <Route path="delete" element={<FAQ />} />
+                <Route path="update" element={<Contact />} />
+              </Route>
+            </Route>
           </Route>
         )}
       </Routes>

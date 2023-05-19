@@ -13,7 +13,7 @@ function AdminPatientPage() {
   }, []);
   return (
     <>
-      <h1>Patient table</h1>
+      <h1 style={{ textAlign: "center" }}>Patient table</h1>
 
       <Table
         striped

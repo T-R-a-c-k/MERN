@@ -13,7 +13,7 @@ function AdminStaffPage() {
   }, []);
   return (
     <>
-      <h1>Staff table</h1>
+      <h1 style={{ textAlign: "center" }}>Staff table</h1>
 
       <Table
         striped

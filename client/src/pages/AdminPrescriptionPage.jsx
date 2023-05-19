@@ -13,7 +13,7 @@ function AdminPrescriptionPage() {
   }, []);
   return (
     <>
-      <h1>Prescription table</h1>
+      <h1 style={{ textAlign: "center" }}>Prescription table</h1>
 
       <Table
         striped
