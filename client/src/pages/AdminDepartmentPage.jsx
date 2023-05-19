@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function AdminDepatrmentPage() {
   const [data, setData] = useState([]);
@@ -46,7 +47,9 @@ function AdminDepatrmentPage() {
               <tr>
                 <td style={{ width: "33%" }}>
                   <h4>{item.name}</h4>
-                  <Button>Edit</Button>
+                  <Button>
+                    <Link to={item._id}>Edit</Link>
+                  </Button>
                 </td>
                 <td>{item.location}</td>
                 <td>${item.budget}</td>

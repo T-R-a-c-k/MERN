@@ -17,10 +17,6 @@ exports.staff_list_get = asyncHandler(async (req, res, next) => {
   res.json(allStaff);
 });
 
-exports.staff_create_get = asyncHandler(async (req, res, next) => {
-  res.json("This is the login get end point");
-});
-
 exports.staff_create_post = asyncHandler(async (req, res, next) => {
   const {
     firstName,
@@ -51,10 +47,6 @@ exports.staff_create_post = asyncHandler(async (req, res, next) => {
 
   await staffInstance.save();
   res.json(staffInstance);
-});
-
-exports.staff_login_get = asyncHandler(async (req, res, next) => {
-  res.json("This is the staff login get end point");
 });
 
 exports.staff_login_post = asyncHandler(async (req, res, next) => {

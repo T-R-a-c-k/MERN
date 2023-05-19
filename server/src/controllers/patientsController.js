@@ -7,10 +7,6 @@ exports.patient_list_get = asyncHandler(async (req, res, next) => {
   res.json(allPatients);
 });
 
-exports.patient_create_get = asyncHandler(async (req, res, next) => {
-  res.json("This is the patient get end point");
-});
-
 exports.patient_create_post = [
   body("firstName")
     .isLength({ max: 100, min: 1 })

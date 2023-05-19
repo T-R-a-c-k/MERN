@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function AdminPrescriptionPage() {
   const [data, setData] = useState([]);
@@ -46,7 +47,9 @@ function AdminPrescriptionPage() {
               <tr>
                 <td>
                   <h4>{item.name}</h4>
-                  <Button>Edit</Button>
+                  <Button>
+                    <Link to={item.name}>Edit</Link>
+                  </Button>
                 </td>
                 <td>{item.usage}</td>
                 <td>

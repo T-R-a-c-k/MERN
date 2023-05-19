@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function AdminStaffPage() {
   const [data, setData] = useState([]);
@@ -61,7 +62,9 @@ function AdminStaffPage() {
               <tr>
                 <td>
                   <h4>{item.fullName}</h4>
-                  <Button>Edit</Button>
+                  <Button>
+                    <Link to={item.email}>Edit</Link>
+                  </Button>
                 </td>
                 <td>{item.position}</td>
                 <td>{item.salary}</td>

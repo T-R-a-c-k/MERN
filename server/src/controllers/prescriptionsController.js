@@ -12,10 +12,6 @@ exports.prescription_list_get = asyncHandler(async (req, res, next) => {
   res.json(prescriptions);
 });
 
-exports.prescription_create_get = asyncHandler(async (req, res, next) => {
-  res.json("This is the prescription get end point");
-});
-
 exports.prescription_create_post = [
   // Validate and sanitize fields.
   body("name")

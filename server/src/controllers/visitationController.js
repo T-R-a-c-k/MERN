@@ -7,10 +7,6 @@ exports.visitation_list_get = asyncHandler(async (req, res, next) => {
   res.json(allVisitations);
 });
 
-exports.visitation_create_get = asyncHandler(async (req, res, next) => {
-  res.json("This is the visitation create get end point");
-});
-
 exports.visitation_create_post = [
   // Validate and sanitize fields.
   body("occuredDate")
