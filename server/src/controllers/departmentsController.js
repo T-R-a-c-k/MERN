@@ -37,3 +37,14 @@ exports.departments_create_post = [
     res.json(departmentInstance);
   }),
 ];
+
+exports.departments_update_user_get = asyncHandler(async (req, res, next) => {
+  const id = req.params.id;
+  const selectedDepartment = await Department.findById(id, {
+    _id: 0,
+    name: 1,
+    location: 1,
+    budget: 1,
+  }).exec();
+  res.json(selectedDepartment);
+});
