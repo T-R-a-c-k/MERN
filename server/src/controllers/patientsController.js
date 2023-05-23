@@ -96,12 +96,12 @@ exports.patient_update_post = [
       email: req.body.email,
     }).exec();
     if (!errors.isEmpty) {
-      res.json(errors);
+      res.status(401).json(errors);
       return;
     }
 
     if (!existingPatient) {
-      res.json("This patient doesn't exist");
+      res.status(404).json("This patient doesn't exist");
       return;
     }
 
@@ -112,7 +112,7 @@ exports.patient_update_post = [
       birthDate: req.body.birthDate,
       medicalNumber: req.body.medicalNumber,
       email: req.body.email,
-      visitations: req.body.visitations,
+      visitations: existingPatient.visitations,
     });
 
     Patient.findByIdAndUpdate(existingPatient._id, patientInstance).exec();

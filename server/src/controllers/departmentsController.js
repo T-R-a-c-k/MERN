@@ -67,11 +67,11 @@ exports.departments_update_user_post = [
     const existingDepartment = Department.findById(req.params.id);
 
     if (!errors.isEmpty) {
-      res.json(errors);
+      res.status(401).json(errors);
       return;
     }
     if (!existingDepartment) {
-      res.json("This ID does not exist");
+      res.status(404).json("This ID does not exist");
       return;
     }
 

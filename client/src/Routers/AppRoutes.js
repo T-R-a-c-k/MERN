@@ -28,6 +28,7 @@ import AdminStaffPage from "../pages/AdminStaffPage";
 import SelectedItem from "../pages/SelectedItemPage";
 import DepartmentUpdate from "../pages/DepartmentUpdate";
 import PatientUpdate from "../pages/PatientUpdate";
+import PrescriptionUpdate from "../pages/PrescriptionUpdate";
 
 function AppRoutes() {
   const { userInstance, tokenInstance } = useContext(UserContext);
@@ -80,7 +81,7 @@ function AppRoutes() {
                 <Route index element={<SelectedItem />} />
                 <Route path="create" element={<Staff />} />
                 <Route path="delete" element={<FAQ />} />
-                <Route path="update" element={<Contact />} />
+                <Route path="update" element={<PrescriptionUpdate />} />
               </Route>
             </Route>
             <Route path="visitation">
