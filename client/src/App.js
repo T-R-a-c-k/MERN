@@ -1,5 +1,5 @@
 import "./App.css";
-import AppRoutes from "./AppRoutes";
+import AppRoutes from "./Routers/AppRoutes";
 import { UserProvider } from "./context/UserProvider";
 
 function App() {

@@ -48,3 +48,41 @@ exports.departments_update_user_get = asyncHandler(async (req, res, next) => {
   }).exec();
   res.json(selectedDepartment);
 });
+
+exports.departments_update_user_post = [
+  body("name")
+    .isLength({ max: 100, min: 1 })
+    .escape()
+    .withMessage("Name must be specified."),
+  body("location")
+    .isLength({ max: 100, min: 1 })
+    .escape()
+    .withMessage("Location must be specified."),
+  body("budget")
+    .isInt({ min: 1 })
+    .escape()
+    .withMessage("Budget must be specified."),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    const existingDepartment = Department.findById(req.params.id);
+
+    if (!errors.isEmpty) {
+      res.json(errors);
+      return;
+    }
+    if (!existingDepartment) {
+      res.json("This ID does not exist");
+      return;
+    }
+
+    const departmentInstance = new Department({
+      _id: req.params.id,
+      name: req.body.name,
+      location: req.body.location,
+      budget: req.body.budget,
+    });
+
+    Department.findByIdAndUpdate(req.params.id, departmentInstance).exec();
+    res.json(departmentInstance);
+  }),
+];

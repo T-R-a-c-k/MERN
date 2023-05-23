@@ -8,4 +8,6 @@ router.post("/create", DepartmentController.departments_create_post);
 
 router.get("/:id/update", DepartmentController.departments_update_user_get);
 
+router.post("/:id/update", DepartmentController.departments_update_user_post);
+
 module.exports = router;
