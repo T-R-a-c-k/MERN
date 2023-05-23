@@ -6,11 +6,11 @@ const linkStyle = { color: "white" };
 const colStyle = { textAlign: "center" };
 
 function SelectedItem() {
-  const { id } = useParams();
+  const { id, email } = useParams();
   return (
     <Container style={{ justifyItems: "center" }}>
       <Row>
-        <h1 style={colStyle}>{id}</h1>
+        <h1 style={colStyle}>{id || email}</h1>
       </Row>
       <Row>
         <Col style={colStyle}>
