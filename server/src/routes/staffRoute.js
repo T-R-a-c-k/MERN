@@ -8,4 +8,8 @@ router.post("/create", StaffController.staff_create_post);
 
 router.post("/login", StaffController.staff_login_post);
 
+router.get("/:email/update", StaffController.staff_update_get);
+
+router.post("/:email/update", StaffController.staff_update_post);
+
 module.exports = router;
