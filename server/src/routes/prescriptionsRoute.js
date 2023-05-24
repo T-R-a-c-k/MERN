@@ -8,6 +8,6 @@ router.post("/create", PrescriptionController.prescription_create_post);
 
 router.get("/:id/update", PrescriptionController.prescription_update_get);
 
-router.post("/:id/update", PrescriptionController.prescription_update_post);
+router.put("/:id/update", PrescriptionController.prescription_update_put);
 
 module.exports = router;

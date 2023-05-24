@@ -65,7 +65,7 @@ const StaffUpdate = () => {
     setValidated(true);
     const hireDateISO = new Date(form.hireDate).toISOString();
     setForm({ ...form, hireDate: hireDateISO });
-    axios.post(`http://localhost:8080/staff/${email}/update`, form);
+    await axios.put(`http://localhost:8080/staff/${email}/update`, form);
     navigate("/admin/staff");
   };
 

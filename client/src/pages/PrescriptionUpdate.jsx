@@ -45,7 +45,7 @@ const PrescriptionUpdate = () => {
     e.preventDefault();
     const sideEffectsText = form.sideEffects.split(",");
     setForm({ ...form, sideEffects: sideEffectsText });
-    axios.post(`http://localhost:8080/prescription/${id}/update`, form);
+    await axios.put(`http://localhost:8080/prescription/${id}/update`, form);
     navigate("/admin/prescription");
   };
 

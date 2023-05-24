@@ -48,7 +48,7 @@ const PatientUpdate = () => {
     e.preventDefault();
     const birthDateISO = new Date(form.birthDate).toISOString();
     setForm({ ...form, birthDate: birthDateISO });
-    axios.post(`http://localhost:8080/patient/${email}/update`, form);
+    await axios.put(`http://localhost:8080/patient/${email}/update`, form);
     navigate("/admin/patient");
   };
 

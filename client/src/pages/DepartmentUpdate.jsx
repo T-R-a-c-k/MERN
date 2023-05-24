@@ -42,7 +42,7 @@ const DepartmentUpdate = () => {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    axios.post(`http://localhost:8080/department/${id}/update`, form);
+    await axios.put(`http://localhost:8080/department/${id}/update`, form);
     navigate("/admin/department");
   };
 

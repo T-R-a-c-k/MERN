@@ -74,7 +74,7 @@ const VisitationUpdate = () => {
     setValidated(true);
     const occurredDateISO = new Date(form.occurredDate).toISOString();
     setForm({ ...form, occurredDate: occurredDateISO });
-    axios.put(`http://localhost:8080/visitation/${id}/update`, form);
+    await axios.put(`http://localhost:8080/visitation/${id}/update`, form);
     navigate("/admin/visitation");
   };
 

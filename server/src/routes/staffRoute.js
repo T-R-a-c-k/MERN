@@ -10,6 +10,6 @@ router.post("/login", StaffController.staff_login_post);
 
 router.get("/:email/update", StaffController.staff_update_get);
 
-router.post("/:email/update", StaffController.staff_update_post);
+router.put("/:email/update", StaffController.staff_update_put);
 
 module.exports = router;

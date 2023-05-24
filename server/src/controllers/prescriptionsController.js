@@ -50,10 +50,12 @@ exports.prescription_update_get = asyncHandler(async (req, res, next) => {
   const prescriptionInstance = await Prescription.findOne({
     name: req.params.id,
   }).exec();
-  res.json(prescriptionInstance);
+  prescriptionInstance
+    ? res.json(prescriptionInstance)
+    : res.status(404).json("This prescription does not exist");
 });
 
-exports.prescription_update_post = [
+exports.prescription_update_put = [
   // Validate and sanitize fields.
   body("name")
     .isLength({ min: 1 })
@@ -72,6 +74,7 @@ exports.prescription_update_post = [
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
+
     const existingPrescription = await Prescription.findOne({
       name: req.params.id,
     }).exec();

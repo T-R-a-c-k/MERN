@@ -1,6 +1,7 @@
 const Department = require("../models/departmentsModel");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
+const auth = require("../authenticationServer/encryptServer");
 
 exports.departments_list = asyncHandler(async (req, res, next) => {
   const allDepartments = await Department.find({}, { __v: 0 }).exec();
@@ -38,7 +39,11 @@ exports.departments_create_post = [
   }),
 ];
 
-exports.departments_update_user_get = asyncHandler(async (req, res, next) => {
+exports.departments_update_get = asyncHandler(async (req, res, next) => {
+  if (!auth.validID(req.params.id)) {
+    res.status(404).json("This department does not exist");
+    return;
+  }
   const id = req.params.id;
   const selectedDepartment = await Department.findById(id, {
     _id: 0,
@@ -49,7 +54,7 @@ exports.departments_update_user_get = asyncHandler(async (req, res, next) => {
   res.json(selectedDepartment);
 });
 
-exports.departments_update_user_post = [
+exports.departments_update_put = [
   body("name")
     .isLength({ max: 100, min: 1 })
     .escape()
@@ -63,6 +68,11 @@ exports.departments_update_user_post = [
     .escape()
     .withMessage("Budget must be specified."),
   asyncHandler(async (req, res, next) => {
+    if (!auth.validID(req.params.id)) {
+      res.status(404).json("This department does not exist");
+      return;
+    }
+
     const errors = validationResult(req);
     const existingDepartment = Department.findById(req.params.id);
 

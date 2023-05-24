@@ -6,8 +6,8 @@ router.get("/list", DepartmentController.departments_list);
 
 router.post("/create", DepartmentController.departments_create_post);
 
-router.get("/:id/update", DepartmentController.departments_update_user_get);
+router.get("/:id/update", DepartmentController.departments_update_get);
 
-router.post("/:id/update", DepartmentController.departments_update_user_post);
+router.put("/:id/update", DepartmentController.departments_update_put);
 
 module.exports = router;

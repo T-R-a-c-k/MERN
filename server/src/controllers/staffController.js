@@ -77,10 +77,13 @@ exports.staff_update_get = asyncHandler(async (req, res, next) => {
     { email: req.params.email },
     { password: 0, __v: 0 }
   ).exec();
-  res.json(staffInstance);
+
+  staffInstance
+    ? res.json(staffInstance)
+    : res.status(404).json("This user does not exist");
 });
 
-exports.staff_update_post = [
+exports.staff_update_put = [
   body("firstName")
     .isLength({ max: 100, min: 1 })
     .escape()

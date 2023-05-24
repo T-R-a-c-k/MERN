@@ -61,10 +61,12 @@ exports.patient_update_get = asyncHandler(async (req, res, next) => {
     },
     { _id: 0, id: 0, __v: 0 }
   ).exec();
-  res.json(patientInstance);
+  patientInstance
+    ? res.json(patientInstance)
+    : res.status(404).json("This patient does not exist");
 });
 
-exports.patient_update_post = [
+exports.patient_update_put = [
   body("firstName")
     .isLength({ max: 100, min: 1 })
     .escape()
