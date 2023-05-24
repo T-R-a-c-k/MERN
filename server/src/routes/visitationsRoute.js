@@ -6,4 +6,8 @@ router.get("/list", VisitationController.visitation_list_get);
 
 router.post("/create", VisitationController.visitation_create_post);
 
+router.get("/:id/update", VisitationController.visitation_update_get);
+
+router.put("/:id/update", VisitationController.visitation_update_put);
+
 module.exports = router;

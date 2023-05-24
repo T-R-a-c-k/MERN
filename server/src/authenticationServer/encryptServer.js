@@ -25,4 +25,8 @@ async function validateUser(password, hashedPassword) {
   }
 }
 
-module.exports = { encrypt, validateUser };
+function validID(id) {
+  return id.length == 24 ? true : false;
+}
+
+module.exports = { encrypt, validateUser, validID };

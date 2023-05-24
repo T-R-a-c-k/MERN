@@ -59,7 +59,11 @@ function AdminVisitationPage() {
                 </td>
                 <td>{item.occurredDateFormatted}</td>
                 <td>{item.note}</td>
-                <td>{item.prescription}</td>
+                <td>
+                  {item.prescription.map((item) => {
+                    return <pre>{item}</pre>;
+                  })}
+                </td>
               </tr>
             );
           })}

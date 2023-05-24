@@ -5,7 +5,7 @@ const { body, validationResult } = require("express-validator");
 exports.prescription_list_get = asyncHandler(async (req, res, next) => {
   const prescriptions = await Prescription.find(
     {},
-    { name: 1, usage: 1, sideEffects: 1, _id: 0 }
+    { name: 1, usage: 1, sideEffects: 1 }
   )
     .sort({ name: 1 })
     .exec();
