@@ -12,4 +12,6 @@ router.get("/:email/update", StaffController.staff_update_get);
 
 router.put("/:email/update", StaffController.staff_update_put);
 
+router.delete("/:email/delete", StaffController.staff_delete_delete);
+
 module.exports = router;

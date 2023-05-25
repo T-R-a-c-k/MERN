@@ -193,3 +193,24 @@ exports.staff_update_put = [
     }
   }),
 ];
+
+exports.staff_delete_delete = asyncHandler(async (req, res, next) => {
+  try {
+    const token = auth.processToken(req.headers.authorization);
+    if (token.role !== "admin") {
+      res.status(403).json("authorization error");
+    }
+    const staffInstance = await Staff.findOne({
+      email: req.params.email,
+    }).exec();
+    if (!staffInstance) {
+      res.status(404).json("staff not found");
+      return;
+    }
+
+    Staff.deleteOne({ _id: staffInstance._id }).exec();
+    res.json("Successfully deleted.");
+  } catch (err) {
+    res.status(403).json("authorization error");
+  }
+});
