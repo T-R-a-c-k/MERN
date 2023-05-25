@@ -2,16 +2,23 @@ import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { requestHeaders } from "../server headers/headers";
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 
 function AdminStaffPage() {
   const [data, setData] = useState([]);
+  const { tokenInstance } = useContext(UserContext);
   useEffect(() => {
     const getData = async () => {
-      const values = await axios.get(`http://localhost:8080/staff/list`);
+      const values = await axios.get(
+        `http://localhost:8080/staff/list`,
+        requestHeaders(tokenInstance)
+      );
       setData([...values.data]);
     };
     getData();
-  }, []);
+  }, [tokenInstance]);
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Staff table</h1>

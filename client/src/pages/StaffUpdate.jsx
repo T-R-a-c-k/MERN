@@ -3,6 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
+import { requestHeaders } from "../server headers/headers";
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 
 const StaffUpdate = () => {
   const DEFAULT_FORM_OBJECT = {
@@ -16,6 +19,8 @@ const StaffUpdate = () => {
     hireDate: "",
     role: "",
   };
+
+  const { tokenInstance } = useContext(UserContext);
   const navigate = useNavigate();
   const { email } = useParams();
   const [form, setForm] = useState(DEFAULT_FORM_OBJECT);
@@ -26,18 +31,20 @@ const StaffUpdate = () => {
   useEffect(() => {
     const getData = async () => {
       const values = await axios.get(
-        `http://localhost:8080/staff/${email}/update`
+        `http://localhost:8080/staff/${email}/update`,
+        requestHeaders(tokenInstance)
       );
       values.data.hireDate = values.data.hireDate.substring(0, 10);
       setForm(values.data);
 
       const departments = await axios.get(
-        "http://localhost:8080/department/list"
+        "http://localhost:8080/department/list",
+        requestHeaders(tokenInstance)
       );
       setDepartment([...departments.data]);
     };
     getData();
-  }, [email]);
+  }, [email, tokenInstance]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -65,7 +72,11 @@ const StaffUpdate = () => {
     setValidated(true);
     const hireDateISO = new Date(form.hireDate).toISOString();
     setForm({ ...form, hireDate: hireDateISO });
-    await axios.put(`http://localhost:8080/staff/${email}/update`, form);
+    await axios.put(
+      `http://localhost:8080/staff/${email}/update`,
+      form,
+      requestHeaders(tokenInstance)
+    );
     navigate("/admin/staff");
   };
 

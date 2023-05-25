@@ -15,40 +15,59 @@ const removeUnwantedData = (user) => {
 };
 
 exports.staff_list_get = asyncHandler(async (req, res, next) => {
-  const allStaff = await Staff.find({}, { _id: 0, __v: 0, password: 0 }).exec();
-  res.json(allStaff);
+  try {
+    const token = auth.processToken(req.headers.authorization);
+    if (token.role !== "admin") {
+      res.status(403).json("authorization error");
+    }
+    const allStaff = await Staff.find(
+      {},
+      { _id: 0, __v: 0, password: 0 }
+    ).exec();
+    res.json(allStaff);
+  } catch (err) {
+    res.status(403).json("authorization error");
+  }
 });
 
 exports.staff_create_post = asyncHandler(async (req, res, next) => {
-  const {
-    firstName,
-    lastName,
-    position,
-    salary,
-    deptID,
-    phoneNumber,
-    email,
-    hireDate,
-    password,
-    role,
-  } = req.body;
-  const hash = await auth.hash(password);
+  try {
+    const token = auth.processToken(req.headers.authorization);
+    if (token.role !== "admin") {
+      res.status(403).json("authorization error");
+    }
+    const {
+      firstName,
+      lastName,
+      position,
+      salary,
+      deptID,
+      phoneNumber,
+      email,
+      hireDate,
+      password,
+      role,
+    } = req.body;
+    const hash = await auth.hash(password);
 
-  const staffInstance = new Staff({
-    firstName,
-    lastName,
-    position,
-    salary,
-    deptID,
-    phoneNumber,
-    email,
-    hireDate,
-    password: hash,
-    role,
-  });
+    const staffInstance = new Staff({
+      firstName,
+      lastName,
+      position,
+      salary,
+      deptID,
+      phoneNumber,
+      email,
+      hireDate,
+      password: hash,
+      role,
+    });
 
-  await staffInstance.save();
-  res.json(staffInstance);
+    await staffInstance.save();
+    res.json(staffInstance);
+  } catch (err) {
+    res.status(403).json("authorization error");
+  }
 });
 
 exports.staff_login_post = asyncHandler(async (req, res, next) => {
@@ -75,14 +94,22 @@ exports.staff_login_post = asyncHandler(async (req, res, next) => {
 });
 
 exports.staff_update_get = asyncHandler(async (req, res, next) => {
-  const staffInstance = await Staff.findOne(
-    { email: req.params.email },
-    { password: 0, __v: 0 }
-  ).exec();
+  try {
+    const token = auth.processToken(req.headers.authorization);
+    if (token.role !== "admin") {
+      res.status(403).json("authorization error");
+    }
+    const staffInstance = await Staff.findOne(
+      { email: req.params.email },
+      { password: 0, __v: 0 }
+    ).exec();
 
-  staffInstance
-    ? res.json(staffInstance)
-    : res.status(404).json("This user does not exist");
+    staffInstance
+      ? res.json(staffInstance)
+      : res.status(404).json("This user does not exist");
+  } catch (err) {
+    res.status(403).json("authorization error");
+  }
 });
 
 exports.staff_update_put = [
@@ -126,35 +153,43 @@ exports.staff_update_put = [
     .toDate(),
   body("role").isLength({ min: 1 }).withMessage("Role must be specified"),
   asyncHandler(async (req, res, next) => {
-    const errors = validationResult(req);
-    const existingStaff = await Staff.findOne({
-      email: req.body.email,
-    }).exec();
-    if (!errors.isEmpty) {
-      res.status(401).json(errors);
-      return;
+    try {
+      const token = auth.processToken(req.headers.authorization);
+      if (token.role !== "admin") {
+        res.status(403).json("authorization error");
+      }
+      const errors = validationResult(req);
+      const existingStaff = await Staff.findOne({
+        email: req.body.email,
+      }).exec();
+      if (!errors.isEmpty) {
+        res.status(401).json(errors);
+        return;
+      }
+
+      if (!existingStaff) {
+        res.status(404).json("This staff member doesn't exist");
+        return;
+      }
+
+      const staffInstance = new Staff({
+        _id: existingStaff._id,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        position: req.body.position,
+        salary: req.body.salary,
+        deptID: req.body.deptID,
+        phoneNumber: req.body.phoneNumber,
+        email: req.body.email,
+        hireDate: req.body.hireDate,
+        password: existingStaff.password,
+        role: req.body.role,
+      });
+
+      Staff.findByIdAndUpdate(existingStaff._id, staffInstance).exec();
+      res.json(staffInstance);
+    } catch (err) {
+      res.status(403).json("authorization error");
     }
-
-    if (!existingStaff) {
-      res.status(404).json("This staff member doesn't exist");
-      return;
-    }
-
-    const staffInstance = new Staff({
-      _id: existingStaff._id,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      position: req.body.position,
-      salary: req.body.salary,
-      deptID: req.body.deptID,
-      phoneNumber: req.body.phoneNumber,
-      email: req.body.email,
-      hireDate: req.body.hireDate,
-      password: existingStaff.password,
-      role: req.body.role,
-    });
-
-    Staff.findByIdAndUpdate(existingStaff._id, staffInstance).exec();
-    res.json(staffInstance);
   }),
 ];
