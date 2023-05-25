@@ -3,6 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
+import { requestHeaders } from "../server headers/headers";
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 
 const PrescriptionUpdate = () => {
   const DEFAULT_FORM_OBJECT = {
@@ -10,6 +13,8 @@ const PrescriptionUpdate = () => {
     usage: "",
     sideEffects: "",
   };
+
+  const { tokenInstance } = useContext(UserContext);
   const navigate = useNavigate();
   const { id } = useParams();
   const [form, setForm] = useState(DEFAULT_FORM_OBJECT);
@@ -18,13 +23,14 @@ const PrescriptionUpdate = () => {
   useEffect(() => {
     const getData = async () => {
       const values = await axios.get(
-        `http://localhost:8080/prescription/${id}/update`
+        `http://localhost:8080/prescription/${id}/update`,
+        requestHeaders(tokenInstance)
       );
       values.data.sideEffects = values.data.sideEffects.toString();
       setForm(values.data);
     };
     getData();
-  }, [id]);
+  }, [id, tokenInstance]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -45,7 +51,11 @@ const PrescriptionUpdate = () => {
     e.preventDefault();
     const sideEffectsText = form.sideEffects.split(",");
     setForm({ ...form, sideEffects: sideEffectsText });
-    await axios.put(`http://localhost:8080/prescription/${id}/update`, form);
+    await axios.put(
+      `http://localhost:8080/prescription/${id}/update`,
+      form,
+      requestHeaders(tokenInstance)
+    );
     navigate("/admin/prescription");
   };
 

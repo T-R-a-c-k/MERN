@@ -18,7 +18,7 @@ function AdminDepatrmentPage() {
       setData([...values.data]);
     };
     getData();
-  }, []);
+  }, [tokenInstance]);
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Department table</h1>

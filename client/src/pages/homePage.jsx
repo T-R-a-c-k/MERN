@@ -1,7 +1,4 @@
 import React from "react";
-
-import { MDBIcon } from "mdb-react-ui-kit";
-
 import PageCarousel from "../components/PageCarousel";
 import NewsContainer from "../components/NewsContainer";
 import createCarouselInfo from "../formatting/carouselInformation";

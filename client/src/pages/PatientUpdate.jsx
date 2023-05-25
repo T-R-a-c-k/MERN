@@ -32,7 +32,7 @@ const PatientUpdate = () => {
       setForm(values.data);
     };
     getData();
-  }, [email]);
+  }, [email, tokenInstance]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
