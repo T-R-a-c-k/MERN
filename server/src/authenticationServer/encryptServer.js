@@ -5,8 +5,8 @@ const saltRounds = Number(process.env.SALT_ROUNDS);
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const algorithm = "aes-256-cbc";
-const initVector = crypto.randomBytes(16);
-const Securitykey = crypto.randomBytes(32);
+const initVector = Buffer.from(process.env.INIT_VECTOR); //These two values being random causes server updates to refresh these values, thus making all current
+const Securitykey = Buffer.from(process.env.SECURITY_KEY); //logins / requests, invalid
 
 async function hash(password) {
   try {
