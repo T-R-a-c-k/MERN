@@ -10,4 +10,6 @@ router.get("/:id/update", DepartmentController.departments_update_get);
 
 router.put("/:id/update", DepartmentController.departments_update_put);
 
+router.delete("/:id/delete", DepartmentController.departments_delete_delete);
+
 module.exports = router;

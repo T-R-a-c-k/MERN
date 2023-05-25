@@ -31,6 +31,7 @@ import PatientUpdate from "../pages/PatientUpdate";
 import PrescriptionUpdate from "../pages/PrescriptionUpdate";
 import StaffUpdate from "../pages/StaffUpdate";
 import VisitationUpdate from "../pages/VisitationUpdate";
+import SelectedItemDelete from "../pages/SelectedItemDeletePage";
 
 function AppRoutes() {
   const { userInstance, tokenInstance } = useContext(UserContext);
@@ -64,7 +65,7 @@ function AppRoutes() {
               <Route path=":id">
                 <Route index element={<SelectedItem />} />
                 <Route path="create" element={<Staff />} />
-                <Route path="delete" element={<FAQ />} />
+                <Route path="delete" element={<SelectedItemDelete />} />
                 <Route path="update" element={<DepartmentUpdate />} />
               </Route>
             </Route>
@@ -73,7 +74,7 @@ function AppRoutes() {
               <Route path=":email">
                 <Route index element={<SelectedItem />} />
                 <Route path="create" element={<Staff />} />
-                <Route path="delete" element={<FAQ />} />
+                <Route path="delete" element={<SelectedItemDelete />} />
                 <Route path="update" element={<PatientUpdate />} />
               </Route>
             </Route>
@@ -82,7 +83,7 @@ function AppRoutes() {
               <Route path=":id">
                 <Route index element={<SelectedItem />} />
                 <Route path="create" element={<Staff />} />
-                <Route path="delete" element={<FAQ />} />
+                <Route path="delete" element={<SelectedItemDelete />} />
                 <Route path="update" element={<PrescriptionUpdate />} />
               </Route>
             </Route>
@@ -91,7 +92,7 @@ function AppRoutes() {
               <Route path=":email">
                 <Route index element={<SelectedItem />} />
                 <Route path="create" element={<Staff />} />
-                <Route path="delete" element={<FAQ />} />
+                <Route path="delete" element={<SelectedItemDelete />} />
                 <Route path="update" element={<StaffUpdate />} />
               </Route>
             </Route>
@@ -100,7 +101,7 @@ function AppRoutes() {
               <Route path=":id">
                 <Route index element={<SelectedItem />} />
                 <Route path="create" element={<Staff />} />
-                <Route path="delete" element={<FAQ />} />
+                <Route path="delete" element={<SelectedItemDelete />} />
                 <Route path="update" element={<VisitationUpdate />} />
               </Route>
             </Route>

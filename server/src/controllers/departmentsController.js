@@ -129,3 +129,17 @@ exports.departments_update_put = [
     }
   }),
 ];
+
+exports.departments_delete_delete = asyncHandler(async (req, res, next) => {
+  try {
+    const token = auth.processToken(req.headers.authorization);
+    if (token.role !== "admin") {
+      res.status(403).json("authorization error");
+    }
+    const departmentInstance = await Department.findById(req.params.id).exec();
+    Department.deleteOne(departmentInstance).exec();
+    res.json("Successfully deleted.");
+  } catch (err) {
+    res.status(403).json("authorization error");
+  }
+});
