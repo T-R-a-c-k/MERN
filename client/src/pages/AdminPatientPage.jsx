@@ -2,16 +2,23 @@ import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
+import { requestHeaders } from "../server headers/headers";
 
 function AdminPatientPage() {
   const [data, setData] = useState([]);
+  const { tokenInstance } = useContext(UserContext);
   useEffect(() => {
     const getData = async () => {
-      const values = await axios.get(`http://localhost:8080/patient/list`);
+      const values = await axios.get(
+        `http://localhost:8080/patient/list`,
+        requestHeaders(tokenInstance)
+      );
       setData([...values.data]);
     };
     getData();
-  }, []);
+  }, [tokenInstance]);
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Patient table</h1>

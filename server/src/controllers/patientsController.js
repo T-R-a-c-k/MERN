@@ -1,10 +1,19 @@
 const Patient = require("../models/patientsModel");
 const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
+const { processToken } = require("../authenticationServer/encryptServer");
 
 exports.patient_list_get = asyncHandler(async (req, res, next) => {
-  const allPatients = await Patient.find({}, { _id: 0, __v: 0 }).exec();
-  res.json(allPatients);
+  try {
+    const token = processToken(req.headers.authorization);
+    if (token.role !== "admin") {
+      res.status(403).json("authorization error");
+    }
+    const allPatients = await Patient.find({}, { _id: 0, __v: 0 }).exec();
+    res.json(allPatients);
+  } catch (err) {
+    res.status(403).json("authorization error");
+  }
 });
 
 exports.patient_create_post = [
@@ -34,23 +43,31 @@ exports.patient_create_post = [
     .isLength({ min: 1 })
     .withMessage("Email must be specified"),
   asyncHandler(async (req, res, next) => {
-    const errors = validationResult(req);
-    const patientInstance = new Patient({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      birthDate: req.body.birthDate,
-      medicalNumber: req.body.medicalNumber,
-      email: req.body.email,
-      visitations: req.body.visitations,
-    });
+    try {
+      const token = processToken(req.headers.authorization);
+      if (token.role !== "admin") {
+        res.status(403).json("authorization error");
+      }
+      const errors = validationResult(req);
+      const patientInstance = new Patient({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        birthDate: req.body.birthDate,
+        medicalNumber: req.body.medicalNumber,
+        email: req.body.email,
+        visitations: req.body.visitations,
+      });
 
-    if (!errors.isEmpty) {
-      res.json(errors);
-      return;
+      if (!errors.isEmpty) {
+        res.json(errors);
+        return;
+      }
+
+      await patientInstance.save();
+      res.json(patientInstance);
+    } catch (err) {
+      res.status(403).json("authorization error");
     }
-
-    await patientInstance.save();
-    res.json(patientInstance);
   }),
 ];
 
@@ -93,31 +110,39 @@ exports.patient_update_put = [
     .isLength({ min: 1 })
     .withMessage("Email must be specified"),
   asyncHandler(async (req, res, next) => {
-    const errors = validationResult(req);
-    const existingPatient = await Patient.findOne({
-      email: req.body.email,
-    }).exec();
-    if (!errors.isEmpty) {
-      res.status(401).json(errors);
-      return;
+    try {
+      const token = processToken(req.headers.authorization);
+      if (token.role !== "admin") {
+        res.status(403).json("authorization error");
+      }
+      const errors = validationResult(req);
+      const existingPatient = await Patient.findOne({
+        email: req.body.email,
+      }).exec();
+      if (!errors.isEmpty) {
+        res.status(401).json(errors);
+        return;
+      }
+
+      if (!existingPatient) {
+        res.status(404).json("This patient doesn't exist");
+        return;
+      }
+
+      const patientInstance = new Patient({
+        _id: existingPatient._id,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        birthDate: req.body.birthDate,
+        medicalNumber: req.body.medicalNumber,
+        email: req.body.email,
+        visitations: existingPatient.visitations,
+      });
+
+      Patient.findByIdAndUpdate(existingPatient._id, patientInstance).exec();
+      res.json(patientInstance);
+    } catch (err) {
+      res.status(403).json("authorization error");
     }
-
-    if (!existingPatient) {
-      res.status(404).json("This patient doesn't exist");
-      return;
-    }
-
-    const patientInstance = new Patient({
-      _id: existingPatient._id,
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      birthDate: req.body.birthDate,
-      medicalNumber: req.body.medicalNumber,
-      email: req.body.email,
-      visitations: existingPatient.visitations,
-    });
-
-    Patient.findByIdAndUpdate(existingPatient._id, patientInstance).exec();
-    res.json(patientInstance);
   }),
 ];

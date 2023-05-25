@@ -3,6 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
+import { requestHeaders } from "../server headers/headers";
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 
 const PatientUpdate = () => {
   const DEFAULT_FORM_OBJECT = {
@@ -17,11 +20,13 @@ const PatientUpdate = () => {
   const { email } = useParams();
   const [form, setForm] = useState(DEFAULT_FORM_OBJECT);
   const [err, setErr] = useState("");
+  const { tokenInstance } = useContext(UserContext);
 
   useEffect(() => {
     const getData = async () => {
       const values = await axios.get(
-        `http://localhost:8080/patient/${email}/update`
+        `http://localhost:8080/patient/${email}/update`,
+        requestHeaders(tokenInstance)
       );
       values.data.birthDate = values.data.birthDate.substring(0, 10);
       setForm(values.data);
@@ -48,7 +53,11 @@ const PatientUpdate = () => {
     e.preventDefault();
     const birthDateISO = new Date(form.birthDate).toISOString();
     setForm({ ...form, birthDate: birthDateISO });
-    await axios.put(`http://localhost:8080/patient/${email}/update`, form);
+    await axios.put(
+      `http://localhost:8080/patient/${email}/update`,
+      form,
+      requestHeaders(tokenInstance)
+    );
     navigate("/admin/patient");
   };
 
