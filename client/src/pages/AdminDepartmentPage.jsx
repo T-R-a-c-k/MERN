@@ -4,17 +4,17 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
+import { requestHeaders } from "../server headers/headers";
 
 function AdminDepatrmentPage() {
   const { tokenInstance } = useContext(UserContext);
   const [data, setData] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const values = await axios.get(`http://localhost:8080/department/list`, {
-        headers: {
-          Authorization: `Bearer ${tokenInstance.token}`,
-        },
-      });
+      const values = await axios.get(
+        `http://localhost:8080/department/list`,
+        requestHeaders(tokenInstance)
+      );
       setData([...values.data]);
     };
     getData();

@@ -30,36 +30,53 @@ exports.departments_create_post = [
     .escape()
     .withMessage("Budget must be specified."),
   asyncHandler(async (req, res, next) => {
-    const errors = validationResult(req);
-    const departmentInstance = new Department({
-      name: req.body.name,
-      location: req.body.location,
-      budget: req.body.budget,
-    });
+    try {
+      const token = auth.processToken(req.headers.authorization);
+      if (token.role !== "admin") {
+        res.status(403).json("authorization error");
+      }
 
-    if (!errors.isEmpty) {
-      res.json(errors);
-      return;
+      const errors = validationResult(req);
+      const departmentInstance = new Department({
+        name: req.body.name,
+        location: req.body.location,
+        budget: req.body.budget,
+      });
+
+      if (!errors.isEmpty) {
+        res.json(errors);
+        return;
+      }
+
+      await departmentInstance.save();
+      res.json(departmentInstance);
+    } catch (err) {
+      res.status(403).json("authorization error");
     }
-
-    await departmentInstance.save();
-    res.json(departmentInstance);
   }),
 ];
 
 exports.departments_update_get = asyncHandler(async (req, res, next) => {
-  if (!auth.validID(req.params.id)) {
-    res.status(404).json("This department does not exist");
-    return;
+  try {
+    const token = auth.processToken(req.headers.authorization);
+    if (token.role !== "admin") {
+      res.status(403).json("authorization error");
+    }
+    if (!auth.validID(req.params.id)) {
+      res.status(404).json("This department does not exist");
+      return;
+    }
+    const id = req.params.id;
+    const selectedDepartment = await Department.findById(id, {
+      _id: 0,
+      name: 1,
+      location: 1,
+      budget: 1,
+    }).exec();
+    res.json(selectedDepartment);
+  } catch (err) {
+    res.status(403).json("authorization error");
   }
-  const id = req.params.id;
-  const selectedDepartment = await Department.findById(id, {
-    _id: 0,
-    name: 1,
-    location: 1,
-    budget: 1,
-  }).exec();
-  res.json(selectedDepartment);
 });
 
 exports.departments_update_put = [
@@ -76,31 +93,39 @@ exports.departments_update_put = [
     .escape()
     .withMessage("Budget must be specified."),
   asyncHandler(async (req, res, next) => {
-    if (!auth.validID(req.params.id)) {
-      res.status(404).json("This department does not exist");
-      return;
+    try {
+      const token = auth.processToken(req.headers.authorization);
+      if (token.role !== "admin") {
+        res.status(403).json("authorization error");
+      }
+      if (!auth.validID(req.params.id)) {
+        res.status(404).json("This department does not exist");
+        return;
+      }
+
+      const errors = validationResult(req);
+      const existingDepartment = Department.findById(req.params.id);
+
+      if (!errors.isEmpty) {
+        res.status(401).json(errors);
+        return;
+      }
+      if (!existingDepartment) {
+        res.status(404).json("This ID does not exist");
+        return;
+      }
+
+      const departmentInstance = new Department({
+        _id: req.params.id,
+        name: req.body.name,
+        location: req.body.location,
+        budget: req.body.budget,
+      });
+
+      Department.findByIdAndUpdate(req.params.id, departmentInstance).exec();
+      res.json(departmentInstance);
+    } catch (err) {
+      res.status(403).json("authorization error");
     }
-
-    const errors = validationResult(req);
-    const existingDepartment = Department.findById(req.params.id);
-
-    if (!errors.isEmpty) {
-      res.status(401).json(errors);
-      return;
-    }
-    if (!existingDepartment) {
-      res.status(404).json("This ID does not exist");
-      return;
-    }
-
-    const departmentInstance = new Department({
-      _id: req.params.id,
-      name: req.body.name,
-      location: req.body.location,
-      budget: req.body.budget,
-    });
-
-    Department.findByIdAndUpdate(req.params.id, departmentInstance).exec();
-    res.json(departmentInstance);
   }),
 ];

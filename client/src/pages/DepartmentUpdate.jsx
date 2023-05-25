@@ -3,13 +3,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
-
+import { requestHeaders } from "../server headers/headers";
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 const DepartmentUpdate = () => {
   const DEFAULT_FORM_OBJECT = {
     name: "",
     location: "",
     budget: 0,
   };
+  const { tokenInstance } = useContext(UserContext);
   const navigate = useNavigate();
   const { id } = useParams();
   const [form, setForm] = useState(DEFAULT_FORM_OBJECT);
@@ -18,12 +21,13 @@ const DepartmentUpdate = () => {
   useEffect(() => {
     const getData = async () => {
       const values = await axios.get(
-        `http://localhost:8080/department/${id}/update`
+        `http://localhost:8080/department/${id}/update`,
+        requestHeaders(tokenInstance)
       );
       setForm(values.data);
     };
     getData();
-  }, [id]);
+  }, [id, tokenInstance]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -42,7 +46,11 @@ const DepartmentUpdate = () => {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:8080/department/${id}/update`, form);
+    await axios.put(
+      `http://localhost:8080/department/${id}/update`,
+      form,
+      requestHeaders(tokenInstance)
+    );
     navigate("/admin/department");
   };
 
