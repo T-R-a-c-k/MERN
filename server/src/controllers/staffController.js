@@ -32,7 +32,7 @@ exports.staff_create_post = asyncHandler(async (req, res, next) => {
     password,
     role,
   } = req.body;
-  const hash = await auth.encrypt(password);
+  const hash = await auth.hash(password);
 
   const staffInstance = new Staff({
     firstName,
@@ -64,7 +64,9 @@ exports.staff_login_post = asyncHandler(async (req, res, next) => {
     if (hash) {
       const userObject = removeUnwantedData(user);
       const token = jwt.sign(userObject, process.env.TOKEN_PASSWORD);
-      res.json({ token, user: userObject });
+      const encryptedToken = auth.encryptToken(token);
+
+      res.json({ token: encryptedToken, user: userObject });
     } else {
       res.status(403);
       res.json("This password and username do not match");

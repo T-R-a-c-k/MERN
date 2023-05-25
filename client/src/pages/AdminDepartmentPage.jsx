@@ -2,12 +2,19 @@ import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 
 function AdminDepatrmentPage() {
+  const { tokenInstance } = useContext(UserContext);
   const [data, setData] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const values = await axios.get(`http://localhost:8080/department/list`);
+      const values = await axios.get(`http://localhost:8080/department/list`, {
+        headers: {
+          Authorization: `Bearer ${tokenInstance.token}`,
+        },
+      });
       setData([...values.data]);
     };
     getData();

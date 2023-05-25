@@ -4,8 +4,17 @@ const { body, validationResult } = require("express-validator");
 const auth = require("../authenticationServer/encryptServer");
 
 exports.departments_list = asyncHandler(async (req, res, next) => {
-  const allDepartments = await Department.find({}, { __v: 0 }).exec();
-  res.json(allDepartments);
+  auth.processToken(req.headers.authorization);
+  try {
+    const token = auth.processToken(req.headers.authorization);
+    if (token.role !== "admin") {
+      res.status(403).json("authorization error");
+    }
+    const allDepartments = await Department.find({}, { __v: 0 }).exec();
+    res.json(allDepartments);
+  } catch (err) {
+    res.status(403).json("authorization error");
+  }
 });
 
 exports.departments_create_post = [
