@@ -10,4 +10,6 @@ router.get("/:id/update", PrescriptionController.prescription_update_get);
 
 router.put("/:id/update", PrescriptionController.prescription_update_put);
 
+router.delete("/:id/delete", PrescriptionController.prescription_delete_delete);
+
 module.exports = router;

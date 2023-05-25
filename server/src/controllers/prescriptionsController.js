@@ -130,3 +130,24 @@ exports.prescription_update_put = [
     }
   }),
 ];
+
+exports.prescription_delete_delete = asyncHandler(async (req, res, next) => {
+  try {
+    const token = processToken(req.headers.authorization);
+    if (token.role !== "admin") {
+      res.status(403).json("authorization error");
+    }
+    const prescriptionInstance = await Prescription.findOne({
+      name: req.params.id,
+    }).exec();
+    if (!prescriptionInstance) {
+      res.status(404).json("Prescription not found");
+      return;
+    }
+
+    Prescription.deleteOne({ _id: prescriptionInstance._id }).exec();
+    res.json("Successfully deleted");
+  } catch (err) {
+    res.status(403).json("authorization error");
+  }
+});
