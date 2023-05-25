@@ -18,7 +18,7 @@ function SelectedItemDelete() {
     const path = window.location.pathname.split("/");
     const collection = path[2];
 
-    const values = await axios.delete(
+    await axios.delete(
       `http://localhost:8080/${collection}/${id || email}/delete`,
       requestHeaders(tokenInstance)
     );
