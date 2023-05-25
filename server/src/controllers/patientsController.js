@@ -146,3 +146,24 @@ exports.patient_update_put = [
     }
   }),
 ];
+
+exports.patient_delete_delete = asyncHandler(async (req, res, next) => {
+  try {
+    const token = processToken(req.headers.authorization);
+    if (token.role !== "admin") {
+      res.status(403).json("authorization error");
+    }
+    const patientInstance = await Patient.findOne({
+      email: req.params.email,
+    }).exec();
+    if (!patientInstance) {
+      res.status(404).json("Patient not found");
+      return;
+    }
+
+    Patient.deleteOne({ _id: patientInstance._id }).exec();
+    res.json("Successfully deleted");
+  } catch (err) {
+    res.status(403).json("authorization error");
+  }
+});

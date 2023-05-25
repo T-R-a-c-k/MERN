@@ -10,4 +10,6 @@ router.get("/:email/update", PatientController.patient_update_get);
 
 router.put("/:email/update", PatientController.patient_update_put);
 
+router.delete("/:email/delete", PatientController.patient_delete_delete);
+
 module.exports = router;

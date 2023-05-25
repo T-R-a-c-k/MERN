@@ -137,6 +137,10 @@ exports.departments_delete_delete = asyncHandler(async (req, res, next) => {
       res.status(403).json("authorization error");
     }
     const departmentInstance = await Department.findById(req.params.id).exec();
+    if (!departmentInstance) {
+      res.status(404).json("department not found");
+      return;
+    }
     Department.deleteOne(departmentInstance).exec();
     res.json("Successfully deleted.");
   } catch (err) {
