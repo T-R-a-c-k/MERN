@@ -64,7 +64,7 @@ function AdminPatientPage() {
                     <Link to={item.email}>Edit</Link>
                   </Button>
                 </td>
-                <td>{item.birthDateFormatted}</td>
+                <td>{item.birthDate.substring(0, 10)}</td>
                 <td>{item.medicalNumber}</td>
                 <td>{item.email}</td>
                 <td>

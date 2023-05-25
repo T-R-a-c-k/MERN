@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const { DateTime } = require("luxon");
 
-const Staff = new Schema(
+const StaffSchema = new Schema(
   {
     firstName: { type: String, required: true, maxLength: 100, minlength: 1 },
     lastName: { type: String, required: true, maxLength: 100, minlength: 1 },
@@ -21,12 +21,12 @@ const Staff = new Schema(
   }
 );
 
-Staff.virtual("fullName").get(function () {
+StaffSchema.virtual("fullName").get(function () {
   return `${this.firstName} ${this.lastName}`;
 });
 
-Staff.virtual("hireDateFormatted").get(function () {
+StaffSchema.virtual("hireDateFormatted").get(function () {
   return DateTime.fromJSDate(this.hireDate).toLocaleString(DateTime.DATE_MED);
 });
 
-module.exports = mongoose.model("Staff", Staff);
+module.exports = mongoose.model("Staff", StaffSchema);

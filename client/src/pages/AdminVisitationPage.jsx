@@ -2,21 +2,23 @@ import React, { useEffect, useState } from "react";
 import { Table, Button } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-//TO DO
-//Add a patient to each visitation
-//Reformat this
-//Probably will be the last thing done
+import { requestHeaders } from "../server headers/headers";
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 
 function AdminVisitationPage() {
   const [data, setData] = useState([]);
+  const { tokenInstance } = useContext(UserContext);
   useEffect(() => {
     const getData = async () => {
-      const values = await axios.get(`http://localhost:8080/visitation/list`);
+      const values = await axios.get(
+        `http://localhost:8080/visitation/list`,
+        requestHeaders(tokenInstance)
+      );
       setData([...values.data]);
     };
     getData();
-  }, []);
+  }, [tokenInstance]);
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Visitation table</h1>
@@ -57,7 +59,7 @@ function AdminVisitationPage() {
                     <Link to={item._id}>Edit</Link>
                   </Button>
                 </td>
-                <td>{item.occurredDateFormatted}</td>
+                <td>{item.occurredDate.substring(0, 10)}</td>
                 <td>{item.note}</td>
                 <td>
                   {item.prescription.map((item) => {

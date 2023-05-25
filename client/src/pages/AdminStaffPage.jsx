@@ -78,7 +78,7 @@ function AdminStaffPage() {
                 <td>{item.deptID}</td>
                 <td>{item.phoneNumber}</td>
                 <td>{item.email}</td>
-                <td>{item.hireDateFormatted}</td>
+                <td>{item.hireDate.substring(0, 10)}</td>
                 <td>{item.role}</td>
               </tr>
             );

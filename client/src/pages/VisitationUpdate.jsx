@@ -3,6 +3,9 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
+import { requestHeaders } from "../server headers/headers";
+import { UserContext } from "../context/UserProvider";
+import { useContext } from "react";
 
 const VisitationUpdate = () => {
   const DEFAULT_FORM_OBJECT = {
@@ -10,6 +13,8 @@ const VisitationUpdate = () => {
     note: "",
     prescription: [],
   };
+
+  const { tokenInstance } = useContext(UserContext);
   const navigate = useNavigate();
   const { id } = useParams();
   const [prescriptions, setPrescriptions] = useState([]);
@@ -20,18 +25,20 @@ const VisitationUpdate = () => {
   useEffect(() => {
     const getData = async () => {
       const values = await axios.get(
-        `http://localhost:8080/visitation/${id}/update`
+        `http://localhost:8080/visitation/${id}/update`,
+        requestHeaders(tokenInstance)
       );
       values.data.occurredDate = values.data.occurredDate.substring(0, 10);
       setForm(values.data);
 
       const allPrescriptions = await axios.get(
-        "http://localhost:8080/prescription/list"
+        "http://localhost:8080/prescription/list",
+        requestHeaders(tokenInstance)
       );
       setPrescriptions([...allPrescriptions.data]);
     };
     getData();
-  }, [id]);
+  }, [id, tokenInstance]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -74,7 +81,11 @@ const VisitationUpdate = () => {
     setValidated(true);
     const occurredDateISO = new Date(form.occurredDate).toISOString();
     setForm({ ...form, occurredDate: occurredDateISO });
-    await axios.put(`http://localhost:8080/visitation/${id}/update`, form);
+    await axios.put(
+      `http://localhost:8080/visitation/${id}/update`,
+      form,
+      requestHeaders(tokenInstance)
+    );
     navigate("/admin/visitation");
   };
 
