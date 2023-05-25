@@ -120,3 +120,24 @@ exports.visitation_update_put = [
     }
   }),
 ];
+
+exports.visitation_delete_delete = asyncHandler(async (req, res, next) => {
+  try {
+    const token = auth.processToken(req.headers.authorization);
+    if (token.role !== "admin") {
+      res.status(403).json("authorization error");
+    }
+    const visitationInstance = await Visitation.findOne({
+      _id: req.params.id,
+    }).exec();
+    if (!visitationInstance) {
+      res.status(404).json("visitation not found");
+      return;
+    }
+
+    Visitation.deleteOne({ _id: visitationInstance._id }).exec();
+    res.json("Successfully deleted.");
+  } catch (err) {
+    res.status(403).json("authorization error");
+  }
+});

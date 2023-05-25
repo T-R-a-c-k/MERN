@@ -10,4 +10,6 @@ router.get("/:id/update", VisitationController.visitation_update_get);
 
 router.put("/:id/update", VisitationController.visitation_update_put);
 
+router.delete("/:id/delete", VisitationController.visitation_delete_delete);
+
 module.exports = router;
