@@ -4,7 +4,6 @@ const { body, validationResult } = require("express-validator");
 const auth = require("../authenticationServer/encryptServer");
 
 exports.departments_list = asyncHandler(async (req, res, next) => {
-  auth.processToken(req.headers.authorization);
   try {
     const token = auth.processToken(req.headers.authorization);
     if (token.role !== "admin") {
