@@ -7,7 +7,7 @@ import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
 
-const StaffUpdate = () => {
+const StaffCreate = () => {
   const DEFAULT_FORM_OBJECT = {
     firstName: "",
     lastName: "",
@@ -17,6 +17,7 @@ const StaffUpdate = () => {
     phoneNumber: "",
     email: "",
     hireDate: "",
+    password: "",
     role: "",
   };
 
@@ -30,13 +31,6 @@ const StaffUpdate = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const values = await axios.get(
-        `http://localhost:8080/staff/${email}/update`,
-        requestHeaders(tokenInstance)
-      );
-      values.data.hireDate = values.data.hireDate.substring(0, 10);
-      setForm(values.data);
-
       const departments = await axios.get(
         "http://localhost:8080/department/list",
         requestHeaders(tokenInstance)
@@ -72,8 +66,8 @@ const StaffUpdate = () => {
     setValidated(true);
     const hireDateISO = new Date(form.hireDate).toISOString();
     setForm({ ...form, hireDate: hireDateISO });
-    await axios.put(
-      `http://localhost:8080/staff/${email}/update`,
+    await axios.post(
+      `http://localhost:8080/staff/create`,
       form,
       requestHeaders(tokenInstance)
     );
@@ -222,6 +216,21 @@ const StaffUpdate = () => {
           </Form.Control.Feedback>
         </Form.Group>
 
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            value={form.password}
+            onChange={updateFormValue("password")}
+            min={16}
+            required
+          />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            A 16 character password is required.
+          </Form.Control.Feedback>
+        </Form.Group>
+
         <Form.Group className="mb-3" controlId="formBasicRole">
           <Form.Label>Role</Form.Label>
           <Form.Control
@@ -244,4 +253,4 @@ const StaffUpdate = () => {
   );
 };
 
-export default StaffUpdate;
+export default StaffCreate;
