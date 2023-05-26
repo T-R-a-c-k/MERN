@@ -24,12 +24,14 @@ const VisitationUpdate = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const values = await axios.get(
-        `http://localhost:8080/visitation/${id}/update`,
-        requestHeaders(tokenInstance)
-      );
-      values.data.occurredDate = values.data.occurredDate.substring(0, 10);
-      setForm(values.data);
+      if (id) {
+        const values = await axios.get(
+          `http://localhost:8080/visitation/${id}/update`,
+          requestHeaders(tokenInstance)
+        );
+        values.data.occurredDate = values.data.occurredDate.substring(0, 10);
+        setForm(values.data);
+      }
 
       const allPrescriptions = await axios.get(
         "http://localhost:8080/prescription/list",

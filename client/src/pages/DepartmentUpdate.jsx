@@ -6,7 +6,7 @@ import { Form, Button } from "react-bootstrap";
 import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
-const DepartmentUpdate = () => {
+const DepartmentUpdate = ({ method }) => {
   const DEFAULT_FORM_OBJECT = {
     name: "",
     location: "",
@@ -46,11 +46,20 @@ const DepartmentUpdate = () => {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    await axios.put(
-      `http://localhost:8080/department/${id}/update`,
-      form,
-      requestHeaders(tokenInstance)
-    );
+    if (method === "update") {
+      await axios.put(
+        `http://localhost:8080/department/${id}/update`,
+        form,
+        requestHeaders(tokenInstance)
+      );
+    }
+    if (method === "create") {
+      await axios.post(
+        `http://localhost:8080/department/create`,
+        form,
+        requestHeaders(tokenInstance)
+      );
+    }
     navigate("/admin/department");
   };
 

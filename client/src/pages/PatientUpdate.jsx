@@ -7,7 +7,7 @@ import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
 
-const PatientUpdate = () => {
+const PatientUpdate = ({ method }) => {
   const DEFAULT_FORM_OBJECT = {
     firstName: "",
     lastName: "",
@@ -31,7 +31,9 @@ const PatientUpdate = () => {
       values.data.birthDate = values.data.birthDate.substring(0, 10);
       setForm(values.data);
     };
-    getData();
+    if (email) {
+      getData();
+    }
   }, [email, tokenInstance]);
 
   useEffect(() => {
@@ -52,12 +54,22 @@ const PatientUpdate = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     const birthDateISO = new Date(form.birthDate).toISOString();
+
     setForm({ ...form, birthDate: birthDateISO });
-    await axios.put(
-      `http://localhost:8080/patient/${email}/update`,
-      form,
-      requestHeaders(tokenInstance)
-    );
+    if (method === "update") {
+      await axios.put(
+        `http://localhost:8080/patient/${email}/update`,
+        form,
+        requestHeaders(tokenInstance)
+      );
+    }
+    if (method === "create") {
+      await axios.post(
+        `http://localhost:8080/patient/create`,
+        form,
+        requestHeaders(tokenInstance)
+      );
+    }
     navigate("/admin/patient");
   };
 

@@ -64,46 +64,58 @@ function AppRoutes() {
               <Route index element={<AdminDepartmentPage />} />
               <Route path=":id">
                 <Route index element={<SelectedItem />} />
-                <Route path="create" element={<Staff />} />
                 <Route path="delete" element={<SelectedItemDelete />} />
-                <Route path="update" element={<DepartmentUpdate />} />
+                <Route
+                  path="update"
+                  element={<DepartmentUpdate method={"update"} />}
+                />
               </Route>
+              <Route
+                path="create"
+                element={<DepartmentUpdate method={"create"} />}
+              />
             </Route>
             <Route path="patient">
               <Route index element={<AdminPatientPage />} />
               <Route path=":email">
                 <Route index element={<SelectedItem />} />
-                <Route path="create" element={<Staff />} />
                 <Route path="delete" element={<SelectedItemDelete />} />
-                <Route path="update" element={<PatientUpdate />} />
+                <Route
+                  path="update"
+                  element={<PatientUpdate method={"update"} />}
+                />
               </Route>
+              <Route
+                path="create"
+                element={<PatientUpdate method={"create"} />}
+              />
             </Route>
             <Route path="prescription">
               <Route index element={<AdminPrescriptionPage />} />
               <Route path=":id">
                 <Route index element={<SelectedItem />} />
-                <Route path="create" element={<Staff />} />
                 <Route path="delete" element={<SelectedItemDelete />} />
                 <Route path="update" element={<PrescriptionUpdate />} />
               </Route>
+              <Route path="create" element={<PrescriptionUpdate />} />
             </Route>
             <Route path="staff">
               <Route index element={<AdminStaffPage />} />
               <Route path=":email">
                 <Route index element={<SelectedItem />} />
-                <Route path="create" element={<Staff />} />
                 <Route path="delete" element={<SelectedItemDelete />} />
                 <Route path="update" element={<StaffUpdate />} />
               </Route>
+              <Route path="create" element={<StaffUpdate />} />
             </Route>
             <Route path="visitation">
               <Route index element={<AdminVisitationPage />} />
               <Route path=":id">
                 <Route index element={<SelectedItem />} />
-                <Route path="create" element={<Staff />} />
                 <Route path="delete" element={<SelectedItemDelete />} />
                 <Route path="update" element={<VisitationUpdate />} />
               </Route>
+              <Route path="create" element={<VisitationUpdate />} />
             </Route>
           </Route>
         )}

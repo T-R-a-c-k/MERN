@@ -30,12 +30,14 @@ const StaffUpdate = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const values = await axios.get(
-        `http://localhost:8080/staff/${email}/update`,
-        requestHeaders(tokenInstance)
-      );
-      values.data.hireDate = values.data.hireDate.substring(0, 10);
-      setForm(values.data);
+      if (email) {
+        const values = await axios.get(
+          `http://localhost:8080/staff/${email}/update`,
+          requestHeaders(tokenInstance)
+        );
+        values.data.hireDate = values.data.hireDate.substring(0, 10);
+        setForm(values.data);
+      }
 
       const departments = await axios.get(
         "http://localhost:8080/department/list",

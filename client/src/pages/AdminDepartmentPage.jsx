@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table, Button } from "react-bootstrap";
+import { Table, Button, Container } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserProvider";
@@ -65,6 +65,13 @@ function AdminDepatrmentPage() {
           })}
         </tbody>
       </Table>
+      <Container fluid style={{ textAlign: "center" }}>
+        <Button>
+          <Link to="create" style={{ color: "white" }}>
+            Create
+          </Link>
+        </Button>
+      </Container>
     </>
   );
 }
