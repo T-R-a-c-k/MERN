@@ -62,7 +62,6 @@ exports.staff_create_post = asyncHandler(async (req, res, next) => {
       password: hash,
       role,
     });
-    console.log(staffInstance);
     await staffInstance.save();
     res.json(staffInstance);
   } catch (err) {

@@ -120,9 +120,15 @@ function AppRoutes() {
               <Route path=":id">
                 <Route index element={<SelectedItem />} />
                 <Route path="delete" element={<SelectedItemDelete />} />
-                <Route path="update" element={<VisitationUpdate />} />
+                <Route
+                  path="update"
+                  element={<VisitationUpdate method={"update"} />}
+                />
               </Route>
-              <Route path="create" element={<VisitationUpdate />} />
+              <Route
+                path="create"
+                element={<VisitationUpdate method={"create"} />}
+              />
             </Route>
           </Route>
         )}

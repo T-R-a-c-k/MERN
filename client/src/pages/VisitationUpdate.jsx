@@ -7,7 +7,7 @@ import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
 
-const VisitationUpdate = () => {
+const VisitationUpdate = ({ method }) => {
   const DEFAULT_FORM_OBJECT = {
     occurredDate: "",
     note: "",
@@ -83,11 +83,20 @@ const VisitationUpdate = () => {
     setValidated(true);
     const occurredDateISO = new Date(form.occurredDate).toISOString();
     setForm({ ...form, occurredDate: occurredDateISO });
-    await axios.put(
-      `http://localhost:8080/visitation/${id}/update`,
-      form,
-      requestHeaders(tokenInstance)
-    );
+    if (method === "update") {
+      await axios.put(
+        `http://localhost:8080/visitation/${id}/update`,
+        form,
+        requestHeaders(tokenInstance)
+      );
+    }
+    if (method === "create") {
+      await axios.post(
+        `http://localhost:8080/visitation/create`,
+        form,
+        requestHeaders(tokenInstance)
+      );
+    }
     navigate("/admin/visitation");
   };
 
