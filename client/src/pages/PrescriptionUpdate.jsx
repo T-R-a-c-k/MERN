@@ -7,11 +7,11 @@ import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
 
-const PrescriptionUpdate = () => {
+const PrescriptionUpdate = ({ method }) => {
   const DEFAULT_FORM_OBJECT = {
     name: "",
     usage: "",
-    sideEffects: "",
+    sideEffects: [],
   };
 
   const { tokenInstance } = useContext(UserContext);
@@ -26,10 +26,12 @@ const PrescriptionUpdate = () => {
         `http://localhost:8080/prescription/${id}/update`,
         requestHeaders(tokenInstance)
       );
-      values.data.sideEffects = values.data.sideEffects.toString();
+      //values.data.sideEffects = values.data.sideEffects.toString();
       setForm(values.data);
     };
-    getData();
+    if (id) {
+      getData();
+    }
   }, [id, tokenInstance]);
 
   useEffect(() => {
@@ -47,15 +49,30 @@ const PrescriptionUpdate = () => {
       [key]: e.target.value,
     });
   };
+
+  const updateFormArray = (key) => (e) => {
+    const sideEffectsText = e.target.value.split(",");
+    setForm({
+      ...form,
+      sideEffects: [...sideEffectsText],
+    });
+  };
   const submitHandler = async (e) => {
     e.preventDefault();
-    const sideEffectsText = form.sideEffects.split(",");
-    setForm({ ...form, sideEffects: sideEffectsText });
-    await axios.put(
-      `http://localhost:8080/prescription/${id}/update`,
-      form,
-      requestHeaders(tokenInstance)
-    );
+    if (method === "update") {
+      await axios.put(
+        `http://localhost:8080/prescription/${id}/update`,
+        form,
+        requestHeaders(tokenInstance)
+      );
+    }
+    if (method === "create") {
+      await axios.post(
+        `http://localhost:8080/prescription/create`,
+        form,
+        requestHeaders(tokenInstance)
+      );
+    }
     navigate("/admin/prescription");
   };
 
@@ -101,7 +118,7 @@ const PrescriptionUpdate = () => {
             as="textarea"
             rows={5}
             value={form.sideEffects}
-            onChange={updateFormValue("sideEffects")}
+            onChange={updateFormArray()}
           />
         </Form.Group>
         <Button variant="primary" type="submit">

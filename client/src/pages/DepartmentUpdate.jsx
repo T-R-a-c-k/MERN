@@ -26,7 +26,9 @@ const DepartmentUpdate = ({ method }) => {
       );
       setForm(values.data);
     };
-    getData();
+    if (id) {
+      getData();
+    }
   }, [id, tokenInstance]);
 
   useEffect(() => {

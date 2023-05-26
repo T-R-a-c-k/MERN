@@ -95,9 +95,15 @@ function AppRoutes() {
               <Route path=":id">
                 <Route index element={<SelectedItem />} />
                 <Route path="delete" element={<SelectedItemDelete />} />
-                <Route path="update" element={<PrescriptionUpdate />} />
+                <Route
+                  path="update"
+                  element={<PrescriptionUpdate method={"update"} />}
+                />
               </Route>
-              <Route path="create" element={<PrescriptionUpdate />} />
+              <Route
+                path="create"
+                element={<PrescriptionUpdate method={"create"} />}
+              />
             </Route>
             <Route path="staff">
               <Route index element={<AdminStaffPage />} />
