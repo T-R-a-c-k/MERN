@@ -77,27 +77,27 @@ const VisitationUpdate = ({ method }) => {
     e.preventDefault();
     if (submitForm.checkValidity() === false) {
       e.stopPropagation();
-      return;
+    } else {
+      const occurredDateISO = new Date(form.occurredDate).toISOString();
+      setForm({ ...form, occurredDate: occurredDateISO });
+      if (method === "update") {
+        await axios.put(
+          `http://localhost:8080/visitation/${id}/update`,
+          form,
+          requestHeaders(tokenInstance)
+        );
+      }
+      if (method === "create") {
+        await axios.post(
+          `http://localhost:8080/visitation/create`,
+          form,
+          requestHeaders(tokenInstance)
+        );
+      }
+      navigate("/admin/visitation");
     }
 
     setValidated(true);
-    const occurredDateISO = new Date(form.occurredDate).toISOString();
-    setForm({ ...form, occurredDate: occurredDateISO });
-    if (method === "update") {
-      await axios.put(
-        `http://localhost:8080/visitation/${id}/update`,
-        form,
-        requestHeaders(tokenInstance)
-      );
-    }
-    if (method === "create") {
-      await axios.post(
-        `http://localhost:8080/visitation/create`,
-        form,
-        requestHeaders(tokenInstance)
-      );
-    }
-    navigate("/admin/visitation");
   };
 
   return (
@@ -142,7 +142,7 @@ const VisitationUpdate = ({ method }) => {
           <Form.Text className="text-muted"></Form.Text>
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           <Form.Control.Feedback type="invalid">
-            A first name is required.
+            A note is required.
           </Form.Control.Feedback>
         </Form.Group>
 
@@ -162,10 +162,6 @@ const VisitationUpdate = ({ method }) => {
               </div>
             ))}
           </div>
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-          <Form.Control.Feedback type="invalid">
-            A valid department ID is required.
-          </Form.Control.Feedback>
         </Form.Group>
 
         <Button variant="primary" type="submit">

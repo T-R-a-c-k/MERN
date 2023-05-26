@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
 import { requestHeaders } from "../server headers/headers";
@@ -66,18 +66,18 @@ const StaffUpdate = () => {
     e.preventDefault();
     if (submitForm.checkValidity() === false) {
       e.stopPropagation();
-      return;
+    } else {
+      const hireDateISO = new Date(form.hireDate).toISOString();
+      setForm({ ...form, hireDate: hireDateISO });
+      await axios.put(
+        `http://localhost:8080/staff/${email}/update`,
+        form,
+        requestHeaders(tokenInstance)
+      );
+      navigate("/admin/staff");
     }
 
     setValidated(true);
-    const hireDateISO = new Date(form.hireDate).toISOString();
-    setForm({ ...form, hireDate: hireDateISO });
-    await axios.put(
-      `http://localhost:8080/staff/${email}/update`,
-      form,
-      requestHeaders(tokenInstance)
-    );
-    navigate("/admin/staff");
   };
 
   return (
@@ -90,13 +90,7 @@ const StaffUpdate = () => {
         marginBottom: "2%",
       }}
     >
-      <Form
-        noValidate
-        validated={validated}
-        onSubmit={(e) => {
-          submitHandler(e);
-        }}
-      >
+      <Form noValidate validated={validated} onSubmit={submitHandler}>
         <Form.Group className="mb-3" controlId="formBasicFirstName">
           <Form.Label>First Name</Form.Label>
           <Form.Control

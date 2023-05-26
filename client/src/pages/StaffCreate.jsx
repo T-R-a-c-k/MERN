@@ -61,17 +61,18 @@ const StaffCreate = () => {
     if (submitForm.checkValidity() === false) {
       e.stopPropagation();
       return;
+    } else {
+      const hireDateISO = new Date(form.hireDate).toISOString();
+      setForm({ ...form, hireDate: hireDateISO });
+      await axios.post(
+        `http://localhost:8080/staff/create`,
+        form,
+        requestHeaders(tokenInstance)
+      );
+      navigate("/admin/staff");
     }
 
     setValidated(true);
-    const hireDateISO = new Date(form.hireDate).toISOString();
-    setForm({ ...form, hireDate: hireDateISO });
-    await axios.post(
-      `http://localhost:8080/staff/create`,
-      form,
-      requestHeaders(tokenInstance)
-    );
-    navigate("/admin/staff");
   };
 
   return (

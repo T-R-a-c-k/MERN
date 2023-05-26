@@ -14,6 +14,7 @@ const DepartmentUpdate = ({ method }) => {
   };
   const { tokenInstance } = useContext(UserContext);
   const navigate = useNavigate();
+  const [validated, setValidated] = useState(false);
   const { id } = useParams();
   const [form, setForm] = useState(DEFAULT_FORM_OBJECT);
   const [err, setErr] = useState("");
@@ -47,22 +48,29 @@ const DepartmentUpdate = ({ method }) => {
     });
   };
   const submitHandler = async (e) => {
+    const submitForm = e.currentTarget;
     e.preventDefault();
-    if (method === "update") {
-      await axios.put(
-        `http://localhost:8080/department/${id}/update`,
-        form,
-        requestHeaders(tokenInstance)
-      );
+    if (submitForm.checkValidity() === false) {
+      e.stopPropagation();
+    } else {
+      if (method === "update") {
+        await axios.put(
+          `http://localhost:8080/department/${id}/update`,
+          form,
+          requestHeaders(tokenInstance)
+        );
+      }
+      if (method === "create") {
+        await axios.post(
+          `http://localhost:8080/department/create`,
+          form,
+          requestHeaders(tokenInstance)
+        );
+      }
+      navigate("/admin/department");
     }
-    if (method === "create") {
-      await axios.post(
-        `http://localhost:8080/department/create`,
-        form,
-        requestHeaders(tokenInstance)
-      );
-    }
-    navigate("/admin/department");
+
+    setValidated(true);
   };
 
   return (
@@ -76,6 +84,8 @@ const DepartmentUpdate = ({ method }) => {
       }}
     >
       <Form
+        noValidate
+        validated={validated}
         onSubmit={(e) => {
           submitHandler(e);
         }}
@@ -87,8 +97,12 @@ const DepartmentUpdate = ({ method }) => {
             placeholder={"Name"}
             value={form.name}
             onChange={updateFormValue("name")}
+            required
           />
-          <Form.Text className="text-muted"></Form.Text>
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            A department is required.
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicLocation">
@@ -98,7 +112,12 @@ const DepartmentUpdate = ({ method }) => {
             placeholder="location"
             value={form.location}
             onChange={updateFormValue("location")}
+            required
           />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            A location is required.
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicBudget">
@@ -108,7 +127,12 @@ const DepartmentUpdate = ({ method }) => {
             placeholder="0"
             value={form.budget}
             onChange={updateFormValue("budget")}
+            required
           />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            A budget is required.
+          </Form.Control.Feedback>
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit
