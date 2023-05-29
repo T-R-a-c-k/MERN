@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import Cards from "./Cards";
 
 import {
   MDBCol,
@@ -38,45 +39,6 @@ const cards = [
     createCard("Research", "Vist Research Page", "/research"),
   ],
 ];
-
-const Cards = () => {
-  return (
-    <>
-      {cards.map((cardArray, arrIndex) => {
-        return (
-          <MDBCol key={arrIndex} className="py-5">
-            {cardArray.map((card, index) => {
-              return (
-                <div style={{ display: "flex", justifyContent: "center" }}>
-                  <Card
-                    className={Styles.cardLink}
-                    key={index}
-                    style={{
-                      width: "18rem",
-                      marginTop: "5%",
-                      backgroundColor: "#445f5a",
-                    }}
-                  >
-                    <Card.Body>
-                      <Card.Title style={{ color: "white" }}>
-                        {card.title}
-                      </Card.Title>
-                    </Card.Body>
-                    <Card.Body>
-                      <Link to={card.link} style={{ color: "white" }}>
-                        {card.linkTitle}
-                      </Link>
-                    </Card.Body>
-                  </Card>
-                </div>
-              );
-            })}
-          </MDBCol>
-        );
-      })}
-    </>
-  );
-};
 
 const NewsContainer = () => {
   return (
@@ -211,7 +173,7 @@ const NewsContainer = () => {
             </MDBCard>
           </MDBContainer>
         </MDBCol>
-        <Cards />
+        <Cards cards={cards} />
       </MDBRow>
     </MDBContainer>
   );

@@ -9,8 +9,7 @@ import {
 
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-
-//TODO: added ability to change style / classname / height if specificed via props
+import uniqid from "uniqid";
 
 const renderTooltip = (props) => (
   <Tooltip id="button-tooltip" {...props}>
@@ -22,10 +21,10 @@ const renderTooltip = (props) => (
 const PageCarousel = (props) => {
   const { toDisplay } = props;
   return (
-    <Carousel fade keyboard={true} indicators={true}>
+    <Carousel fade keyboard={"true"} indicators={"true"}>
       {toDisplay.map((item, index) => {
         return (
-          <Carousel.Item style={halfCarouselItem}>
+          <Carousel.Item style={halfCarouselItem} key={uniqid()}>
             <img
               className={imageClass}
               style={{ height: imageHeight }}

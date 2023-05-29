@@ -1,4 +1,5 @@
 import Accordion from "react-bootstrap/Accordion";
+import React from "react";
 import { Container } from "react-bootstrap";
 
 const AccordianItems = (props) => {
@@ -11,7 +12,7 @@ const AccordianItems = (props) => {
         {toDisplay.map((items) => {
           currentTitle++;
           return (
-            <>
+            <React.Fragment key={currentTitle}>
               <h1 style={{ margin: "2%" }}>{titles[currentTitle - 1]}</h1>
               {items.map((item) => {
                 currentItem++;
@@ -22,7 +23,7 @@ const AccordianItems = (props) => {
                   </Accordion.Item>
                 );
               })}
-            </>
+            </React.Fragment>
           );
         })}
       </Accordion>
