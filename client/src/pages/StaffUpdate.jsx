@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import axios from "axios";
 import { Form, Button } from "react-bootstrap";
 import { requestHeaders } from "../server headers/headers";

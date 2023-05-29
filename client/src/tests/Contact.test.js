@@ -2,27 +2,43 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
-import About from "../pages/About";
 import createAccordianInformation from "../formatting/accordianInformation";
 import createCarouselInfo from "../formatting/carouselInformation";
+import Contact from "../pages/Contact";
 
-const aboutInformation = [
+const contactInformation = [
   createCarouselInfo(
-    "https://upload.wikimedia.org/wikipedia/commons/1/11/Blue_question_mark_icon.svg",
-    "About slide",
-    "About",
-    "For information about us."
+    "https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "Contact slide",
+    "Contact",
+    "Any and all inqueries for how to contact us."
   ),
 ];
 
-const aboutAccordianInfo = [
+const contactAccordianInfo = [
   [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
     createAccordianInformation(
       "Common Question",
       "A common answer that would be displayed for the stated common question or concern."
     ),
   ],
   [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
     createAccordianInformation(
       "Common Question",
       "A common answer that would be displayed for the stated common question or concern."
@@ -44,7 +60,7 @@ const aboutAccordianInfo = [
   ],
 ];
 
-const aboutAccordianTitles = [
+const contactAccordianTitles = [
   "An important Concern",
   "Some Other Issue",
   "Something to Consider",
@@ -54,14 +70,14 @@ describe("About Component", () => {
   it("renders the contents correctly", () => {
     render(
       <MemoryRouter>
-        <About />
+        <Contact />
       </MemoryRouter>
     );
     // Assert the presence of the images on the carousel
 
     const imageElements = screen.queryAllByRole("img");
 
-    aboutInformation.forEach((info) => {
+    contactInformation.forEach((info) => {
       const matchingImage = imageElements.find(
         (image) => image.getAttribute("src") === info.src
       );
@@ -69,12 +85,12 @@ describe("About Component", () => {
     });
 
     // Assert the presence of the accordion titles
-    aboutAccordianTitles.forEach((title) => {
+    contactAccordianTitles.forEach((title) => {
       expect(screen.getByText(title)).toBeInTheDocument();
     });
 
     // Assert the presence of the accordion items
-    aboutAccordianInfo.flat().forEach((item) => {
+    contactAccordianInfo.flat().forEach((item) => {
       const headerElements = screen.queryAllByText(item.header);
       const descriptionElements = screen.queryAllByText(item.description);
 

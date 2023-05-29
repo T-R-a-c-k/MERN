@@ -2,27 +2,43 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
-import About from "../pages/About";
+import PreparingCare from "../pages/PreparingCare";
 import createAccordianInformation from "../formatting/accordianInformation";
 import createCarouselInfo from "../formatting/carouselInformation";
 
-const aboutInformation = [
+const preparingCareInformation = [
   createCarouselInfo(
-    "https://upload.wikimedia.org/wikipedia/commons/1/11/Blue_question_mark_icon.svg",
-    "About slide",
-    "About",
-    "For information about us."
+    "https://www.shutterstock.com/image-photo/patient-lying-down-on-hospital-600w-1706929777.jpg",
+    "Preparing Care slide",
+    "Preparing for Care",
+    "The procedures that follow when being hospitalized to this location."
   ),
 ];
 
-const aboutAccordianInfo = [
+const preparingCareAccordianInfo = [
   [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
     createAccordianInformation(
       "Common Question",
       "A common answer that would be displayed for the stated common question or concern."
     ),
   ],
   [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
     createAccordianInformation(
       "Common Question",
       "A common answer that would be displayed for the stated common question or concern."
@@ -44,24 +60,24 @@ const aboutAccordianInfo = [
   ],
 ];
 
-const aboutAccordianTitles = [
+const preparingCareAccordianTitles = [
   "An important Concern",
   "Some Other Issue",
   "Something to Consider",
 ];
 
-describe("About Component", () => {
+describe("PreparingCare Component", () => {
   it("renders the contents correctly", () => {
     render(
       <MemoryRouter>
-        <About />
+        <PreparingCare />
       </MemoryRouter>
     );
     // Assert the presence of the images on the carousel
 
     const imageElements = screen.queryAllByRole("img");
 
-    aboutInformation.forEach((info) => {
+    preparingCareInformation.forEach((info) => {
       const matchingImage = imageElements.find(
         (image) => image.getAttribute("src") === info.src
       );
@@ -69,12 +85,12 @@ describe("About Component", () => {
     });
 
     // Assert the presence of the accordion titles
-    aboutAccordianTitles.forEach((title) => {
+    preparingCareAccordianTitles.forEach((title) => {
       expect(screen.getByText(title)).toBeInTheDocument();
     });
 
     // Assert the presence of the accordion items
-    aboutAccordianInfo.flat().forEach((item) => {
+    preparingCareAccordianInfo.flat().forEach((item) => {
       const headerElements = screen.queryAllByText(item.header);
       const descriptionElements = screen.queryAllByText(item.description);
 

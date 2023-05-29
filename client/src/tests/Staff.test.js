@@ -2,27 +2,43 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { MemoryRouter } from "react-router-dom";
-import About from "../pages/About";
+import Staff from "../pages/Staff";
 import createAccordianInformation from "../formatting/accordianInformation";
 import createCarouselInfo from "../formatting/carouselInformation";
 
-const aboutInformation = [
+const staffInformation = [
   createCarouselInfo(
-    "https://upload.wikimedia.org/wikipedia/commons/1/11/Blue_question_mark_icon.svg",
-    "About slide",
-    "About",
-    "For information about us."
+    "https://media.istockphoto.com/id/1324292283/photo/shot-of-a-diverse-group-of-medical-professionals-in-a-hospitals.jpg?s=612x612&w=0&k=20&c=Jfrlm02ShAJJC90DClQK0ScG6DqhEMQ3tW4KOZKlzKA=",
+    "Staff slide",
+    "Staff",
+    "Information about those who make us."
   ),
 ];
 
-const aboutAccordianInfo = [
+const staffAccordianInfo = [
   [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
     createAccordianInformation(
       "Common Question",
       "A common answer that would be displayed for the stated common question or concern."
     ),
   ],
   [
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
+    createAccordianInformation(
+      "Common Question",
+      "A common answer that would be displayed for the stated common question or concern."
+    ),
     createAccordianInformation(
       "Common Question",
       "A common answer that would be displayed for the stated common question or concern."
@@ -44,24 +60,24 @@ const aboutAccordianInfo = [
   ],
 ];
 
-const aboutAccordianTitles = [
+const staffAccordianTitles = [
   "An important Concern",
   "Some Other Issue",
   "Something to Consider",
 ];
 
-describe("About Component", () => {
+describe("Staff Component", () => {
   it("renders the contents correctly", () => {
     render(
       <MemoryRouter>
-        <About />
+        <Staff />
       </MemoryRouter>
     );
     // Assert the presence of the images on the carousel
 
     const imageElements = screen.queryAllByRole("img");
 
-    aboutInformation.forEach((info) => {
+    staffInformation.forEach((info) => {
       const matchingImage = imageElements.find(
         (image) => image.getAttribute("src") === info.src
       );
@@ -69,12 +85,12 @@ describe("About Component", () => {
     });
 
     // Assert the presence of the accordion titles
-    aboutAccordianTitles.forEach((title) => {
+    staffAccordianTitles.forEach((title) => {
       expect(screen.getByText(title)).toBeInTheDocument();
     });
 
     // Assert the presence of the accordion items
-    aboutAccordianInfo.flat().forEach((item) => {
+    staffAccordianInfo.flat().forEach((item) => {
       const headerElements = screen.queryAllByText(item.header);
       const descriptionElements = screen.queryAllByText(item.description);
 
