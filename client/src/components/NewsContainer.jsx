@@ -1,5 +1,6 @@
 import React from "react";
 import Cards from "./Cards";
+import createCard from "../formatting/createCard";
 
 import {
   MDBCol,
@@ -12,14 +13,6 @@ import {
 import Styles from "../css/NewsContainer.module.css";
 
 import { Link } from "react-router-dom";
-
-const createCard = (title, linkTitle, link) => {
-  return {
-    title: title ? title : "some card title",
-    linkTitle: linkTitle ? linkTitle : "some link title",
-    link: link ? link : "",
-  };
-};
 
 const cards = [
   [
@@ -73,7 +66,9 @@ const NewsContainer = () => {
                   </MDBCol>
                 </MDBRow>
                 <Link to={"/"} className="text-dark">
-                  <h5 className={Styles.newsLink}>Recent Events</h5>
+                  <h5 className={Styles.newsLink} data-testid="recent-events">
+                    Recent Events
+                  </h5>
                   <p>
                     With ever increasing demands, check out our improvements and
                     plans on how we plan to overcome these challenges.

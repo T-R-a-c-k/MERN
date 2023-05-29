@@ -23,7 +23,11 @@ function Footer() {
         <div className="me-5 d-none d-lg-block"></div>
 
         <div>
-          <Link to={"https://facebook.com/"} className="me-4 text-reset">
+          <Link
+            to={"https://facebook.com/"}
+            className="me-4 text-reset"
+            data-testid="facebook-icon"
+          >
             <MDBIcon fab icon="facebook-f" className={Styles.footerLink} />
           </Link>
           <Link to={"https://twitter.com/"} className="me-4 text-reset">
