@@ -11,7 +11,7 @@ const mockUserContextValues = {
   setTokenInstance: jest.fn(),
 };
 
-describe("PageCarousel component", () => {
+describe("AdminDashboard component", () => {
   it("has all links and fires button", () => {
     render(
       <MemoryRouter>

@@ -8,7 +8,7 @@ import { MemoryRouter } from "react-router-dom";
 
 jest.mock("axios"); // Mock the axios module
 
-describe("AdminPatientPage component", () => {
+describe("AdminPrescriptionPage component", () => {
   it("gets data from the api", async () => {
     const mockedData = [
       {

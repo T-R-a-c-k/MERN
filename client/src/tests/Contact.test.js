@@ -66,7 +66,7 @@ const contactAccordianTitles = [
   "Something to Consider",
 ];
 
-describe("About Component", () => {
+describe("Contact Component", () => {
   it("renders the contents correctly", () => {
     render(
       <MemoryRouter>

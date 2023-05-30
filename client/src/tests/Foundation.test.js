@@ -26,7 +26,7 @@ const foundationInformation = [
   ),
 ];
 
-describe("Career component", () => {
+describe("Foundation component", () => {
   it("renders content", () => {
     render(
       <MemoryRouter>

@@ -4,6 +4,7 @@ import { Container, Row } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import uniqid from "uniqid";
 
 const MyPortal = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const MyPortal = () => {
           <tbody>
             {Object.keys(userInstance).map((key, index) => {
               return (
-                <tr>
+                <tr key={uniqid()}>
                   <td>{key}</td>
                   <td>{userInstance[key]}</td>
                 </tr>

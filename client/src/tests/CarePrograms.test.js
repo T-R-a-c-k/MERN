@@ -66,7 +66,7 @@ const careProgramAccordianTitles = [
   "Something to Consider",
 ];
 
-describe("About Component", () => {
+describe("CareProgram Component", () => {
   it("renders the contents correctly", () => {
     render(
       <MemoryRouter>

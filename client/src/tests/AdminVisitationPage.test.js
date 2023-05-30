@@ -8,7 +8,7 @@ import AdminVisitationPage from "../pages/AdminVisitationPage";
 
 jest.mock("axios"); // Mock the axios module
 
-describe("AdminPatientPage component", () => {
+describe("AdminVisitationPage component", () => {
   it("gets data from the api", async () => {
     const mockedData = [
       {

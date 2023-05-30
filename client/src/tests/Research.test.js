@@ -14,7 +14,7 @@ const researchInformation = [
   ),
 ];
 
-describe("Career component", () => {
+describe("Research component", () => {
   it("renders content", () => {
     render(
       <MemoryRouter>

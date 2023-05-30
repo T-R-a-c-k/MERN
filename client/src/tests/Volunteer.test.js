@@ -14,7 +14,7 @@ const volunteerInformation = [
   ),
 ];
 
-describe("Career component", () => {
+describe("Volunteer component", () => {
   it("renders content", () => {
     render(
       <MemoryRouter>

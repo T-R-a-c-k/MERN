@@ -6,7 +6,8 @@ import { Form, Button } from "react-bootstrap";
 import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
-const DepartmentUpdate = ({ method }) => {
+
+function DepartmentUpdate({ method }) {
   const DEFAULT_FORM_OBJECT = {
     name: "",
     location: "",
@@ -140,6 +141,6 @@ const DepartmentUpdate = ({ method }) => {
       </Form>
     </Container>
   );
-};
+}
 
 export default DepartmentUpdate;

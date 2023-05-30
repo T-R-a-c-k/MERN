@@ -14,7 +14,7 @@ const learningInformation = [
   ),
 ];
 
-describe("Career component", () => {
+describe("Learning component", () => {
   it("renders content", () => {
     render(
       <MemoryRouter>
