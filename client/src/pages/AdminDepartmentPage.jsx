@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
 import { requestHeaders } from "../server headers/headers";
+import uniqid from "uniqid";
 
-function AdminDepatrmentPage() {
+function AdminDepartmentPage() {
   const { tokenInstance } = useContext(UserContext);
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -48,10 +49,10 @@ function AdminDepatrmentPage() {
             </td>
           </tr>
         </thead>
-        <tbody>
+        <tbody key={uniqid()}>
           {data.map((item, index) => {
             return (
-              <tr>
+              <tr key={uniqid()}>
                 <td style={{ width: "33%" }}>
                   <h4>{item.name}</h4>
                   <Button>
@@ -75,4 +76,4 @@ function AdminDepatrmentPage() {
     </>
   );
 }
-export default AdminDepatrmentPage;
+export default AdminDepartmentPage;
