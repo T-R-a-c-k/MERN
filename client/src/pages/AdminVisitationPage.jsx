@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
+import uniqid from "uniqid";
 
 function AdminVisitationPage() {
   const [data, setData] = useState([]);
@@ -52,7 +53,7 @@ function AdminVisitationPage() {
         <tbody>
           {data.map((item, index) => {
             return (
-              <tr>
+              <tr key={uniqid()}>
                 <td>
                   <p>{item._id}</p>
                   <Button>
@@ -63,7 +64,7 @@ function AdminVisitationPage() {
                 <td>{item.note}</td>
                 <td>
                   {item.prescription.map((item) => {
-                    return <pre>{item}</pre>;
+                    return <pre key={uniqid()}>{item}</pre>;
                   })}
                 </td>
               </tr>

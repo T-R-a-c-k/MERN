@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
 import { requestHeaders } from "../server headers/headers";
+import uniqid from "uniqid";
 
 function AdminPatientPage() {
   const [data, setData] = useState([]);
@@ -54,11 +55,11 @@ function AdminPatientPage() {
             </td>
           </tr>
         </thead>
-        <tbody>
+        <tbody key={uniqid()}>
           {data.map((item, index) => {
             return (
-              <tr>
-                <td>
+              <tr key={uniqid()}>
+                <td key={uniqid()}>
                   <h4>{item.fullName}</h4>
                   <Button>
                     <Link to={item.email}>Edit</Link>
@@ -67,9 +68,9 @@ function AdminPatientPage() {
                 <td>{item.birthDate.substring(0, 10)}</td>
                 <td>{item.medicalNumber}</td>
                 <td>{item.email}</td>
-                <td>
+                <td key={uniqid()}>
                   {item.visitations.map((item) => {
-                    return <pre>{item}</pre>;
+                    return <pre key={uniqid()}>{item}</pre>;
                   })}
                 </td>
               </tr>

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
+import uniqid from "uniqid";
 
 function AdminStaffPage() {
   const [data, setData] = useState([]);
@@ -66,7 +67,7 @@ function AdminStaffPage() {
         <tbody>
           {data.map((item, index) => {
             return (
-              <tr>
+              <tr key={uniqid()}>
                 <td>
                   <h4>{item.fullName}</h4>
                   <Button>

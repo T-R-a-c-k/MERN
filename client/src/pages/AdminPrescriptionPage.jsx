@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
+import uniqid from "uniqid";
 
 function AdminPrescriptionPage() {
   const [data, setData] = useState([]);
@@ -51,7 +52,7 @@ function AdminPrescriptionPage() {
         <tbody>
           {data.map((item, index) => {
             return (
-              <tr>
+              <tr key={uniqid()}>
                 <td>
                   <h4>{item.name}</h4>
                   <Button>
@@ -61,7 +62,7 @@ function AdminPrescriptionPage() {
                 <td>{item.usage}</td>
                 <td>
                   {item.sideEffects.map((item) => {
-                    return <pre>{item}</pre>;
+                    return <pre key={uniqid()}>{item}</pre>;
                   })}
                 </td>
               </tr>
