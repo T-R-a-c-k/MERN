@@ -30,7 +30,7 @@ describe("update component", () => {
     render(
       <MemoryRouter>
         <UserContext.Provider value={{ tokenInstance }}>
-          <DepartmentUpdate />
+          <DepartmentUpdate method={"update"} />
         </UserContext.Provider>
       </MemoryRouter>
     );
@@ -61,7 +61,7 @@ describe("update component", () => {
     render(
       <MemoryRouter>
         <UserContext.Provider value={{ tokenInstance }}>
-          <DepartmentUpdate />
+          <DepartmentUpdate method={"update"} />
         </UserContext.Provider>
       </MemoryRouter>
     );
@@ -92,6 +92,6 @@ describe("update component", () => {
     expect(budgetInput.value).toBe(mockedNewData.budget);
 
     fireEvent.click(submitButton);
-    axios.put.mockReturnValue(mockedNewData);
+    expect(axios.put).toHaveBeenCalled();
   });
 });

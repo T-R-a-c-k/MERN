@@ -37,7 +37,7 @@ describe("patient update component", () => {
     render(
       <MemoryRouter>
         <UserContext.Provider value={{ tokenInstance }}>
-          <PatientUpdate />
+          <PatientUpdate method={"update"} />
         </UserContext.Provider>
       </MemoryRouter>
     );
@@ -77,7 +77,7 @@ describe("patient update component", () => {
     render(
       <MemoryRouter>
         <UserContext.Provider value={{ tokenInstance }}>
-          <PatientUpdate />
+          <PatientUpdate method={"update"} />
         </UserContext.Provider>
       </MemoryRouter>
     );
@@ -135,5 +135,6 @@ describe("patient update component", () => {
     expect(emailInput.value).toBe(mockedNewData.email);
 
     fireEvent.click(submitButton);
+    expect(axios.put).toHaveBeenCalled();
   });
 });
