@@ -35,7 +35,6 @@ describe("update component", () => {
       </MemoryRouter>
     );
 
-    //Linter please stop yelling at me
     await waitFor(() => {
       const departmentName = screen.getByRole("textbox", {
         name: /department name/i,
