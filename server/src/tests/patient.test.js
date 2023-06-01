@@ -17,9 +17,21 @@ describe("GET /patient", () => {
       "6462784aa7f90ad6564b6af3",
     ],
   };
+  const updateData = {
+    firstName: "UPDATE",
+    lastName: "UPDATE",
+    birthDate: "1982-10-06",
+    medicalNumber: 987654321,
+    email: "UPDATE@example.com",
+    visitations: [
+      "64627842a7f90ad6564b6aef",
+      "64627847a7f90ad6564b6af1",
+      "6462784aa7f90ad6564b6af3",
+    ],
+  };
   const token = process.env.TEST_TOKEN;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     // set up
     //Tests the create endpoint
     await request(patientBaseURL)
@@ -37,11 +49,12 @@ describe("GET /patient", () => {
       return item.email === newPatient.email;
     });
   });
-  afterAll(async () => {
+  afterEach(async () => {
     //Test the delete endpoint
-    await request(patientBaseURL)
+    const response = await request(patientBaseURL)
       .del(`/${patientInstance[0].email}/delete`)
       .set("Authorization", `Bearer ${token}`);
+    expect(response.statusCode).toBe(200);
   });
   it("should return 200 for the list", async () => {
     const response = await request(patientBaseURL)
@@ -57,22 +70,11 @@ describe("GET /patient", () => {
   });
 
   it("should return 200 for the update post", async () => {
-    const updateData = {
-      firstName: "UPDATE",
-      lastName: "UPDATE",
-      birthDate: "1982-10-06",
-      medicalNumber: 987654321,
-      email: "UPDATE@example.com",
-      visitations: [
-        "64627842a7f90ad6564b6aef",
-        "64627847a7f90ad6564b6af1",
-        "6462784aa7f90ad6564b6af3",
-      ],
-    };
     const response = await request(patientBaseURL)
       .put(`/${patientInstance[0].email}/update`)
       .set("Authorization", `Bearer ${token}`)
       .send(updateData);
     expect(response.statusCode).toBe(200);
+    patientInstance[0] = updateData;
   });
 });

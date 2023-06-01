@@ -10,9 +10,14 @@ describe("GET /department", () => {
     location: "New Building",
     budget: 1234567,
   };
+  const updateData = {
+    name: "UPDATE Department",
+    location: "UPDATE Building",
+    budget: 7654321,
+  };
   const token = process.env.TEST_TOKEN;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     // set up
     //Tests the create endpoint
     await request(departmentBaseURL)
@@ -30,11 +35,12 @@ describe("GET /department", () => {
       return item.name === newDepartment.name;
     });
   });
-  afterAll(async () => {
+  afterEach(async () => {
     //Test the delete endpoint
-    await request(departmentBaseURL)
+    const response = await request(departmentBaseURL)
       .del(`/${departmentInstance[0]._id}/delete`)
       .set("Authorization", `Bearer ${token}`);
+    expect(response.statusCode).toBe(200);
   });
   it("should return 200 for the list", async () => {
     const response = await request(departmentBaseURL)
@@ -50,15 +56,13 @@ describe("GET /department", () => {
   });
 
   it("should return 200 for the update post", async () => {
-    const updateData = {
-      name: "UPDATE Department",
-      location: "UPDATE Building",
-      budget: 7654321,
-    };
     const response = await request(departmentBaseURL)
       .put(`/${departmentInstance[0]._id}/update`)
       .set("Authorization", `Bearer ${token}`)
       .send(updateData);
     expect(response.statusCode).toBe(200);
+    Object.keys(updateData).forEach((item) => {
+      departmentInstance[0][item] = updateData[item];
+    });
   });
 });

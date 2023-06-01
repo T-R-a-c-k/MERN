@@ -17,9 +17,22 @@ describe("GET /staff", () => {
     password: "Q3s#F6gN&9m^W2eD",
     role: "NEW",
   };
+
+  const updateData = {
+    firstName: "UPDATE",
+    lastName: "UPDATE",
+    position: "UPDATE",
+    salary: 80000,
+    deptID: "64627915a7f90ad6564b6b2b",
+    phoneNumber: "555-123-7890",
+    email: "update.something@example.com",
+    hireDate: "2023-05-23T00:00:00Z",
+    password: "Q3s#F6gN&9m^W2eD",
+    role: "UPDATE",
+  };
   const token = process.env.TEST_TOKEN;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     // set up
     //Tests the create endpoint
     await request(staffBaseURL)
@@ -37,11 +50,15 @@ describe("GET /staff", () => {
       return item.email === newStaff.email;
     });
   });
-  afterAll(async () => {
+  afterEach(async () => {
     //Test the delete endpoint
-    await request(staffBaseURL)
+
+    const response = await request(staffBaseURL)
       .del(`/${staffInstance[0].email}/delete`)
       .set("Authorization", `Bearer ${token}`);
+
+    expect(response.statusCode).toBe(200);
+    console.log(response._body);
   });
   it("should return 200 for the list", async () => {
     const response = await request(staffBaseURL)
@@ -57,24 +74,17 @@ describe("GET /staff", () => {
   });
 
   it("should return 200 for the update post", async () => {
-    const updateData = {
-      firstName: "UPDATE",
-      lastName: "UPDATE",
-      position: "UPDATE",
-      salary: 80000,
-      deptID: "64627915a7f90ad6564b6b2b",
-      phoneNumber: "555-123-7890",
-      email: "update.something@example.com",
-      hireDate: "2023-05-23T00:00:00Z",
-      password: "Q3s#F6gN&9m^W2eD",
-      role: "UPDATE",
-    };
     const response = await request(staffBaseURL)
       .put(`/${staffInstance[0].email}/update`)
       .set("Authorization", `Bearer ${token}`)
       .send(updateData);
 
-    console.log(response);
+    expect(response.statusCode).toBe(200);
+    staffInstance[0] = updateData;
+  });
+  it("should return 200 for the login post", async () => {
+    const response = await request(staffBaseURL).post(`/login`).send(newStaff);
+
     expect(response.statusCode).toBe(200);
   });
 });

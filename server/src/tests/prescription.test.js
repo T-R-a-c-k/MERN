@@ -10,9 +10,15 @@ describe("GET /prescription", () => {
     usage: "NEW",
     sideEffects: ["NEW"],
   };
+
+  const updateData = {
+    name: "UPDATE Prescription",
+    location: "UPDATE Building",
+    budget: 7654321,
+  };
   const token = process.env.TEST_TOKEN;
 
-  beforeAll(async () => {
+  beforeEach(async () => {
     // set up
     //Tests the create endpoint
     await request(prescriptionBaseURL)
@@ -30,11 +36,12 @@ describe("GET /prescription", () => {
       return item.name === newPrescription.name;
     });
   });
-  afterAll(async () => {
+  afterEach(async () => {
     //Test the delete endpoint
-    await request(prescriptionBaseURL)
+    const response = await request(prescriptionBaseURL)
       .del(`/${prescriptionInstance[0].name}/delete`)
       .set("Authorization", `Bearer ${token}`);
+    expect(response.statusCode).toBe(200);
   });
   it("should return 200 for the list", async () => {
     const response = await request(prescriptionBaseURL)
@@ -50,15 +57,11 @@ describe("GET /prescription", () => {
   });
 
   it("should return 200 for the update post", async () => {
-    const updateData = {
-      name: "UPDATE Prescription",
-      location: "UPDATE Building",
-      budget: 7654321,
-    };
     const response = await request(prescriptionBaseURL)
       .put(`/${prescriptionInstance[0].name}/update`)
       .set("Authorization", `Bearer ${token}`)
       .send(updateData);
     expect(response.statusCode).toBe(200);
+    prescriptionInstance[0] = updateData;
   });
 });
