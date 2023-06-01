@@ -19,6 +19,7 @@ const PrescriptionUpdate = ({ method }) => {
   const { id } = useParams();
   const [form, setForm] = useState(DEFAULT_FORM_OBJECT);
   const [err, setErr] = useState("");
+  const [validated, setValidated] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -59,21 +60,29 @@ const PrescriptionUpdate = ({ method }) => {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (method === "update") {
-      await axios.put(
-        `http://localhost:8080/prescription/${id}/update`,
-        form,
-        requestHeaders(tokenInstance)
-      );
+
+    const submitForm = e.currentTarget;
+    if (submitForm.checkValidity() === false) {
+      e.stopPropagation();
+    } else {
+      if (method === "update") {
+        await axios.put(
+          `http://localhost:8080/prescription/${id}/update`,
+          form,
+          requestHeaders(tokenInstance)
+        );
+      }
+      if (method === "create") {
+        await axios.post(
+          `http://localhost:8080/prescription/create`,
+          form,
+          requestHeaders(tokenInstance)
+        );
+      }
+      navigate("/admin/prescription");
     }
-    if (method === "create") {
-      await axios.post(
-        `http://localhost:8080/prescription/create`,
-        form,
-        requestHeaders(tokenInstance)
-      );
-    }
-    navigate("/admin/prescription");
+
+    setValidated(true);
   };
 
   return (
@@ -87,6 +96,8 @@ const PrescriptionUpdate = ({ method }) => {
       }}
     >
       <Form
+        noValidate
+        validated={validated}
         onSubmit={(e) => {
           submitHandler(e);
         }}
@@ -98,8 +109,13 @@ const PrescriptionUpdate = ({ method }) => {
             placeholder={"Name"}
             value={form.name}
             onChange={updateFormValue("name")}
+            required
           />
           <Form.Text className="text-muted"></Form.Text>
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            A name is required.
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicUsage">
@@ -109,7 +125,12 @@ const PrescriptionUpdate = ({ method }) => {
             placeholder="Usage"
             value={form.usage}
             onChange={updateFormValue("usage")}
+            required
           />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            A usage is required.
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicSideEffect">
@@ -119,7 +140,12 @@ const PrescriptionUpdate = ({ method }) => {
             rows={5}
             value={form.sideEffects}
             onChange={updateFormArray()}
+            required
           />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            Side effects are required.
+          </Form.Control.Feedback>
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit

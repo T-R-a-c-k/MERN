@@ -21,7 +21,7 @@ const PatientUpdate = ({ method }) => {
   const [form, setForm] = useState(DEFAULT_FORM_OBJECT);
   const [err, setErr] = useState("");
   const { tokenInstance } = useContext(UserContext);
-
+  const [validated, setValidated] = useState(false);
   useEffect(() => {
     const getData = async () => {
       const values = await axios.get(
@@ -53,24 +53,31 @@ const PatientUpdate = ({ method }) => {
   };
   const submitHandler = async (e) => {
     e.preventDefault();
-    const birthDateISO = new Date(form.birthDate).toISOString();
+    const submitForm = e.currentTarget;
+    if (submitForm.checkValidity() === false) {
+      e.stopPropagation();
+    } else {
+      const birthDateISO = new Date(form.birthDate).toISOString();
 
-    setForm({ ...form, birthDate: birthDateISO });
-    if (method === "update") {
-      await axios.put(
-        `http://localhost:8080/patient/${email}/update`,
-        form,
-        requestHeaders(tokenInstance)
-      );
+      setForm({ ...form, birthDate: birthDateISO });
+      if (method === "update") {
+        await axios.put(
+          `http://localhost:8080/patient/${email}/update`,
+          form,
+          requestHeaders(tokenInstance)
+        );
+      }
+      if (method === "create") {
+        await axios.post(
+          `http://localhost:8080/patient/create`,
+          form,
+          requestHeaders(tokenInstance)
+        );
+      }
+      navigate("/admin/patient");
     }
-    if (method === "create") {
-      await axios.post(
-        `http://localhost:8080/patient/create`,
-        form,
-        requestHeaders(tokenInstance)
-      );
-    }
-    navigate("/admin/patient");
+
+    setValidated(true);
   };
 
   return (
@@ -84,6 +91,8 @@ const PatientUpdate = ({ method }) => {
       }}
     >
       <Form
+        noValidate
+        validated={validated}
         onSubmit={(e) => {
           submitHandler(e);
         }}
@@ -95,8 +104,13 @@ const PatientUpdate = ({ method }) => {
             placeholder={"First Name"}
             value={form.firstName}
             onChange={updateFormValue("firstName")}
+            required
           />
           <Form.Text className="text-muted"></Form.Text>
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            A first name is required.
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicLastName">
@@ -106,7 +120,12 @@ const PatientUpdate = ({ method }) => {
             placeholder="Last Name"
             value={form.lastName}
             onChange={updateFormValue("lastName")}
+            required
           />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            A last name is required.
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicBirthDate">
@@ -115,7 +134,12 @@ const PatientUpdate = ({ method }) => {
             type="date"
             value={form.birthDate}
             onChange={updateFormValue("birthDate")}
+            required
           />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            A birth date is required.
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicMedicalNumber">
@@ -124,7 +148,12 @@ const PatientUpdate = ({ method }) => {
             type="number"
             value={form.medicalNumber}
             onChange={updateFormValue("medicalNumber")}
+            required
           />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            A medical number is required.
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -133,7 +162,12 @@ const PatientUpdate = ({ method }) => {
             type="email"
             value={form.email}
             onChange={updateFormValue("email")}
+            required
           />
+          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            An email is required.
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Button variant="primary" type="submit">
