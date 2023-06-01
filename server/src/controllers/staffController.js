@@ -159,7 +159,7 @@ exports.staff_update_put = [
       }
       const errors = validationResult(req);
       const existingStaff = await Staff.findOne({
-        email: req.body.email,
+        email: req.params.email,
       }).exec();
       if (!errors.isEmpty) {
         res.status(401).json(errors);

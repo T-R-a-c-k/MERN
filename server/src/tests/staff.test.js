@@ -1,57 +1,57 @@
 const request = require("supertest");
 const dotenv = require("dotenv");
 dotenv.config({ path: ".env" });
-const patientBaseURL = `http://localhost:${process.env.PORT}/patient`;
-let patientInstance;
+const staffBaseURL = `http://localhost:${process.env.PORT}/staff`;
+let staffInstance;
 
-describe("GET /patient", () => {
-  const newPatient = {
+describe("GET /staff", () => {
+  const newStaff = {
     firstName: "NEW",
     lastName: "NEW",
-    birthDate: "1982-10-06",
-    medicalNumber: 345678903,
-    email: "NEW@example.com",
-    visitations: [
-      "64627842a7f90ad6564b6aef",
-      "64627847a7f90ad6564b6af1",
-      "6462784aa7f90ad6564b6af3",
-    ],
+    position: "NEW",
+    salary: 80000,
+    deptID: "64627915a7f90ad6564b6b2b",
+    phoneNumber: "555-123-7890",
+    email: "new.something@example.com",
+    hireDate: "2023-05-23T00:00:00Z",
+    password: "Q3s#F6gN&9m^W2eD",
+    role: "NEW",
   };
   const token = process.env.TEST_TOKEN;
 
   beforeAll(async () => {
     // set up
     //Tests the create endpoint
-    await request(patientBaseURL)
+    await request(staffBaseURL)
       .post("/create")
       .set("Authorization", `Bearer ${token}`)
-      .send(newPatient);
+      .send(newStaff);
 
     //Test the list endpoint
-    const response = await request(patientBaseURL)
+    const response = await request(staffBaseURL)
       .get("/list")
       .set("Authorization", `Bearer ${token}`);
     expect(response.statusCode).toBe(200);
 
-    patientInstance = response._body.filter((item) => {
-      return item.email === newPatient.email;
+    staffInstance = response._body.filter((item) => {
+      return item.email === newStaff.email;
     });
   });
   afterAll(async () => {
     //Test the delete endpoint
-    await request(patientBaseURL)
-      .del(`/${patientInstance[0].email}/delete`)
+    await request(staffBaseURL)
+      .del(`/${staffInstance[0].email}/delete`)
       .set("Authorization", `Bearer ${token}`);
   });
   it("should return 200 for the list", async () => {
-    const response = await request(patientBaseURL)
+    const response = await request(staffBaseURL)
       .get("/list")
       .set("Authorization", `Bearer ${token}`);
     expect(response.statusCode).toBe(200);
   });
   it("should return 200 for the update get", async () => {
-    const response = await request(patientBaseURL)
-      .get(`/${patientInstance[0].email}/update`)
+    const response = await request(staffBaseURL)
+      .get(`/${staffInstance[0].email}/update`)
       .set("Authorization", `Bearer ${token}`);
     expect(response.statusCode).toBe(200);
   });
@@ -60,19 +60,21 @@ describe("GET /patient", () => {
     const updateData = {
       firstName: "UPDATE",
       lastName: "UPDATE",
-      birthDate: "1982-10-06",
-      medicalNumber: 987654321,
-      email: "UPDATE@example.com",
-      visitations: [
-        "64627842a7f90ad6564b6aef",
-        "64627847a7f90ad6564b6af1",
-        "6462784aa7f90ad6564b6af3",
-      ],
+      position: "UPDATE",
+      salary: 80000,
+      deptID: "64627915a7f90ad6564b6b2b",
+      phoneNumber: "555-123-7890",
+      email: "update.something@example.com",
+      hireDate: "2023-05-23T00:00:00Z",
+      password: "Q3s#F6gN&9m^W2eD",
+      role: "UPDATE",
     };
-    const response = await request(patientBaseURL)
-      .put(`/${patientInstance[0].email}/update`)
+    const response = await request(staffBaseURL)
+      .put(`/${staffInstance[0].email}/update`)
       .set("Authorization", `Bearer ${token}`)
       .send(updateData);
+
+    console.log(response);
     expect(response.statusCode).toBe(200);
   });
 });
