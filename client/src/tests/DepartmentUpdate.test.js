@@ -94,4 +94,47 @@ describe("update component", () => {
     fireEvent.click(submitButton);
     expect(axios.put).toHaveBeenCalled();
   });
+
+  it("should create the user", async () => {
+    jest.spyOn(Router, "useParams").mockReturnValue({ id: null });
+    const tokenInstance = { token: "mockToken" };
+
+    render(
+      <MemoryRouter>
+        <UserContext.Provider value={{ tokenInstance }}>
+          <DepartmentUpdate method={"create"} />
+        </UserContext.Provider>
+      </MemoryRouter>
+    );
+
+    const departmentNameInput = await screen.findByLabelText("Department Name");
+    const locationInput = await screen.findByLabelText("Location");
+    const budgetInput = await screen.findByLabelText("Budget");
+    const submitButton = await screen.findByRole("button", {
+      name: /submit/i,
+    });
+
+    const mockedNewData = {
+      name: "New Department",
+      location: "New Location",
+      budget: "2000",
+    };
+
+    fireEvent.change(departmentNameInput, {
+      target: { value: mockedNewData.name },
+    });
+    fireEvent.change(locationInput, {
+      target: { value: mockedNewData.location },
+    });
+    fireEvent.change(budgetInput, {
+      target: { value: mockedNewData.budget },
+    });
+
+    expect(departmentNameInput.value).toBe(mockedNewData.name);
+    expect(locationInput.value).toBe(mockedNewData.location);
+    expect(budgetInput.value).toBe(mockedNewData.budget);
+
+    fireEvent.click(submitButton);
+    expect(axios.post).toHaveBeenCalled();
+  });
 });
