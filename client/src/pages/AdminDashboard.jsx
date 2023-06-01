@@ -21,7 +21,7 @@ const AdminDashboard = () => {
     navigate("/");
   };
   return (
-    <Container style={{ alignItems: "center" }}>
+    <Container style={{ textAlign: "center" }}>
       <Row style={{ textAlign: "center" }}>
         <Link to={"department"} style={linkStyle}>
           Departments

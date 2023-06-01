@@ -126,4 +126,64 @@ describe("staff update component", () => {
     fireEvent.click(submitButton);
     expect(axios.put).toHaveBeenCalled();
   });
+
+  it("creates object with values", async () => {
+    jest.spyOn(Router, "useParams").mockReturnValue({ id: undefined });
+
+    const mockedPrescriptions = [
+      { _id: "123", name: "Abilify" },
+      { _id: "456", name: "Adderall" },
+    ];
+
+    await axios.get.mockResolvedValueOnce({ data: mockedPrescriptions });
+
+    const tokenInstance = { token: "mockToken" };
+
+    render(
+      <MemoryRouter>
+        <UserContext.Provider value={{ tokenInstance }}>
+          <VisitationUpdate method={"create"} />
+        </UserContext.Provider>
+      </MemoryRouter>
+    );
+
+    const dateInput = await screen.findByLabelText(/occurred date/i);
+
+    const noteInput = await screen.findByRole("textbox", {
+      name: /note/i,
+    });
+    const prescriptionInput = await screen.findByRole("checkbox", {
+      name: /abilify/i,
+    });
+    const submitButton = await screen.findByRole("button", {
+      name: /submit/i,
+    });
+
+    const mockedNewData = {
+      _id: "1",
+      occurredDate: "2025-06-28",
+      note: "Routine check-up. NEW",
+      prescription: ["123", "456"],
+    };
+
+    fireEvent.change(dateInput, {
+      target: { value: mockedNewData.occurredDate },
+    });
+
+    fireEvent.change(noteInput, {
+      target: { value: mockedNewData.note },
+    });
+    fireEvent.change(prescriptionInput, {
+      target: { value: mockedNewData.prescription },
+    });
+
+    expect(dateInput.value).toBe(mockedNewData.occurredDate);
+    expect(noteInput.value).toBe(mockedNewData.note);
+    expect(prescriptionInput.value.split(",")).toStrictEqual(
+      mockedNewData.prescription
+    );
+
+    fireEvent.click(submitButton);
+    expect(axios.post).toHaveBeenCalled();
+  });
 });

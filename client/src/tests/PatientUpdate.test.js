@@ -137,4 +137,72 @@ describe("patient update component", () => {
     fireEvent.click(submitButton);
     expect(axios.put).toHaveBeenCalled();
   });
+  it("should create object with values", async () => {
+    jest.spyOn(Router, "useParams").mockReturnValue({ email: null });
+
+    const tokenInstance = { token: "mockToken" };
+
+    render(
+      <MemoryRouter>
+        <UserContext.Provider value={{ tokenInstance }}>
+          <PatientUpdate method={"create"} />
+        </UserContext.Provider>
+      </MemoryRouter>
+    );
+
+    const firstNameInput = await screen.findByRole("textbox", {
+      name: /first name/i,
+    });
+    const lastNameInput = await screen.findByRole("textbox", {
+      name: /last name/i,
+    });
+    const birthDateInput = await screen.findByLabelText(/birth date/i);
+    const medicalNumberInput = await screen.findByRole("spinbutton", {
+      name: /medical number/i,
+    });
+    const emailInput = await screen.findByRole("textbox", {
+      name: /email/i,
+    });
+    const submitButton = await screen.findByRole("button", {
+      name: /submit/i,
+    });
+
+    const mockedNewData = {
+      firstName: "Elizabeth NEW",
+      lastName: "White NEW",
+      birthDate: "1982-10-06",
+      medicalNumber: "345678903",
+      email: "elizabethwhiteNEW@example.com",
+      visitations: [
+        "64627842a7f90ad6564b6aef",
+        "64627847a7f90ad6564b6af1",
+        "6462784aa7f90ad6564b6af3",
+      ],
+    };
+
+    fireEvent.change(firstNameInput, {
+      target: { value: mockedNewData.firstName },
+    });
+    fireEvent.change(lastNameInput, {
+      target: { value: mockedNewData.lastName },
+    });
+    fireEvent.change(birthDateInput, {
+      target: { value: mockedNewData.birthDate },
+    });
+    fireEvent.change(medicalNumberInput, {
+      target: { value: mockedNewData.medicalNumber },
+    });
+    fireEvent.change(emailInput, {
+      target: { value: mockedNewData.email },
+    });
+
+    expect(firstNameInput.value).toBe(mockedNewData.firstName);
+    expect(lastNameInput.value).toBe(mockedNewData.lastName);
+    expect(birthDateInput.value).toBe(mockedNewData.birthDate);
+    expect(medicalNumberInput.value).toBe(mockedNewData.medicalNumber);
+    expect(emailInput.value).toBe(mockedNewData.email);
+
+    fireEvent.click(submitButton);
+    expect(axios.post).toHaveBeenCalled();
+  });
 });

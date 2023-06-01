@@ -6,6 +6,7 @@ import StaffUpdate from "../pages/StaffUpdate";
 import { UserContext } from "../context/UserProvider";
 import { MemoryRouter } from "react-router-dom";
 import Router from "react-router";
+import StaffCreate from "../pages/StaffCreate";
 
 jest.mock("axios"); // Mock the axios module
 jest.mock("react-router", () => ({
@@ -171,5 +172,100 @@ describe("staff update component", () => {
 
     fireEvent.click(submitButton);
     expect(axios.put).toHaveBeenCalled();
+  });
+
+  it("should create an object with values on the staff create component", async () => {
+    const mockedDepartments = [
+      { _id: "123", name: "Department 1" },
+      { _id: "456", name: "Department 2" },
+    ];
+
+    await axios.get.mockResolvedValueOnce({ data: mockedDepartments });
+
+    const tokenInstance = { token: "mockToken" };
+
+    render(
+      <MemoryRouter>
+        <UserContext.Provider value={{ tokenInstance }}>
+          <StaffCreate />
+        </UserContext.Provider>
+      </MemoryRouter>
+    );
+
+    const staffFirstInput = await screen.findByLabelText("First Name");
+    const lastInput = screen.getByLabelText("Last Name");
+    const positionInput = screen.getByLabelText("Position");
+    const salaryInput = screen.getByLabelText("Salary");
+    const deptIDInput = screen.getByLabelText("Department ID");
+    const phoneInput = screen.getByLabelText("Phone Number");
+    const emailInput = screen.getByLabelText("Email");
+    const hiredInput = screen.getByLabelText("Hired Date");
+    const passInput = screen.getByLabelText("Password");
+    const roleInput = screen.getByLabelText("Role");
+    const submitButton = await screen.findByRole("button", {
+      name: /submit/i,
+    });
+
+    const mockedNewData = {
+      firstName: "Emma NEW",
+      lastName: "Roberts NEW",
+      position: "Physician NEW",
+      salary: "80000",
+      deptID: "123",
+      phoneNumber: "555-123-7890",
+      email: "new.roberts@example.com",
+      hireDate: "2023-05-23",
+      password: "Q3s#F6gN&9m^W2eD",
+      role: "staff NEW",
+    };
+
+    fireEvent.change(staffFirstInput, {
+      target: { value: mockedNewData.firstName },
+    });
+    fireEvent.change(lastInput, {
+      target: { value: mockedNewData.lastName },
+    });
+    fireEvent.change(positionInput, {
+      target: { value: mockedNewData.position },
+    });
+    fireEvent.change(salaryInput, {
+      target: { value: mockedNewData.salary },
+    });
+
+    fireEvent.change(deptIDInput, {
+      target: { value: mockedNewData.deptID },
+    });
+
+    fireEvent.change(phoneInput, {
+      target: { value: mockedNewData.phoneNumber },
+    });
+    fireEvent.change(emailInput, {
+      target: { value: mockedNewData.email },
+    });
+
+    fireEvent.change(hiredInput, {
+      target: { value: mockedNewData.hireDate },
+    });
+
+    fireEvent.change(passInput, {
+      target: { value: mockedNewData.password },
+    });
+    fireEvent.change(roleInput, {
+      target: { value: mockedNewData.role },
+    });
+
+    expect(staffFirstInput.value).toBe(mockedNewData.firstName);
+    expect(lastInput.value).toBe(mockedNewData.lastName);
+    expect(positionInput.value).toBe(mockedNewData.position);
+    expect(salaryInput.value).toBe(mockedNewData.salary);
+    expect(deptIDInput.value).toBe(mockedNewData.deptID);
+    expect(phoneInput.value).toBe(mockedNewData.phoneNumber);
+    expect(emailInput.value).toBe(mockedNewData.email);
+    expect(hiredInput.value).toBe(mockedNewData.hireDate);
+    expect(passInput.value).toBe(mockedNewData.password);
+    expect(roleInput.value).toBe(mockedNewData.role);
+
+    fireEvent.click(submitButton);
+    expect(axios.post).toHaveBeenCalled();
   });
 });

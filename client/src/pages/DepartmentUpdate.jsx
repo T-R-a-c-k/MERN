@@ -85,7 +85,6 @@ function DepartmentUpdate({ method }) {
           marginBottom: "2%",
         }}
       >
-        {id}
         <Form
           noValidate
           validated={validated}
