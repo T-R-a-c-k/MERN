@@ -1,9 +1,9 @@
-# #Client / Server Basic Fullstack Application
+# Client / Server Basic Fullstack Application
 
 This application was created in purpose of better understanding best practices, work flows and
 naturally occuring problems one might face when attempt to build a fullstack application from scratch.
 
-# #Setup
+# Setup
 
 1. Clone the repo to a folder on your device
 2. Create a 'config' file within the client /src directory that contains these keys:
@@ -45,14 +45,14 @@ naturally occuring problems one might face when attempt to build a fullstack app
    i. Go to the server directory then use the command: `npm start`
    i. Go to the client directory then use the command: `npm start`
 
-# #Usage
+# Usage
 
 Assume that your mongodb is setup with the schemas found from the server/src/models section,
 you can sign in as an administrator and go through whatever management of collections you
 feel like. This application was more focused on the interaction of different technologies
 than truly creating an optimal management system and as such, lacks many of those basic features.
 
-# #Takeaways
+# Takeaways
 
 Overall the project showcases well a basic MERN stack's architecture but is made overly simple
 to allow for learning on how to conduct future projects.
@@ -64,7 +64,7 @@ Things that I _should_ still be changed:
 - Certain update / create functions require more information (patients needs visitations etc)
 - Use typescript over javascript
 
-# #Technologies Used
+# Technologies Used
 
 - Node.js - backend/running server
 - Expressjs - Data API
