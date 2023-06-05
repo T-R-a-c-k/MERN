@@ -23,12 +23,12 @@ naturally occuring problems one might face when attempt to build a fullstack app
 
 3. Create a .env file within the server /src directory that contains these keys:
 
-   MONGODB_URI=""
-   PORT=#
-   SALT_ROUNDS=#
-   TOKEN_PASSWORD=""
-   INIT_VECTOR=""
-   SECURITY_KEY=""
+   MONGODB_URI=""  
+   PORT=#  
+   SALT_ROUNDS=#  
+   TOKEN_PASSWORD=""  
+   INIT_VECTOR=""  
+   SECURITY_KEY=""  
    TEST_TOKEN=""
 
    MONGODB_URI contains the link to your mongodb cluster
