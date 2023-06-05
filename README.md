@@ -47,7 +47,7 @@ naturally occuring problems one might face when attempt to build a fullstack app
 
 # Usage
 
-Assume that your mongodb is setup with the schemas found from the server/src/models section,
+Once that your mongodb is setup with the schemas found from the server/src/models section,
 you can sign in as an administrator and go through whatever management of collections you
 feel like. This application was more focused on the interaction of different technologies
 than truly creating an optimal management system and as such, lacks many of those basic features.
@@ -56,7 +56,7 @@ than truly creating an optimal management system and as such, lacks many of thos
 
 Overall the project showcases well a basic MERN stack's architecture but is made overly simple
 to allow for learning on how to conduct future projects.
-Things that I _should_ still be changed:
+Things that _should_ still be changed:
 
 - Tests are not fully (or remotely) comprehensive
 - Some functions should be extracted out as helper functions for ease of reusing code
