@@ -8,18 +8,18 @@ naturally occuring problems one might face when attempt to build a fullstack app
 1. Clone the repo to a folder on your device
 2. Create a 'config' file within the client /src directory that contains these keys:
 
-   BASE_URL: "http://localhost:#",
-   DEPARTMENT_LIST: "/department/list",
-   PATIENT_LIST: "/patient/list",
-   PRESCRIPTION_LIST: "/prescription/list",
-   STAFF_LIST: "/staff/list",
-   VISITATION_LIST: "/visitation/list",
-   DEPARTMENT_CREATE: "/department/create",
-   PATIENT_CREATE: "/patient/create",
-   PRESCRIPTION_CREATE: "/prescription/create",
-   STAFF_CREATE: "/staff/create",
-   STAFF_LOGIN: "/staff/login",
-   VISITATION_CREATE: "/visitation/create",
+   BASE_URL: "http://localhost:#"  
+   DEPARTMENT_LIST: "/department/list",  
+   PATIENT_LIST: "/patient/list",  
+   PRESCRIPTION_LIST: "/prescription/list",  
+   STAFF_LIST: "/staff/list",  
+   VISITATION_LIST: "/visitation/list",  
+   DEPARTMENT_CREATE: "/department/create",  
+   PATIENT_CREATE: "/patient/create",  
+   PRESCRIPTION_CREATE: "/prescription/create",  
+   STAFF_CREATE: "/staff/create",  
+   STAFF_LOGIN: "/staff/login",  
+   VISITATION_CREATE: "/visitation/create"
 
 3. Create a .env file within the server /src directory that contains these keys:
 
