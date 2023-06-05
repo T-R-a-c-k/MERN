@@ -6,6 +6,7 @@ import { Form, Button } from "react-bootstrap";
 import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
+import { config } from "../config";
 
 const StaffUpdate = () => {
   const DEFAULT_FORM_OBJECT = {
@@ -31,14 +32,14 @@ const StaffUpdate = () => {
   useEffect(() => {
     const getData = async () => {
       const values = await axios.get(
-        `http://localhost:8080/staff/${email}/update`,
+        `${config.BASE_URL}/staff/${email}/update`,
         requestHeaders(tokenInstance)
       );
       values.data.hireDate = values.data.hireDate.substring(0, 10);
       setForm(values.data);
 
       const departments = await axios.get(
-        "http://localhost:8080/department/list",
+        `${config.BASE_URL + config.DEPARTMENT_LIST}`,
         requestHeaders(tokenInstance)
       );
       setDepartment([...departments.data]);
@@ -70,7 +71,7 @@ const StaffUpdate = () => {
       const hireDateISO = new Date(form.hireDate).toISOString();
       setForm({ ...form, hireDate: hireDateISO });
       await axios.put(
-        `http://localhost:8080/staff/${email}/update`,
+        `${config.BASE_URL}/staff/${email}/update`,
         form,
         requestHeaders(tokenInstance)
       );

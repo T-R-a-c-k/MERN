@@ -6,6 +6,7 @@ import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
 import uniqid from "uniqid";
+import { config } from "../config";
 
 function AdminPrescriptionPage() {
   const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ function AdminPrescriptionPage() {
   useEffect(() => {
     const getData = async () => {
       const values = await axios.get(
-        `http://localhost:8080/prescription/list`,
+        `${config.BASE_URL + config.PRESCRIPTION_LIST}`,
         requestHeaders(tokenInstance)
       );
       setData([...values.data]);

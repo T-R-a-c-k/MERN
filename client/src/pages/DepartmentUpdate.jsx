@@ -6,6 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
 import { requestHeaders } from "../server headers/headers";
+import { config } from "../config";
 
 function DepartmentUpdate({ method }) {
   const DEFAULT_FORM_OBJECT = {
@@ -22,7 +23,7 @@ function DepartmentUpdate({ method }) {
   useEffect(() => {
     const getData = async () => {
       const values = await axios.get(
-        `http://localhost:8080/department/${id}/update`,
+        `${config.BASE_URL}/department/${id}/update`,
         requestHeaders(tokenInstance)
       );
       setForm(values.data);
@@ -56,14 +57,14 @@ function DepartmentUpdate({ method }) {
     } else {
       if (method === "update") {
         await axios.put(
-          `http://localhost:8080/department/${id}/update`,
+          `${config.BASE_URL}/department/${id}/update`,
           form,
           requestHeaders(tokenInstance)
         );
       }
       if (method === "create") {
         await axios.post(
-          `http://localhost:8080/department/create`,
+          `${config.BASE_URL + config.DEPARTMENT_CREATE}`,
           form,
           requestHeaders(tokenInstance)
         );

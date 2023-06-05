@@ -6,6 +6,7 @@ import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
 import { requestHeaders } from "../server headers/headers";
 import uniqid from "uniqid";
+import { config } from "../config";
 
 function AdminDepartmentPage() {
   const { tokenInstance } = useContext(UserContext);
@@ -13,7 +14,7 @@ function AdminDepartmentPage() {
   useEffect(() => {
     const getData = async () => {
       const values = await axios.get(
-        `http://localhost:8080/department/list`,
+        `${config.BASE_URL + config.DEPARTMENT_LIST}`,
         requestHeaders(tokenInstance)
       );
       setData([...values.data]);

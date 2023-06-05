@@ -6,6 +6,7 @@ import { Form, Button } from "react-bootstrap";
 import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
+import { config } from "../config";
 
 const VisitationUpdate = ({ method }) => {
   const DEFAULT_FORM_OBJECT = {
@@ -26,7 +27,7 @@ const VisitationUpdate = ({ method }) => {
     const getData = async () => {
       if (id) {
         const values = await axios.get(
-          `http://localhost:8080/visitation/${id}/update`,
+          `${config.BASE_URL}/visitation/${id}/update`,
           requestHeaders(tokenInstance)
         );
         values.data.occurredDate = values.data.occurredDate.substring(0, 10);
@@ -34,7 +35,7 @@ const VisitationUpdate = ({ method }) => {
       }
 
       const allPrescriptions = await axios.get(
-        "http://localhost:8080/prescription/list",
+        `${config.BASE_URL + config.PRESCRIPTION_LIST}`,
         requestHeaders(tokenInstance)
       );
       setPrescriptions([...allPrescriptions.data]);
@@ -82,14 +83,14 @@ const VisitationUpdate = ({ method }) => {
       setForm({ ...form, occurredDate: occurredDateISO });
       if (method === "update") {
         await axios.put(
-          `http://localhost:8080/visitation/${id}/update`,
+          `${config.BASE_URL}/visitation/${id}/update`,
           form,
           requestHeaders(tokenInstance)
         );
       }
       if (method === "create") {
         await axios.post(
-          `http://localhost:8080/visitation/create`,
+          `${config.BASE_URL + config.VISITATION_CREATE}`,
           form,
           requestHeaders(tokenInstance)
         );

@@ -6,6 +6,7 @@ import { Form, Button } from "react-bootstrap";
 import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
+import { config } from "../config";
 
 const PrescriptionUpdate = ({ method }) => {
   const DEFAULT_FORM_OBJECT = {
@@ -24,7 +25,7 @@ const PrescriptionUpdate = ({ method }) => {
   useEffect(() => {
     const getData = async () => {
       const values = await axios.get(
-        `http://localhost:8080/prescription/${id}/update`,
+        `${config.BASE_URL}/prescription/${id}/update`,
         requestHeaders(tokenInstance)
       );
       //values.data.sideEffects = values.data.sideEffects.toString();
@@ -67,14 +68,14 @@ const PrescriptionUpdate = ({ method }) => {
     } else {
       if (method === "update") {
         await axios.put(
-          `http://localhost:8080/prescription/${id}/update`,
+          `${config.BASE_URL}/prescription/${id}/update`,
           form,
           requestHeaders(tokenInstance)
         );
       }
       if (method === "create") {
         await axios.post(
-          `http://localhost:8080/prescription/create`,
+          `${config.BASE_URL + config.PRESCRIPTION_CREATE}`,
           form,
           requestHeaders(tokenInstance)
         );

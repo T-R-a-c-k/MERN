@@ -6,6 +6,7 @@ import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
 import { requestHeaders } from "../server headers/headers";
 import uniqid from "uniqid";
+import { config } from "../config";
 
 function AdminPatientPage() {
   const [data, setData] = useState([]);
@@ -13,7 +14,7 @@ function AdminPatientPage() {
   useEffect(() => {
     const getData = async () => {
       const values = await axios.get(
-        `http://localhost:8080/patient/list`,
+        `${config.BASE_URL + config.PATIENT_LIST}`,
         requestHeaders(tokenInstance)
       );
       setData([...values.data]);

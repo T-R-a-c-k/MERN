@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import { UserContext } from "../context/UserProvider";
 
 import axios from "axios";
+import { config } from "../config";
 
 function StaffPortal() {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ function StaffPortal() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/staff/login",
+        `${config.BASE_URL + config.STAFF_LOGIN}`,
         form
       );
       const { token, user } = response.data;

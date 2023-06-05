@@ -5,6 +5,7 @@ import axios from "axios";
 import { requestHeaders } from "../server headers/headers";
 import { UserContext } from "../context/UserProvider";
 import { useContext } from "react";
+import { config } from "../config";
 
 const colStyle = { textAlign: "center" };
 const linkStyle = { color: "white" };
@@ -19,7 +20,7 @@ function SelectedItemDelete() {
     const collection = path[2];
 
     await axios.delete(
-      `http://localhost:8080/${collection}/${id || email}/delete`,
+      `${config.BASE_URL}/${collection}/${id || email}/delete`,
       requestHeaders(tokenInstance)
     );
     navigate(`/admin/${collection}`);
