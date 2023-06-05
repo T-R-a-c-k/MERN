@@ -31,18 +31,18 @@ naturally occuring problems one might face when attempt to build a fullstack app
    SECURITY_KEY=""  
    TEST_TOKEN=""
 
-   MONGODB_URI contains the link to your mongodb cluster
-   PORT specfies the port the server is to be hosted on
-   (Given the above config file, the BASE_URL string must contain the same number)
-   SALT_ROUNDS is for hashing of passwords, recommended to just keep at ~10
-   TOKEN_PASSWORD is a 32 character (ideally random) string
-   INIT_VECTOR is a 16 character (ideally random) string
-   SECURITY_KEY is a 32 character (ideally random) string
-   TEST_TOKEN is the token generated upon logging in via an admin account
+   MONGODB_URI contains the link to your mongodb cluster  
+   PORT specfies the port the server is to be hosted on  
+   (Given the above config file, the BASE_URL string must contain the same number)  
+   SALT_ROUNDS is for hashing of passwords, recommended to just keep at ~10  
+   TOKEN_PASSWORD is a 32 character (ideally random) string  
+   INIT_VECTOR is a 16 character (ideally random) string  
+   SECURITY_KEY is a 32 character (ideally random) string  
+   TEST_TOKEN is the token generated upon logging in via an admin account  
    (Can grab this from local storage, it is however only used for testing)
 
-4. Run the program by:
-   i. Go to the server directory then use the command: `npm start`
+4. Run the program by:  
+   i. Go to the server directory then use the command: `npm start`  
    i. Go to the client directory then use the command: `npm start`
 
 # Usage
